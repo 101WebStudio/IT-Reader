@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>ITreader</title>
+  <link rel="icon" type="png" sizes="64x64" href="/images/it reader logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="/images/it reader logo.png" alt="ITreader logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text" style="display:inline-block;">ITreader<span></span></div>
+      </a>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#who">Who we are</a></li>
+          <li><a href="#why">Why join</a></li>
+          <li><a href="contact.html" class="btn btn-outline" target="_blanke">Contact Us</a></li>
+          <li><a href="event.html" class="btn btn-accent" target="_blanke">Events</a></li>
+          <li><button class="theme-toggle" id="themeToggle"><i class="fa-regular fa-moon"></i> <span>Dark</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero with ABSTRACT MOVING BACKGROUND -->
+  <section class="hero" id="home">
+    <div class="hero-bg-shapes">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="container">
+      <h1>Experiences that Redefine how Leaders<span style="color:var(--accent-light);"><br>
+       Meet, Think, and Decide.</span></h1>
+      <p>Join our Professional Community, Influence New Tech, and Enhance your Expertise with bespoke events, summits, expert-led webinars, and more.
+        <br>Chance to win digital <span style="color: orange;">Tango Gift Cards</span> as you learn and grow.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-accent">Contact US</a>
+        <a href="event.html" class="btn btn-secondary" target="_blanke">Explore <i class="fas fa-arrow-down"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE - WITH LARGER EVENT IMAGE (optimized for 1600x1066) -->
+  <section id="who" class="who-we-are">
+    <div class="container">
+      <div class="section-title">
+        <h2>Who we are</h2>
+      </div>
+      <div class="who-grid">
+        <div class="who-content">
+          <h3>ITreader is a trusted platform where IT decision-makers, professionals, and tech enthusiasts have the opportunity to access the latest tech content, share their opinions, and influence new products.</h3>
+          <p>We design and execute executive gatherings across the US, EMEA, and beyond—bringing senior leaders together through experiences that enable connection, collaboration, and growth</p>
+          <div class="who-bullets">
+            <div class="who-bullet-item"><i class="fas fa-chalkboard-user"></i> Bespoke Events </div>
+            <div class="who-bullet-item"><i class="fas fa-comments"></i>Summit Gatherings</div>
+            <div class="who-bullet-item"><i class="fas fa-square-poll-vertical"></i>Expert-Led Webinars</div>
+            <div class="who-bullet-item"><i class="fas fa-square-poll-vertical"></i>Insightful interviews</div>
+             <div class="who-bullet-item"><i class="fas fa-square-poll-vertical"></i>Interactive surveys</div>
+          </div>
+        </div>
+        <div class="who-illustration">
+          <!-- Larger event image badge - perfect for 1600x1066 displays -->
+          <div class="event-image-badge">
+            <img src="/images/whoarewe.jpeg" alt="Executive gathering with professionals at a corporate event" style="width: 100%; height: 100%; object-fit: cover; border-radius: 40px;">
+            <div class="event-overlay">
+              <span>Executive Events</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Designed For Technology Leaders</h2>
+        <p>We design and deliver high-impact events—from concept to execution—focused on success and ROI.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-chalkboard-user"></i></div>
+          <h3>Bespoke Events</h3>
+          <p>Live & on‑demand from industry leaders.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-comments"></i></div>
+          <h3>Summit Gatherings</h3>
+          <p>Shape new tech with your opinion.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-square-poll-vertical"></i></div>
+          <h3>Expert-Led Webinars</h3>
+          <p>Contribute insights, earn rewards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <section class="partner-section">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:30px; font-size:1.8rem;">Trusted by <span style="color: #0018ff;">global partners</span></h2>
+      
+      <!-- First moving row - faster animation (15s instead of 30s) -->
+      <div class="carousel" style="overflow: hidden; width: 100%; padding: 10px 0;">
+        <div class="carousel-track" style="display: flex; gap: 30px; width: max-content; animation: slide 15s linear infinite;">
+          
+          <!-- Row 1 items - larger logos, no text, paths without /images/ -->
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imagetibc.png" alt="TIBCO logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageGC.png" alt="Google Cloud logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imagequest.png" alt="Quest logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageleapwork.png" alt="leapwork logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageplanview.png" alt="planview logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imagetwilio.png" alt="twilio logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imagesiemens.png" alt="Siemens logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageibm.png" alt="IBM logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageflecera.png" alt="flexera logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imagemastercar.png" alt="Mastercard logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <!-- Duplicate for seamless loop -->
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imagemastercar.png" alt="Mastercard logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageGC.png" alt="Google Cloud logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Second moving row (opposite direction) - faster animation -->
+      <div class="carousel" style="overflow: hidden; width: 100%; padding: 10px 0; margin-top: 20px;">
+        <div class="carousel-track" style="display: flex; gap: 30px; width: max-content; animation: slideReverse 15s linear infinite;">
+          
+          <!-- Row 2 items - larger logos, no text, paths without /images/ -->
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imagequest.png" alt="Quest logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageleapwork.png" alt="leapwork logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageplanview.png" alt="planview logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imagetwilio.png" alt="twilio logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imagesiemens.png" alt="Siemens logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageibm.png" alt="IBM logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageflecera.png" alt="flexera logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imagemastercar.png" alt="Mastercard logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageGC.png" alt="Google Cloud logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imagequest.png" alt="Quest logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <!-- Duplicate for seamless loop -->
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageleapwork.png" alt="leapwork logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+          
+          <div class="partner-item" style="display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; background: var(--card-bg); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); padding: 25px; transition: all 0.3s ease;">
+            <img src="/images/imageplanview.png" alt="planview logo" class="partner-logo" style="width: 100px; height: 100px; object-fit: contain; filter: brightness(1) contrast(1); transition: filter 0.3s ease;">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Dark mode specific adjustments for images - now white -->
+      <style>
+        /* Make all partner logos white in dark mode */
+        body.dark-mode .partner-logo {
+          filter: brightness(0) invert(1) !important;
+          opacity: 1;
+        }
+        
+        /* Hover effect for better visibility */
+        .partner-item:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px rgba(0, 24, 255, 0.2);
+          border-color: #0018ff;
+        }
+        
+        /* Ensure logos look good in light mode */
+        .partner-logo {
+          transition: filter 0.3s ease;
+        }
+      </style>
+      
+      <!-- Keyframes for sliding animations - faster -->
+      <style>
+        @keyframes slide {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes slideReverse {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      </style>
+    </div>
+  </section>
+
+  <!-- Why join + iPhone -->
+<section id="why">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why join us</h2>
+        <p>Grow, influence, and earn</p>
+      </div>
+      <div class="why-grid">
+        <div>
+          <div class="why-cards-mini">
+            <div class="why-card-mini">
+              <i class="fas fa-file-lines"></i>
+              <h4>Expand expertise</h4>
+              <p>Access content from tech leaders.</p>
+            </div>
+            <div class="why-card-mini">
+              <i class="fas fa-lightbulb"></i>
+              <h4>Influence tech</h4>
+              <p>Shape new products via interviews.</p>
+            </div>
+          </div>
+          
+          <!-- Tango Card Information Section -->
+          <div class="tango-card-info" style="margin-top: 30px; padding: 25px; background: var(--light-gray); border-radius: var(--border-radius); border: 1px solid var(--border-light);">
+            <h4 style="color: var(--primary-color); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+              <i class="fas fa-gift" style="color: var(--accent-color);"></i> About Tango Card
+            </h4>
+            <p style="color: var(--text-secondary); margin-bottom: 15px; line-height: 1.6;">
+              A Tango gift card is a prepaid digital gift card that allows recipients to choose from a wide range of popular retailers and online stores worldwide. <a href="#" style="color: var(--accent-color); text-decoration: none;">Learn more here</a>.
+            </p>
+            
+            <h5 style="color: var(--dark-color); margin: 15px 0 8px; font-size: 1rem;">What can I get with Tango card</h5>
+            <p style="color: var(--text-secondary); margin-bottom: 15px; line-height: 1.6;">
+              You can choose from 1000+ popular retailers like Amazon, H&M, eBay, etc., prepaid cards and charitable donations worldwide. <a href="#" style="color: var(--accent-color); text-decoration: none;">View the complete list here</a>.
+            </p>
+            
+            <h5 style="color: var(--dark-color); margin: 15px 0 8px; font-size: 1rem;">How will I get my Tango card?</h5>
+            <p style="color: var(--text-secondary); margin-bottom: 0; line-height: 1.6;">
+              If you win the draw, you'll receive a Tango reward link within a couple of days, along with instructions on how to redeem it, sent directly to your email.
+            </p>
+          </div>
+        </div>
+        
+        <div>
+          <!-- Image from the uploaded file - My opportunities interface -->
+          <div class="opportunities-image" style="width: 100%; border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-light);">
+            <img src="/images/myoppertunites.png" alt="My opportunities dashboard" style="width: 100%; height: auto; display: block;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-number" data-target="232">0</div><div class="stat-label">requests</div></div>
+        <div class="stat-item"><div class="stat-number" data-target="230">0</div><div class="stat-label">completed</div></div>
+        <div class="stat-item"><div class="stat-number" data-target="230">0</div><div class="stat-label">gift cards</div></div>
+        <div class="stat-item"><div class="stat-number" data-target="100">0</div><div class="stat-label">partners</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trustpilot reviews -->
+  <section class="trustpilot-reviews" id="reviews">
+    <div class="container">
+      <div class="section-title">
+        <h2>Trusted by professionals</h2>
+        <p>Real reviews from our community</p>
+      </div>
+      <div class="review-grid">
+        <div class="review-card"><div class="stars">★★★★★</div><p><strong>My favourite tech community</strong></p><p>Great insights and content. Daily resource.</p><small>14 Aug 2024</small></div>
+        <div class="review-card"><div class="stars">★★★★★</div><p><strong>Excellent hub for learning</strong></p><p>Valuable knowledge, reward system motivates.</p><small>23 Jan 2024</small></div>
+        <div class="review-card"><div class="stars">★★★★☆</div><p><strong>Learn and Earn Community</strong></p><p>Enjoy being part of this community. Fun incentives!</p><small>5 Jan 2024</small></div>
+      </div>
+      <p style="text-align:center; margin-top:30px;">
+        <a href="https://uk.trustpilot.com/review/itreader.com?utm_medium=trustbox&utm_source=TrustBoxReviewCollector" target="_blank" style="color:var(--accent-color); font-weight:600; text-decoration:none; border-bottom:2px solid var(--accent-light); padding-bottom:2px;">View all reviews on Trustpilot →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== EVENTS SECTION (all buttons link to #contact) ===== -->
+  <section class="events-showcase" id="events">
+    <div class="container">
+      <div class="section-title">
+        <h2>Corporate Event Planning</h2>
+        <p>From product launches to annual conferences, we design and execute events that align with your brand identity and business objectives, ensuring seamless experiences that exceed expectations.</p>
+      </div>
+      
+      <!-- main event cards (3) -->
+      <div class="event-grid">
+        <!-- Corporate Event Planning card -->
+        <div class="event-card">
+          <h3>Corporate Event Planning</h3>
+          <p>From product launches to annual conferences, we design and execute events that align with your brand identity and business objectives, ensuring seamless experiences that exceed expectations.</p>
+          <p>Our team specializes in creating corporate events that not only impress but also deliver measurable results.</p>
+          <ul class="event-list">
+            <li><i class="fas fa-check-circle"></i> Full-Service Planning: End-to-end event management</li>
+            <li><i class="fas fa-check-circle"></i> Brand Integration: Seamless brand representation</li>
+            <li><i class="fas fa-check-circle"></i> Vendor Management: Coordination of all suppliers</li>
+            <li><i class="fas fa-check-circle"></i> Budget Management: Transparent financial oversight</li>
+            <li><i class="fas fa-check-circle"></i> ROI Tracking: Measurement of event success metrics</li>
+          </ul>
+          <a  href="contact.html"  class="btn btn-accent event-btn" target="_blanke">Inquire About Corporate Events</a>
+        </div>
+
+        <!-- Executive Networking card -->
+        <div class="event-card">
+          <h3>Executive Networking</h3>
+          <p>Strategic gatherings designed to connect industry leaders, decision-makers, and influencers. We create environments for meaningful business relationships that drive growth and opportunity.</p>
+          <p>Our networking events are carefully curated to bring together the right people in settings that encourage genuine connections.</p>
+          <ul class="event-list">
+            <li><i class="fas fa-check-circle"></i> Targeted Invitations: Curated guest lists</li>
+            <li><i class="fas fa-check-circle"></i> Strategic Matchmaking: Connecting complementary professionals</li>
+            <li><i class="fas fa-check-circle"></i> Industry-Specific Events: Sector-focused gatherings</li>
+            <li><i class="fas fa-check-circle"></i> Follow-up Support: Connection facilitation post-event</li>
+            <li><i class="fas fa-check-circle"></i> Exclusive Venues: Premium locations for high-level networking</li>
+          </ul>
+          <a  href="contact.html"  class="btn btn-accent event-btn" target="_blanke">Plan a Networking Event</a>
+        </div>
+
+        <!-- Strategic Event Consulting card -->
+        <div class="event-card">
+          <h3>Strategic Event Consulting</h3>
+          <p>Expert guidance on event strategy, audience engagement, and ROI measurement. We ensure your events deliver tangible business results and strengthen your organization's market position.</p>
+          <p>Our consulting services help organizations develop event strategies that align with broader business goals.</p>
+          <ul class="event-list">
+            <li><i class="fas fa-check-circle"></i> Event Strategy Development: Comprehensive planning frameworks</li>
+            <li><i class="fas fa-check-circle"></i> Audience Analysis: Understanding attendee motivations</li>
+            <li><i class="fas fa-check-circle"></i> Technology Integration: Implementing event tech solutions</li>
+            <li><i class="fas fa-check-circle"></i> Sustainability Planning: Eco-friendly event strategies</li>
+            <li><i class="fas fa-check-circle"></i> Crisis Management: Risk assessment and contingency planning</li>
+          </ul>
+          <a  href="contact.html"  class="btn btn-accent event-btn" target="_blanke">Schedule a Consultation</a>
+        </div>
+        <div class="event-card">
+    <h3>Hybrid Event Production</h3>
+    <p>Seamless integration of in-person and virtual components to extend your event's reach and accessibility. We combine the best of both worlds to create engaging experiences that connect remote and on-site audiences effectively.</p>
+    <p>Our hybrid production team ensures that virtual attendees feel just as connected as those in the room, with interactive features and high-quality streaming that make distance disappear.</p>
+    <ul class="event-list">
+        <li><i class="fas fa-check-circle"></i> Multi-Camera Streaming: Professional broadcast-quality video production</li>
+        <li><i class="fas fa-check-circle"></i> Interactive Virtual Tools: Live polling, Q&A, and chat moderation</li>
+        <li><i class="fas fa-check-circle"></i> Audience Engagement: Seamless interaction between in-person and remote participants</li>
+        <li><i class="fas fa-check-circle"></i> Platform Integration: Custom virtual event platforms and existing LMS integration</li>
+        <li><i class="fas fa-check-circle"></i> Post-Event Content: On-demand replays and highlight reels for extended reach</li>
+    </ul>
+    <a href="contact.html" class="btn btn-accent event-btn" target="_blank">Inquire About Hybrid Production</a>
+</div>
+      </div>
+       
+
+      <!-- Additional Services -->
+      <h3 style="text-align:center; margin: 50px 0 30px; color:var(--primary-color);">Additional Services</h3>
+      <div class="services-grid">
+        <div class="service-item">
+          <i class="fas fa-microphone-alt"></i>
+          <h4>Speaker Management</h4>
+          <p>Comprehensive speaker coordination including sourcing, contracting, briefing, and logistics for your event's presenters and panelists.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-video"></i>
+          <h4>Hybrid Event Production</h4>
+          <p>Seamless integration of in-person and virtual components to extend your event's reach and accessibility.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-chart-line"></i>
+          <h4>Post-Event Analysis</h4>
+          <p>Comprehensive reporting and analysis to measure ROI, gather attendee feedback, and inform future event strategies.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-users"></i>
+          <h4>Team Building Events</h4>
+          <p>Customized team building activities designed to strengthen collaboration, communication, and company culture.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-trophy"></i>
+          <h4>Award Ceremonies</h4>
+          <p>Prestigious award ceremonies that recognize achievement and excellence within your organization or industry.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-globe"></i>
+          <h4>International Events</h4>
+          <p>Global event management with expertise in cross-cultural communication, international logistics, and multilingual support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA (target for all event buttons) -->
+  <section id="contact" style="background: var(--light-gray); padding: 50px 0;">
+    <div class="container">
+      <div style="text-align: center; max-width: 500px; margin: 0 auto;">
+        <h2 style="color: var(--primary-color);">Join ITreader today</h2>
+        <p style="margin-bottom: 25px;">Join US</p>
+        <a href="contact.html" class="btn btn-accent" target="_blanke">Contact US</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer with social media icons and links -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>ITreader</h4>
+          <p>44 St Peter's St Canterbury CT1 2BG<br>hello@itreader.com</p>
+          <!-- Social icons with blue hover -->
+          <div class="footer-social">
+            <a href="https://www.youtube.com/@ITreader" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/itreader1/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/_itreader?igsh=MTNjY3pudHZtd21mYw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/itreader/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul style="list-style:none;">
+            <li><a href="index.html" target="_blank">Home</a></li>
+            <li><a href="#who" target="_blank">Who we are</a></li>
+            <li><a href="#why" target="_blank">Why join</a></li>
+            <li><a href="event.html" target="_blank">Events</a></li>
+            <li><a href="https://help.tangocard.com/s/" target="_blank">Tango card</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul style="list-style:none;">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="myoutreach-credit">
+        <p style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+          <span>Website generated by</span>
+          <a href="https://www.my-outreach.com" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:var(--accent-color); color:white; padding:8px 18px; border-radius:40px; text-decoration:none; font-weight:600;">
+            <i class="fas fa-rocket"></i> MyOutreach
+          </a>
+        </p>
+      </div>
+      <p style="text-align:center; margin-top:25px; font-size:0.85rem;">© 2025 ITreader. All rights reserved.</p>
+    </div>
+  </footer>
+ <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+

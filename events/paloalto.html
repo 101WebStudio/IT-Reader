@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>ITreader — Zendesk CX Trends Palo Alto</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/it reader logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== GLOBAL STYLES (ITreader design system) ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary-color: #0A2463; --primary-dark: #071845; --secondary-color: #3E92CC;
+      --secondary-light: #5CA8E0; --accent-color: #0018ff; --accent-light: #4d62ff;
+      --light-color: #F8F9FA; --light-gray: #F0F2F5; --dark-color: #212529;
+      --gray-color: #6C757D; --transition: all 0.3s ease; --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --border-radius: 12px; --section-spacing: 70px; --bg: #ffffff; --surface: #ffffff;
+      --text-primary: #1A1F36; --text-secondary: #4E5B6E; --border-light: #EFF2F7;
+      --card-bg: #ffffff; --fs-base: 0.95rem; --fs-h1: 2.4rem; --fs-h2: 2rem; --fs-h3: 1.5rem; --fs-h4: 1.2rem;
+    }
+    body.dark-mode {
+      --primary-color: #3a80d2; --primary-dark: #1a4b8c; --secondary-color: #4f9fdb;
+      --secondary-light: #7bb8e8; --accent-color: #4d62ff; --accent-light: #7b8aff;
+      --light-color: #1a1a1a; --light-gray: #232323; --dark-color: #f0f0f0; --gray-color: #aaaaaa;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.9); --bg: #121212; --surface: #1e1e1e;
+      --text-primary: #ffffff; --text-secondary: #cccccc; --border-light: #333333; --card-bg: #1e1e1e;
+      background-color: #121212 !important;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif; line-height: 1.5; color: var(--dark-color);
+      background-color: var(--bg); transition: background-color 0.2s, color 0.2s; overflow-x: hidden;
+      font-size: var(--fs-base);
+    }
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; line-height: 1.2; margin-bottom: 0.8rem; }
+    h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); } h4 { font-size: var(--fs-h4); }
+    .container { width: 100%; max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+    section { padding: var(--section-spacing) 0; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      background-color: var(--accent-color); color: white; padding: 10px 24px;
+      border-radius: 40px; font-weight: 600; text-decoration: none; transition: var(--transition);
+      border: none; cursor: pointer; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0, 24, 255, 0.2);
+    }
+    .btn:hover { background-color: var(--accent-light); transform: translateY(-2px); }
+    .btn-accent { background-color: var(--accent-color); }
+    .btn-accent:hover { background-color: var(--accent-light); }
+    .btn-outline { background-color: transparent; border: 2px solid var(--accent-color); color: var(--accent-color); box-shadow: none; }
+    .btn-outline:hover { background-color: var(--accent-color); color: white; }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    header {
+      background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); position: fixed; width: 100%; top: 0; z-index: 1000;
+      transition: var(--transition);
+    }
+    body.dark-mode header { background-color: rgba(18, 18, 18, 0.95) !important; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+    .logo { display: flex; align-items: center; text-decoration: none; transition: transform 0.2s; }
+    .logo:hover { transform: scale(1.02); }
+    .logo-img { height: 44px; width: auto; margin-right: 10px; border-radius: 8px; }
+    .logo-text { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary-color); line-height: 1.1; }
+    .logo-text span { color: var(--accent-color); display: block; font-weight: 600; font-size: 0.8rem; margin-top: 2px; }
+    nav ul { display: flex; list-style: none; align-items: center; gap: 28px; }
+    nav ul li a:not(.btn) { text-decoration: none; color: var(--dark-color); font-weight: 600; font-size: 0.95rem; padding: 6px 0; position: relative; transition: color 0.2s; }
+    nav ul li a:not(.btn)::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(to right, var(--accent-color), var(--secondary-color)); transition: width 0.25s ease; }
+    nav ul li a:not(.btn):hover { color: var(--accent-color); }
+    nav ul li a:not(.btn):hover::after { width: 100%; }
+    nav ul li .btn { padding: 8px 18px; font-size: 0.9rem; margin-left: 4px; }
+    nav ul li .btn-outline { border-width: 2px; }
+    body.dark-mode nav ul li a:not(.btn) { color: #f0f0f0; }
+    .theme-toggle {
+      background: none; border: 1.5px solid var(--accent-color); border-radius: 40px; padding: 6px 16px;
+      color: var(--accent-color); cursor: pointer; display: flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; font-weight: 600; transition: all 0.2s; margin-left: 6px;
+    }
+    .theme-toggle:hover { background-color: var(--accent-color); color: white; border-color: var(--accent-color); }
+    .mobile-menu-btn { display: none; font-size: 1.6rem; background: none; border: none; color: var(--primary-color); cursor: pointer; }
+
+    /* ===== EVENT HERO ===== */
+    .event-hero {
+      background: linear-gradient(135deg, #0A2463, #2A1A6B);
+      color: white;
+      text-align: center;
+      padding: 140px 0 60px;
+      margin-top: 70px;
+    }
+    body.dark-mode .event-hero { background: linear-gradient(135deg, #0f0f0f, #1f1f1f); }
+    .event-hero h1 { font-size: 2.8rem; max-width: 900px; margin: 0 auto 15px; }
+    .event-hero .event-date-location {
+      font-size: 1.1rem; opacity: 0.9; margin-bottom: 25px;
+      display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
+    }
+    .event-hero .event-date-location i { color: var(--accent-light); margin-right: 5px; }
+
+    /* ===== EVENT DETAILS GRID ===== */
+    .event-details-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 920px) {
+      .event-details-grid { grid-template-columns: 1fr; }
+    }
+    .info-card {
+      background: var(--card-bg); border-radius: var(--border-radius); padding: 35px;
+      box-shadow: var(--shadow); border: 1px solid var(--border-light);
+    }
+    .info-card .lede {
+      font-size: 1rem; color: var(--text-secondary); margin-bottom: 20px;
+    }
+    .info-card .meta {
+      display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 25px;
+    }
+    .info-card .meta .pill {
+      background: var(--light-gray); border: 1px solid var(--border-light);
+      border-radius: 40px; padding: 6px 16px; font-size: 0.9rem;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .info-card .meta .pill strong { color: var(--dark-color); }
+    .section-title {
+      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--gray-color); margin: 30px 0 15px;
+    }
+    .agenda {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .agenda .row {
+      border: 1px solid var(--border-light); border-radius: var(--border-radius);
+      padding: 15px 18px; background: var(--card-bg);
+    }
+    .agenda .row .time {
+      font-weight: 700; color: var(--primary-color); margin-bottom: 5px;
+    }
+    .agenda .row .desc {
+      margin: 0; color: var(--text-secondary); font-size: 0.95rem;
+    }
+
+    /* ===== LOCATION SECTION ===== */
+    .location-section {
+      background: var(--light-gray);
+    }
+    .location-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    }
+    .location-title {
+      font-size: 2rem; color: var(--primary-color); margin-bottom: 40px; text-align: center;
+    }
+    .location-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+    }
+    @media (max-width: 768px) {
+      .location-layout { grid-template-columns: 1fr; }
+    }
+    .location-image {
+      border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .location-image img {
+      width: 100%; height: auto; display: block; transition: transform 0.5s;
+    }
+    .location-image img:hover { transform: scale(1.02); }
+    .location-content h3 {
+      font-size: 1.8rem; color: var(--primary-color); margin-bottom: 20px;
+    }
+    .location-content p {
+      color: var(--text-secondary); margin-bottom: 25px; line-height: 1.6;
+    }
+    .location-links {
+      display: flex; gap: 30px; flex-wrap: wrap;
+    }
+    .location-links a {
+      color: var(--accent-color); text-decoration: none; font-weight: 600;
+      border-bottom: 2px solid transparent; transition: var(--transition);
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .location-links a:hover {
+      border-bottom-color: var(--accent-color);
+    }
+
+    /* ===== REGISTRATION FORM ===== */
+    .registration-card {
+      background: var(--card-bg); border-radius: var(--border-radius); padding: 35px;
+      box-shadow: var(--shadow); border: 1px solid var(--border-light);
+    }
+    .registration-card h2 { color: var(--primary-color); margin-bottom: 5px; font-size: 1.8rem; }
+    .registration-card .sub {
+      color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark-color); font-size: 0.95rem; }
+    .form-group input {
+      width: 100%; padding: 12px 16px; border: 2px solid var(--border-light); border-radius: var(--border-radius);
+      font-family: inherit; font-size: 1rem; background: var(--light-color); color: var(--dark-color);
+      transition: var(--transition);
+    }
+    .form-group input:focus { outline: none; border-color: var(--accent-color); }
+    .form-group .hint { font-size: 0.8rem; color: var(--gray-color); margin-top: 5px; }
+    .consent-box {
+      border: 1px solid var(--border-light); border-radius: var(--border-radius);
+      padding: 16px; background: var(--light-gray); margin: 20px 0;
+    }
+    .checkbox-group {
+      display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px;
+    }
+    .checkbox-group:last-child { margin-bottom: 0; }
+    .checkbox-group input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--accent-color); }
+    .checkbox-group label { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+    .checkbox-group a { color: var(--accent-color); text-decoration: none; }
+    .checkbox-group a:hover { text-decoration: underline; }
+    .submit-btn {
+      width: 100%; padding: 14px; background: var(--accent-color); color: white; border: none;
+      border-radius: 40px; font-weight: 600; font-size: 1.1rem; cursor: pointer;
+      transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .submit-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .status {
+      margin-top: 15px; padding: 12px; border-radius: var(--border-radius);
+      border: 1px solid transparent; display: none; font-size: 0.95rem;
+    }
+    .status.ok { display: block; background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
+    .status.err { display: block; background: #fef2f2; color: #991b1b; border-color: #fecaca; }
+    body.dark-mode .status.ok { background: #1e3a2a; color: #9bffb5; border-color: #2e6b3e; }
+    body.dark-mode .status.err { background: #3e2023; color: #ffb3b3; border-color: #a13e3e; }
+    .form-footer { text-align: center; font-size: 0.8rem; color: var(--gray-color); margin-top: 15px; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary-dark); color: white; padding: 45px 0 20px;
+    }
+    body.dark-mode .footer { background: #0a0a0a; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 25px; margin-bottom: 30px; }
+    .footer a { color: #bbb; text-decoration: none; font-size: 0.9rem; }
+    .footer a:hover { color: var(--accent-light); }
+    .footer-social { display: flex; gap: 15px; margin-top: 15px; }
+    .footer-social a {
+      display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+      background: rgba(255,255,255,0.1); border-radius: 50%; color: white; font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--accent-color); transform: translateY(-3px); }
+    .myoutreach-credit {
+      background: rgba(255,255,255,0.05); padding: 18px; border-radius: 60px; text-align: center; margin-top: 25px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      nav ul {
+        position: fixed; top: 70px; left: -100%; width: 100%; flex-direction: column;
+        background: var(--card-bg); padding: 30px 20px; transition: left 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15); gap: 20px; border-radius: 0 0 20px 20px;
+        align-items: center;
+      }
+      nav ul.active { left: 0; }
+      nav ul li a:not(.btn)::after { display: none; }
+      .theme-toggle { margin-left: 0; }
+      .event-hero { padding: 120px 0 40px; }
+      .event-hero h1 { font-size: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .logo-text { font-size: 1.2rem; }
+      .logo-img { height: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="/images/it reader logo.png" alt="ITreader logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text">ITreader<span>events</span></div>
+      </a>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/index.html#who">Who we are</a></li>
+          <li><a href="/contact.html">Contact Us</a></li>
+          <li><a href="/event.html" class="btn btn-accent">Events</a></li>
+          <li><button class="theme-toggle" id="themeToggle"><i class="fa-regular fa-moon"></i> <span>Dark</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="event-hero">
+    <div class="container">
+      <h1>Zendesk CX Trends 2026 – Palo Alto</h1>
+      <div class="event-date-location">
+        <span><i class="fas fa-calendar-alt"></i> March 17, 2026</span>
+        <span><i class="fas fa-map-marker-alt"></i> el Prado Hotel, Palo Alto</span>
+        <span><i class="fas fa-clock"></i> 11:30am – 4:00pm</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 40px;">
+    <div class="container">
+      <div class="event-details-grid">
+        <!-- LEFT: Event details -->
+        <div class="info-card">
+          <p class="lede">
+            Get ready for an action-packed half-day event where we will dive into Zendesk's 2026 CX Trends and help you unlock
+            game-changing AI strategies. You will have the chance to hear from local Zendesk customers about how they are using
+            the latest tools to advance their CX game.
+          </p>
+          <p class="lede">
+            To round out the afternoon, you will join in on a 90-minute, expert-led, AI Agents workshop, where you’ll build and test a Zendesk AI agent.
+          </p>
+
+          <div class="meta">
+            <div class="pill"><strong>Audience:</strong> Leaders in CX and IT</div>
+            <div class="pill"><strong>Reserve a Seat</strong></div>
+          </div>
+
+          <div class="section-title">Full Agenda</div>
+          <div class="agenda">
+            <div class="row"><div class="time">11:30 am: Check in/registration</div><p class="desc"></p></div>
+            <div class="row"><div class="time">12:00 pm: Opening remarks</div><p class="desc">Kick off the event with a warm welcome and meet the experts guiding today’s CX journey.</p></div>
+            <div class="row"><div class="time">12:05 pm: CX Trends 2026: The Future of Customer Experience Unveiled</div><p class="desc">Dive into the latest Zendesk flagship research revealing how Contextual Intelligence is reshaping CX with AI-powered personalization, real-time insights, and trust-building transparency.</p></div>
+            <div class="row"><div class="time">12:30 pm: Customer Panel: Real Stories, Real Impact</div><p class="desc">Hear firsthand from industry leaders who are driving CX innovation—practical lessons and measurable results that you can apply immediately.</p></div>
+            <div class="row"><div class="time">1:00 pm: Networking Lunch & Zendesk Demos</div><p class="desc">Mix, mingle, and experience live demos of cutting-edge tools designed to accelerate your CX transformation.</p></div>
+            <div class="row"><div class="time">1:45 pm: Partner Innovation Spotlights.</div><p class="desc">Discover breakthrough CX solutions and success stories from our trusted partners during two dynamic 15-minute sessions.</p></div>
+            <div class="row"><div class="time">2:15 pm: Transition Break</div><p class="desc"></p></div>
+            <div class="row"><div class="time">2:30 pm: Hands-On Workshop</div><p class="desc">Roll up your sleeves in this interactive AI Platform Workshop.</p></div>
+            <div class="row"><div class="time">4:00 pm: Happy Hour & Informal Networking</div><p class="desc">Unwind, connect with peers, and continue the conversation in a relaxed setting with refreshments.</p></div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Registration Form -->
+        <div class="registration-card">
+          <h2>Reserve a Seat</h2>
+          <p class="sub">Submit your details below. We'll follow up by email with confirmation details.</p>
+
+          <form id="rsvpForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="6214ea95-05fc-4ec4-a899-ce3877b230cf" />
+            <input type="hidden" name="subject" value="New RSVP: Zendesk CX Trends – Palo Alto (March 17)" />
+            <input type="hidden" name="event_name" value="Zendesk CX Trends - Palo Alto" />
+            <input type="hidden" name="event_date" value="March 17" />
+            <input type="hidden" name="event_time" value="11:30am - 4:00pm" />
+            <input type="hidden" name="event_location" value="El Prado Hotel, Palo Alto" />
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input id="full_name" name="Full Name" type="text" autocomplete="name" required />
+            </div>
+
+            <div class="form-group">
+              <label>Business Email *</label>
+              <input id="business_email" name="Business Email" type="email" autocomplete="email" required />
+              <div class="hint">Please use a work email address.</div>
+            </div>
+
+            <div class="form-group">
+              <label>Company Name *</label>
+              <input id="company_name" name="Company Name" type="text" autocomplete="organization" required />
+            </div>
+
+            <div class="form-group">
+              <label>Who invited you?</label>
+              <input id="invited_by" name="Who invited you?" type="text" autocomplete="off" />
+              <div class="hint">If applicable, please enter the name of the person who invited you.</div>
+            </div>
+
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input id="phone" name="Phone Number" type="tel" autocomplete="tel" required />
+            </div>
+
+            <div class="form-group">
+              <label>Job Title *</label>
+              <input id="job_title" name="Job Title" type="text" autocomplete="organization-title" required />
+            </div>
+
+            <!-- Consent boxes -->
+            <div class="consent-box">
+              <div class="checkbox-group">
+                <input type="checkbox" id="consent" name="Consent" required />
+                <label for="consent">
+                  I have read and agree to Zendesk's
+                  <a href="https://www.zendesk.com/company/privacy-and-data-protection/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                  and consent to being contacted regarding this event and related communications.
+                </label>
+              </div>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="itreader_marketing" name="itreader_marketing_consent" required />
+                <label for="itreader_marketing">
+                  By checking this box, I agree to receive relevant content, industry insights,
+                  and promotional communications from ITreader Ltd, its subsidiaries and affiliates.
+                  I understand that ITreader will use my personal information as described in the
+                  <a href="https://itreader.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>,
+                  including use of role and company name in event marketing materials and sharing
+                  with trusted partners to deliver personalized content and targeted advertising.
+                </label>
+              </div>
+            </div>
+
+            <button id="submitBtn" class="submit-btn" type="submit">
+              <i class="fas fa-check-circle"></i> Reserve a Seat
+            </button>
+
+            <div id="status" class="status" role="status" aria-live="polite"></div>
+            <div class="form-footer">By submitting, you’re requesting a seat. Capacity is limited.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section (el Prado Hotel) -->
+  <section class="location-section">
+    <div class="location-inner">
+      <h2 class="location-title">Location</h2>
+
+      <div class="location-layout">
+        <div class="location-image">
+          <img
+            src="https://garden-court.allhotelscalifornia.com/data/Pictures/OriginalPhoto/17079/1707923/1707923502/picture-palo-alto-el-prado-6.JPEG"
+            alt="el Prado Hotel Palo Alto"
+          />
+        </div>
+
+        <div class="location-content">
+          <h3>el Prado Hotel</h3>
+          <p>
+            The newly transformed el Prado Hotel bursts with life and energy, now standing as one of the most unique and captivating hotels in the heart of downtown Palo Alto. Named one of "the seven best boutique hotels in the United States" by TheStreet and recognized by Forbes as a top hotel in Silicon Valley, the enchanting oasis of el Prado features elegant Spanish-style architecture and charming accents, immersing visitors in a world of rich European-inspired ambiance.
+          </p>
+
+          <div class="location-links">
+            <a href="https://www.elpradopaloalto.com/" target="_blank" rel="noopener noreferrer">
+              Experience el Prado Hotel <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="https://www.google.com/maps/dir//el+PRADO+Hotel,+520+Cowper+St,+Palo+Alto,+CA+94301,+United+States/@37.4477771,-122.161518,17z/data=!4m20!1m10!3m9!1s0x808fbb38dfa5fda5:0xe96bd6668c0a2c92!2sel+PRADO+Hotel!5m2!4m1!1i2!8m2!3d37.4477729!4d-122.1589431!16s%2Fg%2F1tj9tkq_!4m8!1m0!1m5!1m1!1s0x808fbb38dfa5fda5:0xe96bd6668c0a2c92!2m2!1d-122.1589431!2d37.4477729!3e0?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+              Getting There <i class="fas fa-map-marked-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>ITreader</h4>
+          <p>44 St Peter's St Canterbury CT1 2BG<br>hello@itreader.com</p>
+          <div class="footer-social">
+            <a href="https://www.youtube.com/@ITreader" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/itreader1/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://101webstudio.github.io/ITreader/" target="_blank" aria-label="Website"><i class="fas fa-globe"></i></a>
+            <a href="https://www.instagram.com/_itreader?igsh=MTNjY3pudHZtd21mYw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/itreader/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul style="list-style:none;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#who">Who we are</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="event.html">Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul style="list-style:none;">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="myoutreach-credit">
+        <p style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+          <span>Website generated by</span>
+          <a href="https://www.my-outreach.com" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:var(--accent-color); color:white; padding:8px 18px; border-radius:40px; text-decoration:none; font-weight:600;">
+            <i class="fas fa-rocket"></i> MyOutreach
+          </a>
+        </p>
+      </div>
+      <p style="text-align:center; margin-top:25px; font-size:0.85rem;">© <span id="year"></span> ITreader Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('nav ul').classList.toggle('active');
+      const icon = this.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    // Dark mode persistence
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('itreader-theme');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
+    } else {
+      toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      if (isDark) {
+        toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
+        localStorage.setItem('itreader-theme', 'dark');
+      } else {
+        toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+        localStorage.setItem('itreader-theme', 'light');
+      }
+    });
+
+    // Year for footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Form submission with Web3Forms
+    (function() {
+      const form = document.getElementById('rsvpForm');
+      const status = document.getElementById('status');
+      const btn = document.getElementById('submitBtn');
+
+      if (!form || !status || !btn) return;
+
+      function showError(message, elToFocus) {
+        status.className = "status err";
+        status.textContent = message;
+        status.style.display = "block";
+        if (elToFocus) elToFocus.focus();
+      }
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        status.style.display = "none";
+        status.className = "status";
+
+        // Simple validation
+        const companyInput = document.getElementById('company_name');
+        if (companyInput && !companyInput.value.trim()) {
+          showError("Please enter your company name.", companyInput);
+          return;
+        }
+
+        btn.disabled = true;
+        const originalText = btn.textContent;
+        btn.textContent = "Submitting…";
+
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept": "application/json" }
+          });
+
+          if (res.ok) {
+            status.className = "status ok";
+            status.textContent = "Thanks — request received. We'll follow up by email with confirmation details.";
+            status.style.display = "block";
+            form.reset();
+          } else {
+            showError("Something went wrong. Please try again.");
+          }
+        } catch (err) {
+          showError("Submission failed. Please try again.");
+        } finally {
+          btn.disabled = false;
+          btn.textContent = originalText;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

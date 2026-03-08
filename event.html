@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>ITreader — Upcoming Events</title>
+  <!-- favicon -->
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/it reader logo.png">
+  <link rel="stylesheet" href="/css/event.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="/images/it reader logo.png" alt="ITreader logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text" style="display:inline-block;">ITreader<span></span></div>
+      </a>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul>
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="index.html#who">Who we are</a></li>
+          <li><a href="index.html#why">Why join</a></li>
+          <li><a href="contact.html" class="btn btn-outline">Contact Us</a></li>
+          <li><a href="events.html" class="btn btn-accent" target="_blank">Events</a></li>
+          <li><button class="theme-toggle" id="themeToggle"><i class="fa-regular fa-moon"></i> <span>Dark</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Upcoming Events</h1>
+      <p>Join us at ITreader events worldwide</p>
+    </div>
+  </section>
+
+  <!-- Filter section (fully functional) -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="filter-bar">
+        <div class="filter-categories">
+          <span class="filter-label">Filter by Category</span>
+          <span class="category-chip active" data-category="all">All Events</span>
+          <span class="category-chip" data-category="summit">Summit</span>
+          <span class="category-chip" data-category="cx-trends">CX Trends</span>
+          <span class="category-chip" data-category="breakfast">Breakfast</span>
+          <span class="category-chip" data-category="evening">Evening</span>
+          <span class="category-chip" data-category="live">Live</span>
+          <span class="category-chip" data-category="data">Data</span>
+        </div>
+        <div>
+          <select class="region-select" id="regionFilter">
+            <option value="all">Filter by Region</option>
+            <option value="uk">UK</option>
+            <option value="usa">USA</option>
+            <option value="california">California</option>
+            <option value="texas">Texas</option>
+            <option value="georgia">Georgia</option>
+            <option value="massachusetts">Massachusetts</option>
+            <option value="illinois">Illinois</option>
+            <option value="new-york">New York</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Events grid - using the exact links provided with data categories -->
+      <div class="events-grid" id="eventsGrid">
+        
+        <!-- Keepit Live Manchester - Category: Live, Region: UK -->
+        <a href="/events/Manchester.html" class="event-card" target="_blank" data-category="live" data-region="uk">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=600&h=400&fit=crop&auto=format" alt="Manchester">
+            <span class="event-category">Live Event</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">Keepit Live Manchester</h3>
+            <div class="event-meta">
+              <div class="meta-item"><i class="fas fa-calendar"></i> 12 June, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Manchester, UK</div>
+            </div>
+            <div class="event-footer">
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Myriad360 Innovation Summit Series Chicago - Category: Summit, Region: Illinois -->
+        <a href="https://itreader.com/myriad360-innovation-summit-series-chicago-il/" class="event-card" target="_blank" data-category="summit" data-region="illinois">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1494522358652-f30e61a60313?w=600&h=400&fit=crop&auto=format" alt="Chicago">
+            <span class="event-category">Summit</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">Myriad360 Innovation Summit - Chicago</h3>
+            <div class="event-meta">
+              <div class="meta-item"><i class="fas fa-calendar"></i> 20 May, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Chicago, IL</div>
+            </div>
+            <div class="event-footer">
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Native Security RSAC Breakfast - Category: Breakfast, Region: California -->
+        <a href="/events/Native × Artemis RSAC Breakfast.html" class="event-card" target="_blank" data-category="breakfast" data-region="california">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop&auto=format" alt="San Francisco">
+            <span class="event-category">Breakfast</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">Native Security RSAC Breakfast</h3>
+            <div class="event-meta">
+              <div class="meta-item"><i class="fas fa-calendar"></i> 13 May, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> San Francisco, CA</div>
+            </div>
+            <div class="event-footer">
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Zendesk CX Trends Boston - Category: CX Trends, Region: Massachusetts -->
+        <a href="/events/Boston.html" class="event-card" target="_blank" data-category="cx-trends" data-region="massachusetts">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1487024884796-5bce7e9c61d2?w=600&h=400&fit=crop&auto=format" alt="Boston">
+            <span class="event-category">CX Trends</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">Zendesk CX Trends - Boston</h3>
+            <div class="event-meta">
+              <div class="meta-item"><i class="fas fa-calendar"></i> 18 April, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Boston, MA</div>
+            </div>
+            <div class="event-footer">
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Zendesk CX Trends Los Angeles - Category: CX Trends, Region: California -->
+        <a href="/events/La.html" class="event-card" target="_blank" data-category="cx-trends" data-region="california">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1580655653885-65763b2597d0?w=600&h=400&fit=crop&auto=format" alt="Los Angeles">
+            <span class="event-category">CX Trends</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">Zendesk CX Trends - Los Angeles</h3>
+            <div class="event-meta">
+              <div class="meta-item"><i class="fas fa-calendar"></i> 12 May, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Los Angeles, CA</div>
+            </div>
+            <div class="event-footer">
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Zendesk CX Trends Atlanta - Category: CX Trends, Region: Georgia -->
+        <a href="/events/atlanta.html" class="event-card" target="_blank" data-category="cx-trends" data-region="georgia">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?w=600&h=400&fit=crop&auto=format" alt="Atlanta">
+            <span class="event-category">CX Trends</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">Zendesk CX Trends - Atlanta</h3>
+            <div class="event-meta">
+              <div class="meta-item"><i class="fas fa-calendar"></i> 21 May, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Atlanta, GA</div>
+            </div>
+            <div class="event-footer">
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Zendesk CX Trends Palo Alto - Category: CX Trends, Region: California -->
+        <a href="events/paloalto.html" class="event-card" target="_blank" data-category="cx-trends" data-region="california">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop&auto=format" alt="Palo Alto">
+            <span class="event-category">CX Trends</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">Zendesk CX Trends - Palo Alto</h3>
+            <div class="event-meta">
+              <div class="meta-item"><i class="fas fa-calendar"></i> 20 May, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Palo Alto, CA</div>
+            </div>
+            <div class="event-footer">
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- OpenText - Know Thy Data - Category: Data, Region: New York -->
+        <a href="/events/newyork.html" class="event-card" target="_blank" data-category="data" data-region="new-york">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&h=400&fit=crop&auto=format" alt="New York">
+            <span class="event-category">Data Summit</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">OpenText - Know Thy Data</h3>
+            <div class="event-meta">
+              <div class="meta-item"><i class="fas fa-calendar"></i> 13 May, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> New York, NY</div>
+            </div>
+            <div class="event-footer">
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Cheers & Clusters Austin - Category: Evening, Region: Texas -->
+        <a href="/events/Ch&C-Austin.html" class="event-card" target="_blank" data-category="evening" data-region="texas">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format" alt="Austin">
+            <span class="event-category">Evening Event</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">Cheers & Clusters Austin</h3>
+            <div class="event-meta">
+              <div class="meta-item"><i class="fas fa-calendar"></i> 18 April, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Austin, TX</div>
+            </div>
+            <div class="event-footer">
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Myriad360 Innovation Summit (original) - Category: Summit, Region: Texas -->
+        <a href="/events/Austin.html" class="event-card" target="_blank" data-category="summit" data-region="texas">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format" alt="Austin">
+            <span class="event-category">Summit</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">Myriad360 Innovation Summit</h3>
+            <div class="event-meta">
+              <div class="meta-item"><i class="fas fa-calendar"></i> 12 May, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Austin, TX</div>
+            </div>
+            <div class="event-footer">
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Contact us and MyOutreach link -->
+      <div style="text-align: center; margin-top: 50px;">
+        <a href="contact.html" class="btn btn-accent" style="padding: 12px 40px;">Contact us</a>
+        <p style="margin-top: 20px; color: var(--text-secondary);">
+          <a href="https://www.my-outreach.com" target="_blank" style="color: var(--accent-color);">www.my-outreach.com</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>ITreader</h4>
+          <p>44 St Peter's St Canterbury CT1 2BG<br>hello@itreader.com</p>
+          <div class="footer-social">
+            <a href="https://www.youtube.com/@ITreader" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/itreader1/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/_itreader?igsh=MTNjY3pudHZtd21mYw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/itreader/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul style="list-style:none;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#who">Who we are</a></li>
+            <li><a href="index.html#why">Why join</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul style="list-style:none;">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="myoutreach-credit">
+        <p style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+          <span>Website generated by</span>
+          <a href="https://www.my-outreach.com" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:var(--accent-color); color:white; padding:8px 18px; border-radius:40px; text-decoration:none; font-weight:600;">
+            <i class="fas fa-rocket"></i> MyOutreach
+          </a>
+        </p>
+      </div>
+      <p style="text-align:center; margin-top:25px;">© 2025 ITreader. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/event.js"></script>
+</body>
+</html>

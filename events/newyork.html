@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>ITreader — Know Thy Data: DSPM in the Age of AI</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/it reader logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== GLOBAL STYLES (ITreader design system) ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary-color: #0A2463; --primary-dark: #071845; --secondary-color: #3E92CC;
+      --secondary-light: #5CA8E0; --accent-color: #0018ff; --accent-light: #4d62ff;
+      --light-color: #F8F9FA; --light-gray: #F0F2F5; --dark-color: #212529;
+      --gray-color: #6C757D; --transition: all 0.3s ease; --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --border-radius: 12px; --section-spacing: 70px; --bg: #ffffff; --surface: #ffffff;
+      --text-primary: #1A1F36; --text-secondary: #4E5B6E; --border-light: #EFF2F7;
+      --card-bg: #ffffff; --fs-base: 0.95rem; --fs-h1: 2.4rem; --fs-h2: 2rem; --fs-h3: 1.5rem; --fs-h4: 1.2rem;
+    }
+    body.dark-mode {
+      --primary-color: #3a80d2; --primary-dark: #1a4b8c; --secondary-color: #4f9fdb;
+      --secondary-light: #7bb8e8; --accent-color: #4d62ff; --accent-light: #7b8aff;
+      --light-color: #1a1a1a; --light-gray: #232323; --dark-color: #f0f0f0; --gray-color: #aaaaaa;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.9); --bg: #121212; --surface: #1e1e1e;
+      --text-primary: #ffffff; --text-secondary: #cccccc; --border-light: #333333; --card-bg: #1e1e1e;
+      background-color: #121212 !important;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif; line-height: 1.5; color: var(--dark-color);
+      background-color: var(--bg); transition: background-color 0.2s, color 0.2s; overflow-x: hidden;
+      font-size: var(--fs-base);
+    }
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; line-height: 1.2; margin-bottom: 0.8rem; }
+    h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); } h4 { font-size: var(--fs-h4); }
+    .container { width: 100%; max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+    section { padding: var(--section-spacing) 0; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      background-color: var(--accent-color); color: white; padding: 10px 24px;
+      border-radius: 40px; font-weight: 600; text-decoration: none; transition: var(--transition);
+      border: none; cursor: pointer; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0, 24, 255, 0.2);
+    }
+    .btn:hover { background-color: var(--accent-light); transform: translateY(-2px); }
+    .btn-accent { background-color: var(--accent-color); }
+    .btn-accent:hover { background-color: var(--accent-light); }
+    .btn-outline { background-color: transparent; border: 2px solid var(--accent-color); color: var(--accent-color); box-shadow: none; }
+    .btn-outline:hover { background-color: var(--accent-color); color: white; }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    header {
+      background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); position: fixed; width: 100%; top: 0; z-index: 1000;
+      transition: var(--transition);
+    }
+    body.dark-mode header { background-color: rgba(18, 18, 18, 0.95) !important; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+    .logo { display: flex; align-items: center; text-decoration: none; transition: transform 0.2s; }
+    .logo:hover { transform: scale(1.02); }
+    .logo-img { height: 44px; width: auto; margin-right: 10px; border-radius: 8px; }
+    .logo-text { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary-color); line-height: 1.1; }
+    .logo-text span { color: var(--accent-color); display: block; font-weight: 600; font-size: 0.8rem; margin-top: 2px; }
+    nav ul { display: flex; list-style: none; align-items: center; gap: 28px; }
+    nav ul li a:not(.btn) { text-decoration: none; color: var(--dark-color); font-weight: 600; font-size: 0.95rem; padding: 6px 0; position: relative; transition: color 0.2s; }
+    nav ul li a:not(.btn)::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(to right, var(--accent-color), var(--secondary-color)); transition: width 0.25s ease; }
+    nav ul li a:not(.btn):hover { color: var(--accent-color); }
+    nav ul li a:not(.btn):hover::after { width: 100%; }
+    nav ul li .btn { padding: 8px 18px; font-size: 0.9rem; margin-left: 4px; }
+    nav ul li .btn-outline { border-width: 2px; }
+    body.dark-mode nav ul li a:not(.btn) { color: #f0f0f0; }
+    .theme-toggle {
+      background: none; border: 1.5px solid var(--accent-color); border-radius: 40px; padding: 6px 16px;
+      color: var(--accent-color); cursor: pointer; display: flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; font-weight: 600; transition: all 0.2s; margin-left: 6px;
+    }
+    .theme-toggle:hover { background-color: var(--accent-color); color: white; border-color: var(--accent-color); }
+    .mobile-menu-btn { display: none; font-size: 1.6rem; background: none; border: none; color: var(--primary-color); cursor: pointer; }
+
+    /* ===== EVENT HERO ===== */
+    .event-hero {
+      background: linear-gradient(135deg, #0A2463, #2A1A6B);
+      color: white;
+      text-align: center;
+      padding: 140px 0 60px;
+      margin-top: 70px;
+    }
+    body.dark-mode .event-hero { background: linear-gradient(135deg, #0f0f0f, #1f1f1f); }
+    .event-hero h1 { font-size: 2.8rem; max-width: 900px; margin: 0 auto 15px; }
+    .event-hero .event-date-location {
+      font-size: 1.1rem; opacity: 0.9; margin-bottom: 25px;
+      display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
+    }
+    .event-hero .event-date-location i { color: var(--accent-light); margin-right: 5px; }
+
+    /* ===== EVENT DETAILS GRID ===== */
+    .event-details-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 920px) {
+      .event-details-grid { grid-template-columns: 1fr; }
+    }
+    .info-card {
+      background: var(--card-bg); border-radius: var(--border-radius); padding: 35px;
+      box-shadow: var(--shadow); border: 1px solid var(--border-light);
+    }
+    .info-card .hero-img {
+      width: 100%; border-radius: var(--border-radius); overflow: hidden; margin-bottom: 25px;
+      background: var(--card-bg); display: flex; align-items: center; justify-content: center; padding: 22px;
+      border: 1px solid var(--border-light);
+    }
+    .info-card .hero-img img {
+      max-width: 320px; width: 100%; height: auto; display: block;
+    }
+    .info-card .lede { color: var(--text-secondary); margin-bottom: 15px; line-height: 1.6; }
+    .section-title {
+      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--gray-color); margin: 30px 0 15px;
+    }
+    .agenda {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .agenda .row {
+      border: 1px solid var(--border-light); border-radius: var(--border-radius);
+      padding: 15px 18px; background: var(--card-bg);
+    }
+    .agenda .row .time {
+      font-weight: 700; color: var(--primary-color); margin-bottom: 5px;
+    }
+    .agenda .row .desc {
+      margin: 0; color: var(--text-secondary); font-size: 0.95rem;
+    }
+
+    /* ===== WHY ATTEND / LOGO MARQUEE ===== */
+    .why-attend {
+      background: var(--light-gray);
+      padding: 60px 0;
+      overflow: hidden;
+    }
+    .why-attend__inner {
+      max-width: 1300px; margin: 0 auto; padding: 0 20px;
+    }
+    .why-attend__header {
+      text-align: center; margin-bottom: 40px;
+    }
+    .why-attend__header h2 {
+      font-size: 2rem; color: var(--primary-color); margin-bottom: 10px;
+    }
+    .why-attend__header p {
+      color: var(--text-secondary); font-size: 1.1rem;
+    }
+    .logo-marquee {
+      overflow: hidden; width: 100%; margin: 20px 0;
+    }
+    .logo-marquee__track {
+      display: flex; gap: 50px; width: max-content;
+      animation: marquee 30s linear infinite;
+      align-items: center;
+    }
+    .logo-marquee__track img {
+      height: 60px; width: auto; object-fit: contain; filter: grayscale(0.5);
+      transition: var(--transition);
+    }
+    .logo-marquee__track img:hover {
+      filter: grayscale(0); transform: scale(1.05);
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .why-attend__note {
+      text-align: center; color: var(--gray-color); font-size: 0.85rem; margin-top: 30px;
+    }
+
+    /* ===== LOCATION SECTION ===== */
+    .location-section {
+      background: var(--light-gray);
+    }
+    .location-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    }
+    .location-title {
+      font-size: 2rem; color: var(--primary-color); margin-bottom: 40px; text-align: center;
+    }
+    .location-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+    }
+    @media (max-width: 768px) {
+      .location-layout { grid-template-columns: 1fr; }
+    }
+    .location-image {
+      border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .location-image img {
+      width: 100%; height: auto; display: block; transition: transform 0.5s;
+    }
+    .location-image img:hover { transform: scale(1.02); }
+    .location-content h3 {
+      font-size: 1.8rem; color: var(--primary-color); margin-bottom: 20px;
+    }
+    .location-content p {
+      color: var(--text-secondary); margin-bottom: 25px; line-height: 1.6;
+    }
+    .location-links {
+      display: flex; gap: 30px; flex-wrap: wrap;
+    }
+    .location-links a {
+      color: var(--accent-color); text-decoration: none; font-weight: 600;
+      border-bottom: 2px solid transparent; transition: var(--transition);
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .location-links a:hover {
+      border-bottom-color: var(--accent-color);
+    }
+
+    /* ===== REGISTRATION FORM ===== */
+    .registration-card {
+      background: var(--card-bg); border-radius: var(--border-radius); padding: 35px;
+      box-shadow: var(--shadow); border: 1px solid var(--border-light);
+      position: sticky; top: 90px;
+    }
+    @media (max-width: 920px) {
+      .registration-card { position: relative; top: auto; }
+    }
+    .registration-card h2 { color: var(--primary-color); margin-bottom: 5px; font-size: 1.8rem; }
+    .registration-card .sub {
+      color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark-color); font-size: 0.95rem; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 12px 16px; border: 2px solid var(--border-light); border-radius: var(--border-radius);
+      font-family: inherit; font-size: 1rem; background: var(--light-color); color: var(--dark-color);
+      transition: var(--transition);
+    }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); }
+    .form-group .hint { font-size: 0.8rem; color: var(--gray-color); margin-top: 5px; }
+
+    /* Custom dropdown */
+    .select-wrap { position: relative; }
+    .select-trigger {
+      width: 100%; padding: 12px 16px; font-size: 1rem; border: 2px solid var(--border-light);
+      border-radius: var(--border-radius); background: var(--light-color); color: var(--dark-color);
+      outline: none; text-align: left; cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; gap: 10px;
+    }
+    .select-trigger:focus { border-color: var(--accent-color); }
+    .select-trigger span { color: var(--gray-color); }
+    .chev {
+      width: 10px; height: 10px; border-right: 2px solid var(--gray-color);
+      border-bottom: 2px solid var(--gray-color); transform: rotate(45deg); margin-left: auto;
+    }
+    .select-menu {
+      position: absolute; left: 0; right: 0; top: calc(100% + 6px); background: var(--card-bg);
+      border: 1px solid var(--border-light); border-radius: var(--border-radius);
+      box-shadow: var(--shadow); padding: 6px; max-height: 260px; overflow: auto;
+      display: none; z-index: 1000;
+    }
+    .select-wrap.open .select-menu { display: block; }
+    .select-option {
+      width: 100%; border: 0; background: transparent; padding: 10px; border-radius: var(--border-radius);
+      cursor: pointer; text-align: left; font-size: 0.95rem; color: var(--dark-color);
+    }
+    .select-option:hover,
+    .select-option[aria-selected="true"] { background: var(--light-gray); }
+
+    /* Radio group */
+    .radio-group {
+      border: 1px solid var(--border-light); border-radius: var(--border-radius);
+      padding: 16px; background: var(--light-gray); margin-bottom: 20px;
+    }
+    .radio-group p { font-weight: 600; color: var(--dark-color); margin-bottom: 10px; font-size: 0.95rem; }
+    .radio-row {
+      display: flex; gap: 20px; flex-wrap: wrap;
+    }
+    .radio {
+      display: flex; gap: 8px; align-items: center; font-size: 0.95rem; color: var(--dark-color);
+    }
+    .radio input { width: auto; }
+
+    .consent-box {
+      border: 1px solid var(--border-light); border-radius: var(--border-radius);
+      padding: 16px; background: var(--light-gray); margin: 20px 0;
+    }
+    .checkbox-group {
+      display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px;
+    }
+    .checkbox-group:last-child { margin-bottom: 0; }
+    .checkbox-group input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--accent-color); }
+    .checkbox-group label { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+    .checkbox-group a { color: var(--accent-color); text-decoration: none; }
+    .checkbox-group a:hover { text-decoration: underline; }
+    .submit-btn {
+      width: 100%; padding: 14px; background: var(--accent-color); color: white; border: none;
+      border-radius: 40px; font-weight: 600; font-size: 1.1rem; cursor: pointer;
+      transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .submit-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .status-message {
+      margin-top: 15px; padding: 12px; border-radius: var(--border-radius);
+      border: 1px solid transparent; display: none; font-size: 0.95rem;
+    }
+    .status-success { display: block; background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
+    .status-error { display: block; background: #fef2f2; color: #991b1b; border-color: #fecaca; }
+    body.dark-mode .status-success { background: #1e3a2a; color: #9bffb5; border-color: #2e6b3e; }
+    body.dark-mode .status-error { background: #3e2023; color: #ffb3b3; border-color: #a13e3e; }
+    .form-footer { text-align: center; font-size: 0.8rem; color: var(--gray-color); margin-top: 15px; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary-dark); color: white; padding: 45px 0 20px;
+    }
+    body.dark-mode .footer { background: #0a0a0a; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 25px; margin-bottom: 30px; }
+    .footer a { color: #bbb; text-decoration: none; font-size: 0.9rem; }
+    .footer a:hover { color: var(--accent-light); }
+    .footer-social { display: flex; gap: 15px; margin-top: 15px; }
+    .footer-social a {
+      display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+      background: rgba(255,255,255,0.1); border-radius: 50%; color: white; font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--accent-color); transform: translateY(-3px); }
+    .myoutreach-credit {
+      background: rgba(255,255,255,0.05); padding: 18px; border-radius: 60px; text-align: center; margin-top: 25px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      nav ul {
+        position: fixed; top: 70px; left: -100%; width: 100%; flex-direction: column;
+        background: var(--card-bg); padding: 30px 20px; transition: left 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15); gap: 20px; border-radius: 0 0 20px 20px;
+        align-items: center;
+      }
+      nav ul.active { left: 0; }
+      nav ul li a:not(.btn)::after { display: none; }
+      .theme-toggle { margin-left: 0; }
+      .event-hero { padding: 120px 0 40px; }
+      .event-hero h1 { font-size: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .logo-text { font-size: 1.2rem; }
+      .logo-img { height: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="/images/it reader logo.png" alt="ITreader logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text">ITreader<span>events</span></div>
+      </a>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/index.html#who">Who we are</a></li>
+          <li><a href="/contact.html">Contact Us</a></li>
+          <li><a href="/event.html" class="btn btn-accent">Events</a></li>
+          <li><button class="theme-toggle" id="themeToggle"><i class="fa-regular fa-moon"></i> <span>Dark</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="event-hero">
+    <div class="container">
+      <h1>Know Thy Data: Data Security Posture Management (DSPM) in the Age of AI</h1>
+      <div class="event-date-location">
+        <span><i class="fas fa-calendar-alt"></i> March 11, 2026</span>
+        <span><i class="fas fa-map-marker-alt"></i> The Fifth Avenue Hotel, New York City</span>
+        <span><i class="fas fa-clock"></i> 11:30am – 3:00pm</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 40px;">
+    <div class="container">
+      <div class="event-details-grid">
+        <!-- LEFT: Event details -->
+        <div class="info-card">
+          <div class="hero-img">
+            <img
+              src="https://cdn-public.softwarereviews.com/production/logos/offerings/4655/original/Opentext_logo__1_-removebg-preview.png?1761746636"
+              alt="OpenText"
+              loading="lazy"
+            />
+          </div>
+
+          <p class="lede">
+            Artificial intelligence is rapidly becoming embedded across the enterprise—yet most organizations still lack a clear understanding
+            of where their sensitive data resides, who can access it, and how it is being used. While Data Security Posture Management (DSPM)
+            has emerged as a critical capability, many DSPM programs introduce dangerous blind spots by operating independently from identity governance.
+            The result is sensitive data exposed through over-privileged accounts, orphaned access rights, and misaligned entitlements.
+          </p>
+
+          <p class="lede">
+            As AI systems consume massive volumes of structured and unstructured data, these gaps significantly amplify security, privacy, and compliance risks.
+            Although organizations are making progress in data discovery and classification, they often fail to correlate data sensitivity with identity access—
+            undermining both data protection and responsible AI adoption. In the age of AI, knowing where your data lives is no longer enough—you must understand
+            who can access it, why, and how AI will use it.
+          </p>
+
+          <div class="section-title">Agenda</div>
+          <div class="agenda">
+            <div class="row"><div class="time">11:30 pm: Check In/Registration</div><p class="desc"></p></div>
+            <div class="row"><div class="time">12:00 pm: Opening Remarks</div><p class="desc"></p></div>
+            <div class="row">
+              <div class="time">12:10 pm: Executive Insight on how AI</div>
+              <p class="desc">
+                • Amplifies data risk and enhances DSPM, from intelligent classification and contextual risk scoring to automated remediation.<br/>
+                • Must leverage concepts such as data access governance through identity management, privileged access, behavior analytics, and threat intelligence.<br/>
+                • Requires a robust defense-in-depth to ensure regulatory compliance, mitigate insider threats, defend against sophisticated cyberattacks, and enhance incident response.
+              </p>
+            </div>
+            <div class="row"><div class="time">12:40 pm: Roundtable Discussion</div><p class="desc"></p></div>
+            <div class="row"><div class="time">1:00 pm: Lunch</div><p class="desc"></p></div>
+            <div class="row"><div class="time">1:45 pm: Summary & Key Takeaways</div><p class="desc"></p></div>
+            <div class="row"><div class="time">2:15 pm: Final Networking</div><p class="desc"></p></div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Registration Form -->
+        <div class="registration-card">
+          <h2>Reserve a Seat</h2>
+          <p class="sub">Submit your details below. We'll follow up by email with confirmation details.</p>
+
+          <form id="rsvpFormNYC" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="6013674e-a7b4-413d-9346-fead7e8344d0" />
+            <input type="hidden" name="subject" value="New RSVP: Know Thy Data (NYC) — March 11" />
+            <input type="hidden" name="event_name" value="Know Thy Data: DSPM in the Age of AI" />
+            <input type="hidden" name="event_date" value="March 11" />
+            <input type="hidden" name="event_time" value="12:00pm - 3:00pm" />
+            <input type="hidden" name="event_location" value="The Fifth Avenue Hotel, New York City, NY" />
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <div class="form-group">
+              <label for="full_name">Full Name *</label>
+              <input id="full_name" name="full_name" type="text" autocomplete="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="business_email">Business Email *</label>
+              <input id="business_email" name="business_email" type="email" autocomplete="email" required />
+              <div class="hint">Please use a work email address (no Gmail/Yahoo/Hotmail, etc.).</div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+
+            <div class="form-group">
+              <label for="company_name">Company Name *</label>
+              <input id="company_name" name="company_name" type="text" autocomplete="organization" required />
+            </div>
+
+            <div class="form-group">
+              <label for="job_title">Job Title *</label>
+              <input id="job_title" name="job_title" type="text" autocomplete="organization-title" required />
+            </div>
+
+            <!-- Industry dropdown -->
+            <div class="form-group">
+              <label for="industry_value">Industry *</label>
+              <div class="select-wrap" id="industrySelect">
+                <input type="hidden" id="industry_value" name="industry" value="" required>
+                <button type="button" class="select-trigger" id="industryTrigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span id="industryLabel" style="color:var(--gray-color)">Select an industry</span>
+                  <span class="chev" aria-hidden="true"></span>
+                </button>
+                <div class="select-menu" id="industryMenu" role="listbox" aria-label="Industry">
+                  <button type="button" class="select-option" role="option">Customer Services</button>
+                  <button type="button" class="select-option" role="option">Corporate Services</button>
+                  <button type="button" class="select-option" role="option">Education</button>
+                  <button type="button" class="select-option" role="option">Energy &amp; Utilities</button>
+                  <button type="button" class="select-option" role="option">Financial Services</button>
+                  <button type="button" class="select-option" role="option">Government</button>
+                  <button type="button" class="select-option" role="option">Healthcare</button>
+                  <button type="button" class="select-option" role="option">Manufacturing &amp; Resources</button>
+                  <button type="button" class="select-option" role="option">Media &amp; Entertainment</button>
+                  <button type="button" class="select-option" role="option">Non-Profits &amp; Associations</button>
+                  <button type="button" class="select-option" role="option">Retail Wholesale &amp; Distribution</button>
+                  <button type="button" class="select-option" role="option">Technology</button>
+                  <button type="button" class="select-option" role="option">Transportation</button>
+                  <button type="button" class="select-option" role="option">Travel &amp; Hospitality</button>
+                </div>
+                <div class="hint">Choose the industry that best matches your organisation.</div>
+              </div>
+            </div>
+
+            <!-- OpenText customer yes/no -->
+            <div class="radio-group">
+              <p>Are you an OpenText Customer? *</p>
+              <div class="radio-row">
+                <label class="radio">
+                  <input type="radio" name="opentext_customer" value="Yes" required />
+                  <span>Yes</span>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="opentext_customer" value="No" required />
+                  <span>No</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Who invited you? (optional) -->
+            <div class="form-group">
+              <label for="invited_by">Who invited you?</label>
+              <input id="invited_by" name="who_invited_you" type="text" placeholder="Optional" />
+            </div>
+
+            <!-- Consent boxes -->
+            <div class="consent-box">
+              <div class="checkbox-group">
+                <input type="checkbox" id="consent" name="consent" required />
+                <label for="consent">
+                  I have read and agree to OpenText's
+                  <a href="https://www.opentext.com/about/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                  and consent to being contacted regarding this event and related communications.
+                </label>
+              </div>
+
+              <div class="checkbox-group">
+                <input type="checkbox" name="itreader_marketing_consent" id="itreader_marketing" required />
+                <label for="itreader_marketing">
+                  By checking this box, I agree to receive relevant content, industry insights,
+                  and promotional communications from ITreader Ltd, its subsidiaries and affiliates.
+                  I understand that ITreader will use my personal information as described in the
+                  <a href="https://itreader.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>,
+                  including use of role and company name in event marketing materials and sharing
+                  with trusted partners to deliver personalized content and targeted advertising.
+                </label>
+              </div>
+            </div>
+
+            <button id="submitBtn" class="submit-btn" type="submit">
+              <i class="fas fa-check-circle"></i> Reserve a Seat
+            </button>
+
+            <div id="formStatus" class="status-message"></div>
+            <div class="form-footer">By submitting, you're requesting a seat. Capacity is limited.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Attend / Logo Marquee Section -->
+  <section class="why-attend">
+    <div class="why-attend__inner">
+      <div class="why-attend__header">
+        <h2>Why Attend?</h2>
+        <p>Companies set to attend include:</p>
+      </div>
+
+      <div class="logo-marquee" aria-label="Companies represented">
+        <div class="logo-marquee__track" id="whyAttendTrack">
+          <img src="https://cdn.freebiesupply.com/logos/large/2x/shell-4-logo-png-transparent.png" loading="lazy" alt="Shell" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Initiative_Blue.png" loading="lazy" alt="Initiative" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Mizuho_logo.svg/1280px-Mizuho_logo.svg.png" loading="lazy" alt="Mizuho" />
+          <img src="https://cdn.freebiesupply.com/images/large/2x/citi-logo-transparent.png" loading="lazy" alt="Citi" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/BNY_logo_2024.svg/3840px-BNY_logo_2024.svg.png" loading="lazy" alt="BNY" />
+          <img src="https://newyorkcitycouncil.github.io/nycc-brand-guidelines/images/nycc-wordmark-blue.png" loading="lazy" alt="NYCC" />
+          <img src="https://d1io3yog0oux5.cloudfront.net/_997d2ae5062aff50c82dc35d6736d55b/chimerareit/db/1034/9433/image.svg" loading="lazy" alt="Chimera" />
+        </div>
+      </div>
+
+      <p class="why-attend__note">Logos shown for identification only. Attendance subject to change.</p>
+    </div>
+  </section>
+
+  <!-- Location Section (The Fifth Avenue Hotel) -->
+  <section class="location-section">
+    <div class="location-inner">
+      <h2 class="location-title">Location</h2>
+
+      <div class="location-layout">
+        <div class="location-image">
+          <img
+            src="https://imageio.forbes.com/specials-images/imageserve/6627fb82349688eeed5e2e4b/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds"
+            alt="The Fifth Avenue Hotel"
+          />
+        </div>
+
+        <div class="location-content">
+          <h3>The Fifth Avenue Hotel</h3>
+
+          <p>
+            Exquisitely and eclectically designed, The Fifth Avenue Hotel offers a realm of imagination to delight the senses in the elegant NoMad neighborhood of Midtown Manhattan. A historic New York Gilded Age landmark reimagined as a luxury destination, The Fifth offers thoughtful service with the utmost comfort and care; and exceptional cuisine overseen by award-winning Chef Andrew Carmellini. Welcome to a world of intimate ambience, elegance and charm in the heart of NYC.
+          </p>
+
+          <div class="location-links">
+            <a href="https://www.thefifthavenuehotel.com/" target="_blank" rel="noopener noreferrer">
+              Experience The Fifth Avenue Hotel <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="https://www.google.com/maps/dir//The+Fifth+Avenue+Hotel,+1+W+28th+St,+New+York,+NY+10001,+United+States/@40.7463928,-73.9884025,18z/data=!3m1!5s0x89c259a615e299ff:0xc1369dba60eb94a3!4m21!1m11!3m10!1s0x89c259994b7ad9e1:0x324e6d0c789b886f!2sThe+Fifth+Avenue+Hotel!5m2!4m1!1i2!8m2!3d40.7449544!4d-73.9877067!15sChJmaWZ0aCBhdmVudWUgaG90ZWySAQVob3RlbOABAA!16s%2Fg%2F11rd7xfp0b!4m8!1m0!1m5!1m1!1s0x89c259994b7ad9e1:0x324e6d0c789b886f!2m2!1d-73.9876983!2d40.7449661!3e0?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+              Getting There <i class="fas fa-map-marked-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>ITreader</h4>
+          <p>44 St Peter's St Canterbury CT1 2BG<br>hello@itreader.com</p>
+          <div class="footer-social">
+            <a href="https://www.youtube.com/@ITreader" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/itreader1/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://101webstudio.github.io/ITreader/" target="_blank" aria-label="Website"><i class="fas fa-globe"></i></a>
+            <a href="https://www.instagram.com/_itreader?igsh=MTNjY3pudHZtd21mYw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/itreader/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul style="list-style:none;">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/index.html#who">Who we are</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="/event.html">Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul style="list-style:none;">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="myoutreach-credit">
+        <p style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+          <span>Website generated by</span>
+          <a href="https://www.my-outreach.com" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:var(--accent-color); color:white; padding:8px 18px; border-radius:40px; text-decoration:none; font-weight:600;">
+            <i class="fas fa-rocket"></i> MyOutreach
+          </a>
+        </p>
+      </div>
+      <p style="text-align:center; margin-top:25px; font-size:0.85rem;">© <span id="year"></span> ITreader Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('nav ul').classList.toggle('active');
+      const icon = this.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    // Dark mode persistence
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('itreader-theme');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
+    } else {
+      toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      if (isDark) {
+        toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
+        localStorage.setItem('itreader-theme', 'dark');
+      } else {
+        toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+        localStorage.setItem('itreader-theme', 'light');
+      }
+    });
+
+    // Year for footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Logo marquee cloning
+    (function () {
+      const track = document.getElementById("whyAttendTrack");
+      if (!track) return;
+      if (track.dataset.cloned === "1") return;
+      const originals = Array.from(track.children);
+      originals.forEach(node => track.appendChild(node.cloneNode(true)));
+      track.dataset.cloned = "1";
+    })();
+
+    // Custom Industry dropdown
+    (function(){
+      const wrap = document.getElementById('industrySelect');
+      const trigger = document.getElementById('industryTrigger');
+      const menu = document.getElementById('industryMenu');
+      const hidden = document.getElementById('industry_value');
+      const label = document.getElementById('industryLabel');
+
+      if(!wrap || !trigger || !menu || !hidden || !label) return;
+
+      function open(){
+        wrap.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+      function close(){
+        wrap.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+      function toggle(){
+        if(wrap.classList.contains('open')) close(); else open();
+      }
+
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggle();
+      });
+
+      menu.querySelectorAll('.select-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const value = btn.textContent.trim();
+          hidden.value = value;
+          label.textContent = value;
+          label.style.color = 'var(--dark-color)';
+
+          menu.querySelectorAll('.select-option').forEach(o => o.setAttribute('aria-selected','false'));
+          btn.setAttribute('aria-selected','true');
+
+          close();
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if(!wrap.contains(e.target)) close();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') close();
+      });
+    })();
+
+    // Form validation and submission
+    (function(){
+      const form = document.getElementById('rsvpFormNYC');
+      const status = document.getElementById('formStatus');
+      const btn = document.getElementById('submitBtn');
+
+      const BLOCKED_DOMAINS = new Set([
+        "gmail.com","googlemail.com",
+        "yahoo.com","yahoo.co.uk","yahoo.fr","yahoo.de",
+        "hotmail.com","hotmail.co.uk","outlook.com","live.com","msn.com",
+        "icloud.com","me.com","mac.com",
+        "aol.com",
+        "proton.me","protonmail.com",
+        "gmx.com","gmx.de",
+        "mail.com"
+      ]);
+
+      function setStatus(type, msg){
+        status.className = "status-message " + (type === 'success' ? 'status-success' : 'status-error');
+        status.textContent = msg;
+        status.style.display = "block";
+      }
+
+      function isBusinessEmail(email){
+        const v = String(email || "").trim().toLowerCase();
+        const parts = v.split("@");
+        if(parts.length !== 2) return false;
+        const domain = parts[1];
+        return domain && !BLOCKED_DOMAINS.has(domain);
+      }
+
+      function firstCheckedRadio(name){
+        const el = document.querySelector(`input[name="${name}"]:checked`);
+        return el ? el.value : "";
+      }
+
+      if(!form || !status || !btn) return;
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        status.style.display = "none";
+        status.className = "status-message";
+
+        const emailEl = document.getElementById("business_email");
+        const email = emailEl ? emailEl.value.trim() : "";
+        if(!email || !isBusinessEmail(email)){
+          setStatus("error", "Please use a business email address (no Gmail/Yahoo/Hotmail, etc.).");
+          if(emailEl) emailEl.focus();
+          return;
+        }
+
+        const industryHidden = document.getElementById("industry_value");
+        if(industryHidden && !industryHidden.value){
+          setStatus("error", "Please select an industry.");
+          document.getElementById("industryTrigger")?.focus();
+          return;
+        }
+
+        const otCustomer = firstCheckedRadio("opentext_customer");
+        if(!otCustomer){
+          setStatus("error", "Please tell us whether you are an OpenText customer.");
+          return;
+        }
+
+        // Check required fields
+        const requiredIds = ["full_name","phone","company_name","job_title"];
+        for(const id of requiredIds){
+          const el = document.getElementById(id);
+          if(el && !el.value.trim()){
+            setStatus("error", "Please complete all required fields.");
+            el.focus();
+            return;
+          }
+        }
+
+        const consent = document.getElementById('consent');
+        if(consent && !consent.checked){
+          setStatus("error", "Please agree to the OpenText Privacy Policy.");
+          consent.focus();
+          return;
+        }
+
+        const itreaderConsent = document.getElementById('itreader_marketing');
+        if(itreaderConsent && !itreaderConsent.checked){
+          setStatus("error", "Please agree to receive communications from ITreader.");
+          itreaderConsent.focus();
+          return;
+        }
+
+        btn.disabled = true;
+        const original = btn.textContent;
+        btn.textContent = "Submitting…";
+
+        try{
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept": "application/json" }
+          });
+
+          if(res.ok){
+            setStatus("success", "Thanks — request received. We'll follow up by email with confirmation details.");
+            form.reset();
+
+            const industryLabel = document.getElementById("industryLabel");
+            if(industryLabel){
+              industryLabel.textContent = "Select an industry";
+              industryLabel.style.color = "var(--gray-color)";
+            }
+            document.querySelectorAll('#industryMenu .select-option').forEach(o => o.setAttribute('aria-selected','false'));
+          } else {
+            setStatus("error", "Something went wrong. Please try again.");
+          }
+        } catch(err){
+          setStatus("error", "Submission failed. Please try again.");
+        } finally {
+          btn.disabled = false;
+          btn.textContent = original;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
