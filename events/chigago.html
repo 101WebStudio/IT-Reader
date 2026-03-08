@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>ITreader — Myriad360 Innovation Summit Chicago</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="images/it reader logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== GLOBAL STYLES (ITreader design system) ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary-color: #0A2463; --primary-dark: #071845; --secondary-color: #3E92CC;
+      --secondary-light: #5CA8E0; --accent-color: #0018ff; --accent-light: #4d62ff;
+      --light-color: #F8F9FA; --light-gray: #F0F2F5; --dark-color: #212529;
+      --gray-color: #6C757D; --transition: all 0.3s ease; --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --border-radius: 12px; --section-spacing: 70px; --bg: #ffffff; --surface: #ffffff;
+      --text-primary: #1A1F36; --text-secondary: #4E5B6E; --border-light: #EFF2F7;
+      --card-bg: #ffffff; --fs-base: 0.95rem; --fs-h1: 2.4rem; --fs-h2: 2rem; --fs-h3: 1.5rem; --fs-h4: 1.2rem;
+    }
+    body.dark-mode {
+      --primary-color: #3a80d2; --primary-dark: #1a4b8c; --secondary-color: #4f9fdb;
+      --secondary-light: #7bb8e8; --accent-color: #4d62ff; --accent-light: #7b8aff;
+      --light-color: #1a1a1a; --light-gray: #232323; --dark-color: #f0f0f0; --gray-color: #aaaaaa;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.9); --bg: #121212; --surface: #1e1e1e;
+      --text-primary: #ffffff; --text-secondary: #cccccc; --border-light: #333333; --card-bg: #1e1e1e;
+      background-color: #121212 !important;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif; line-height: 1.5; color: var(--dark-color);
+      background-color: var(--bg); transition: background-color 0.2s, color 0.2s; overflow-x: hidden;
+      font-size: var(--fs-base);
+    }
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; line-height: 1.2; margin-bottom: 0.8rem; }
+    h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); } h4 { font-size: var(--fs-h4); }
+    .container { width: 100%; max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+    section { padding: var(--section-spacing) 0; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      background-color: var(--accent-color); color: white; padding: 10px 24px;
+      border-radius: 40px; font-weight: 600; text-decoration: none; transition: var(--transition);
+      border: none; cursor: pointer; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0, 24, 255, 0.2);
+    }
+    .btn:hover { background-color: var(--accent-light); transform: translateY(-2px); }
+    .btn-accent { background-color: var(--accent-color); }
+    .btn-accent:hover { background-color: var(--accent-light); }
+    .btn-outline { background-color: transparent; border: 2px solid var(--accent-color); color: var(--accent-color); box-shadow: none; }
+    .btn-outline:hover { background-color: var(--accent-color); color: white; }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    header {
+      background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); position: fixed; width: 100%; top: 0; z-index: 1000;
+      transition: var(--transition);
+    }
+    body.dark-mode header { background-color: rgba(18, 18, 18, 0.95) !important; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+    .logo { display: flex; align-items: center; text-decoration: none; transition: transform 0.2s; }
+    .logo:hover { transform: scale(1.02); }
+    .logo-img { height: 44px; width: auto; margin-right: 10px; border-radius: 8px; }
+    .logo-text { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary-color); line-height: 1.1; }
+    .logo-text span { color: var(--accent-color); display: block; font-weight: 600; font-size: 0.8rem; margin-top: 2px; }
+    nav ul { display: flex; list-style: none; align-items: center; gap: 28px; }
+    nav ul li a:not(.btn) { text-decoration: none; color: var(--dark-color); font-weight: 600; font-size: 0.95rem; padding: 6px 0; position: relative; transition: color 0.2s; }
+    nav ul li a:not(.btn)::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(to right, var(--accent-color), var(--secondary-color)); transition: width 0.25s ease; }
+    nav ul li a:not(.btn):hover { color: var(--accent-color); }
+    nav ul li a:not(.btn):hover::after { width: 100%; }
+    nav ul li .btn { padding: 8px 18px; font-size: 0.9rem; margin-left: 4px; }
+    nav ul li .btn-outline { border-width: 2px; }
+    body.dark-mode nav ul li a:not(.btn) { color: #f0f0f0; }
+    .theme-toggle {
+      background: none; border: 1.5px solid var(--accent-color); border-radius: 40px; padding: 6px 16px;
+      color: var(--accent-color); cursor: pointer; display: flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; font-weight: 600; transition: all 0.2s; margin-left: 6px;
+    }
+    .theme-toggle:hover { background-color: var(--accent-color); color: white; border-color: var(--accent-color); }
+    .mobile-menu-btn { display: none; font-size: 1.6rem; background: none; border: none; color: var(--primary-color); cursor: pointer; }
+
+    /* ===== EVENT HERO ===== */
+    .event-hero {
+      background: linear-gradient(135deg, #0A2463, #2A1A6B);
+      color: white;
+      text-align: center;
+      padding: 140px 0 60px;
+      margin-top: 70px;
+    }
+    body.dark-mode .event-hero { background: linear-gradient(135deg, #0f0f0f, #1f1f1f); }
+    .event-hero h1 { font-size: 2.8rem; max-width: 900px; margin: 0 auto 15px; }
+    .event-hero .event-date-location {
+      font-size: 1.1rem; opacity: 0.9; margin-bottom: 25px;
+      display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
+    }
+    .event-hero .event-date-location i { color: var(--accent-light); margin-right: 5px; }
+
+    /* ===== EVENT INTRO ===== */
+    .event-intro {
+      background: var(--light-gray);
+      text-align: left;
+      padding: 40px 0;
+    }
+    .intro-text {
+      max-width: 1100px; margin: 0 auto; color: var(--text-secondary); font-size: 1rem;
+      white-space: pre-line;
+    }
+
+    /* ===== EVENT DETAILS GRID ===== */
+    .event-details-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 920px) {
+      .event-details-grid { grid-template-columns: 1fr; }
+    }
+
+    .info-card {
+      background: var(--card-bg); border-radius: var(--border-radius); padding: 35px;
+      box-shadow: var(--shadow); border: 1px solid var(--border-light);
+    }
+    .info-card .logo-strip {
+      margin-bottom: 25px;
+      border: 1px solid var(--border-light); border-radius: var(--border-radius);
+      background: var(--card-bg); padding: 16px 18px; min-height: 96px;
+      display: flex; align-items: center;
+    }
+    .info-card .logo-strip img {
+      display: block; height: 34px; width: auto; object-fit: contain;
+    }
+    .info-card h3 { font-size: 1.5rem; color: var(--primary-color); margin-bottom: 15px; }
+    .info-card ul { margin: 0 0 20px; padding-left: 20px; }
+    .info-card li { margin: 12px 0; color: var(--text-secondary); }
+    .info-card li strong { color: var(--dark-color); }
+    .lead-note {
+      color: var(--text-secondary); font-size: 0.9rem; margin-top: 15px;
+      padding-top: 15px; border-top: 1px solid var(--border-light);
+    }
+    .agenda-image {
+      border: 1px solid var(--border-light); border-radius: var(--border-radius);
+      background: var(--card-bg); padding: 16px; margin-top: 20px;
+    }
+    .agenda-image img {
+      display: block; width: 100%; height: auto; border-radius: calc(var(--border-radius) - 4px);
+    }
+
+    /* ===== LOCATION SECTION ===== */
+    .location-section {
+      background: var(--light-gray);
+    }
+    .location-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    }
+    .location-title {
+      font-size: 2rem; color: var(--primary-color); margin-bottom: 40px; text-align: center;
+    }
+    .location-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+    }
+    @media (max-width: 768px) {
+      .location-layout { grid-template-columns: 1fr; }
+    }
+    .location-image {
+      border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .location-image img {
+      width: 100%; height: auto; display: block; transition: transform 0.5s;
+    }
+    .location-image img:hover { transform: scale(1.02); }
+    .location-content h3 {
+      font-size: 1.8rem; color: var(--primary-color); margin-bottom: 20px;
+    }
+    .location-content p {
+      color: var(--text-secondary); margin-bottom: 25px; line-height: 1.6;
+    }
+    .location-links {
+      display: flex; gap: 30px; flex-wrap: wrap;
+    }
+    .location-links a {
+      color: var(--accent-color); text-decoration: none; font-weight: 600;
+      border-bottom: 2px solid transparent; transition: var(--transition);
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .location-links a:hover {
+      border-bottom-color: var(--accent-color);
+    }
+
+    /* ===== REGISTRATION FORM ===== */
+    .registration-card {
+      background: var(--card-bg); border-radius: var(--border-radius); padding: 35px;
+      box-shadow: var(--shadow); border: 1px solid var(--border-light);
+      position: sticky; top: 90px;
+    }
+    @media (max-width: 920px) {
+      .registration-card { position: relative; top: auto; }
+    }
+    .registration-card h2 { color: var(--primary-color); margin-bottom: 5px; font-size: 1.8rem; }
+    .registration-card .sub {
+      color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark-color); font-size: 0.95rem; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 12px 16px; border: 2px solid var(--border-light); border-radius: var(--border-radius);
+      font-family: inherit; font-size: 1rem; background: var(--light-color); color: var(--dark-color);
+      transition: var(--transition);
+    }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); }
+    .form-group textarea { min-height: 92px; resize: vertical; }
+    .form-group .hint { font-size: 0.8rem; color: var(--gray-color); margin-top: 5px; }
+
+    /* Radio group for wine preference */
+    .radio-group {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      padding: 12px 16px; border: 2px solid var(--border-light); border-radius: var(--border-radius);
+      background: var(--light-color); margin-bottom: 20px;
+    }
+    .radio-group label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.95rem; color: var(--dark-color); cursor: pointer;
+    }
+    .radio-group input { width: auto; margin: 0; }
+
+    .consent-box {
+      border: 1px solid var(--border-light); border-radius: var(--border-radius);
+      padding: 16px; background: var(--light-gray); margin: 20px 0;
+    }
+    .checkbox-group {
+      display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px;
+    }
+    .checkbox-group:last-child { margin-bottom: 0; }
+    .checkbox-group input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--accent-color); }
+    .checkbox-group label { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+    .checkbox-group a { color: var(--accent-color); text-decoration: none; }
+    .checkbox-group a:hover { text-decoration: underline; }
+    .submit-btn {
+      width: 100%; padding: 14px; background: var(--accent-color); color: white; border: none;
+      border-radius: 40px; font-weight: 600; font-size: 1.1rem; cursor: pointer;
+      transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .submit-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .status-message {
+      margin-top: 15px; padding: 12px; border-radius: var(--border-radius);
+      border: 1px solid transparent; display: none; font-size: 0.95rem;
+    }
+    .status-success { display: block; background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
+    .status-error { display: block; background: #fef2f2; color: #991b1b; border-color: #fecaca; }
+    body.dark-mode .status-success { background: #1e3a2a; color: #9bffb5; border-color: #2e6b3e; }
+    body.dark-mode .status-error { background: #3e2023; color: #ffb3b3; border-color: #a13e3e; }
+    .form-footer { text-align: center; font-size: 0.8rem; color: var(--gray-color); margin-top: 15px; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary-dark); color: white; padding: 45px 0 20px;
+    }
+    body.dark-mode .footer { background: #0a0a0a; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 25px; margin-bottom: 30px; }
+    .footer a { color: #bbb; text-decoration: none; font-size: 0.9rem; }
+    .footer a:hover { color: var(--accent-light); }
+    .footer-social { display: flex; gap: 15px; margin-top: 15px; }
+    .footer-social a {
+      display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+      background: rgba(255,255,255,0.1); border-radius: 50%; color: white; font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--accent-color); transform: translateY(-3px); }
+    .myoutreach-credit {
+      background: rgba(255,255,255,0.05); padding: 18px; border-radius: 60px; text-align: center; margin-top: 25px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      nav ul {
+        position: fixed; top: 70px; left: -100%; width: 100%; flex-direction: column;
+        background: var(--card-bg); padding: 30px 20px; transition: left 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15); gap: 20px; border-radius: 0 0 20px 20px;
+        align-items: center;
+      }
+      nav ul.active { left: 0; }
+      nav ul li a:not(.btn)::after { display: none; }
+      .theme-toggle { margin-left: 0; }
+      .event-hero { padding: 120px 0 40px; }
+      .event-hero h1 { font-size: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .logo-text { font-size: 1.2rem; }
+      .logo-img { height: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="images/it reader logo.png" alt="ITreader logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text">ITreader<span>events</span></div>
+      </a>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#who">Who we are</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="event.html" class="btn btn-accent">Events</a></li>
+          <li><button class="theme-toggle" id="themeToggle"><i class="fa-regular fa-moon"></i> <span>Dark</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="event-hero">
+    <div class="container">
+      <h1>Myriad360 Innovation Summit Series – Chicago, IL</h1>
+      <div class="event-date-location">
+        <span><i class="fas fa-calendar-alt"></i> April 7, 2026</span>
+        <span><i class="fas fa-map-marker-alt"></i> Sepia, Chicago</span>
+        <span><i class="fas fa-user-lock"></i> Invitation-only</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="event-intro">
+    <div class="container">
+      <div class="intro-text">
+        Please join us for our Innovation Summit — an exclusive executive forum for IT leadership in the heart of Chicago.
+        
+        This invitation-only program brings senior technology leaders together for curated conversations, partner-led insights, and meaningful engagement with industry peers. Following the afternoon sessions, enjoy a hosted evening reception with dinner, dessert, and the premium gifting experience.
+        
+        This is not a conference or sales event — it's an opportunity to build meaningful relationships in one of Chicago's most exclusive settings. Attendance is intentionally limited to preserve the quality of conversation and connection.
+        
+        Please complete the form below to confirm your participation.
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 40px;">
+    <div class="container">
+      <div class="event-details-grid">
+        <!-- LEFT: Event details -->
+        <div class="info-card">
+          <div class="logo-strip">
+            <img
+              src="https://awsmp-logos.s3.amazonaws.com/d87316ff-e96e-4c14-85d3-fdc2bffdb2e3/220b766bbcf095fde64066be5ad67c1c.png"
+              alt="Myriad360 logo"
+            />
+          </div>
+
+          <h3>What to expect:</h3>
+          <ul>
+            <li><strong>Executive forum:</strong> Curated conversations for senior IT leadership in Chicago</li>
+            <li><strong>Insights:</strong> Partner-led perspectives and practical takeaways</li>
+            <li><strong>Reception:</strong> Hosted evening networking with dinner, dessert, and the premium gifting experience</li>
+          </ul>
+
+          <p class="lead-note">
+            <i class="fas fa-info-circle" style="color: var(--accent-color); margin-right: 5px;"></i>
+            Attendance is intentionally limited to preserve the quality of conversation and connection.
+          </p>
+
+          <div class="agenda-image">
+            <img src="https://itreader.com/wp-content/uploads/2026/02/Screenshot-2026-02-26-154157.png" alt="Event agenda timeline" />
+          </div>
+        </div>
+
+        <!-- RIGHT: Registration Form -->
+        <div class="registration-card">
+          <h2>Reserve a Seat</h2>
+          <p class="sub">Please use a business email address (no personal emails).</p>
+
+          <form id="leadForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="67144255-1842-429f-a5af-62af3d7338df" />
+            <input type="hidden" name="subject" value="Myriad360 Innovation Summit Series - Chicago, IL (Registration)" />
+            <input type="hidden" name="from_name" value="Myriad360 Innovation Summit Landing Page" />
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input id="fullName" name="full_name" type="text" required />
+            </div>
+
+            <div class="form-group">
+              <label for="jobTitle">Job Title *</label>
+              <input id="jobTitle" name="job_title" type="text" required />
+            </div>
+
+            <div class="form-group">
+              <label for="companyName">Company Name *</label>
+              <input id="companyName" name="company_name" type="text" required />
+            </div>
+
+            <!-- Who invited you? (optional) -->
+            <div class="form-group">
+              <label for="invitedBy">Who invited you?</label>
+              <input id="invitedBy" name="who_invited_you" type="text" placeholder="Optional" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Business Email *</label>
+              <input id="email" name="email" type="email" placeholder="name@company.com" required />
+              <div id="emailError" class="error-message" style="color: #dc2626; font-size: 0.85rem; margin-top: 5px; display: none;">Please use a business email address (no personal emails).</div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input id="phone" name="phone" type="tel" placeholder="+1 (###) ###-####" required />
+            </div>
+
+            <div class="form-group">
+              <label for="dietPrefs">Dietary Preferences</label>
+              <textarea id="dietPrefs" name="dietary_preferences" placeholder="e.g., vegetarian, vegan, halal, kosher..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="dietAllergies">Dietary Allergies</label>
+              <textarea id="dietAllergies" name="dietary_allergies" placeholder="e.g., nuts, dairy, gluten..."></textarea>
+            </div>
+
+            <!-- Wine Preference (optional) -->
+            <label>Wine Preference (optional)</label>
+            <div class="radio-group" role="radiogroup" aria-label="Wine Preference">
+              <label><input type="radio" name="wine_preference" value="Red"> Red</label>
+              <label><input type="radio" name="wine_preference" value="White"> White</label>
+              <label><input type="radio" name="wine_preference" value="N/A"> N/A</label>
+            </div>
+
+            <!-- ITreader opt-in (required) -->
+            <div class="consent-box">
+              <div class="checkbox-group">
+                <input type="checkbox" id="itreaderOptIn" name="itreader_opt_in" required />
+                <label for="itreaderOptIn">
+                  By checking this box, I agree to receive relevant content, industry insights, and promotional communications from
+                  ITreader Ltd, its subsidiaries and affiliates. I understand that ITreader will use my personal information as
+                  described in the
+                  <a href="https://itreader.com/privacy-policy" target="_blank" rel="noreferrer">Privacy Policy</a>,
+                  including use of role and company name in event marketing materials and sharing with trusted partners to deliver
+                  personalized content and targeted advertising.
+                </label>
+              </div>
+            </div>
+
+            <button id="submitBtn" class="submit-btn" type="submit">
+              <i class="fas fa-check-circle"></i> Confirm Participation
+            </button>
+
+            <div id="formStatus" class="status-message"></div>
+            <div class="form-footer">By submitting, you're requesting a seat. Capacity is limited.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section (Sepia, Chicago) -->
+  <section class="location-section">
+    <div class="location-inner">
+      <h2 class="location-title">Location</h2>
+
+      <div class="location-layout">
+        <div class="location-image">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/54fb1c14e4b0a61cf908cda9/1493759340304-4VYQQYM1NHQQCL0S99Q5/7_v3.jpg"
+            alt="Sepia Chicago"
+          />
+        </div>
+
+        <div class="location-content">
+          <h3>Sepia, Chicago</h3>
+
+          <p>
+            Located in Chicago's West Loop, Sepia offers a dining experience defined by warmth, refinement, and quiet sophistication. Wooden walls, exposed brick, and thoughtfully curated vintage décor create a space that feels cozy and familiar, inviting guests to dine as though welcomed into someone's home.
+          </p>
+          <p>
+            That same sense of care carries through to the cuisine. Sepia's product-driven menu is guided by respect for ingredient integrity, allowing quality and seasonality to lead. Under the direction of Chef Kyle Cottle, the kitchen presents inventive American cooking rooted in tradition, where technique enhances, rather than overshadows, the natural character of each ingredient.
+          </p>
+
+          <div class="location-links">
+            <a href="https://www.sepiachicago.com/" target="_blank" rel="noopener noreferrer">
+              Experience Sepia <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="https://www.google.com/maps/place/sepia+chicago/data=!4m2!3m1!1s0x880e2cc66e4543ff:0xcf8242402ad7a91e?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener noreferrer">
+              Getting There <i class="fas fa-map-marked-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>ITreader</h4>
+          <p>44 St Peter's St Canterbury CT1 2BG<br>hello@itreader.com</p>
+          <div class="footer-social">
+            <a href="https://www.youtube.com/@ITreader" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/itreader1/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://101webstudio.github.io/ITreader/" target="_blank" aria-label="Website"><i class="fas fa-globe"></i></a>
+            <a href="https://www.instagram.com/_itreader?igsh=MTNjY3pudHZtd21mYw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/itreader/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul style="list-style:none;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#who">Who we are</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="event.html">Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul style="list-style:none;">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="myoutreach-credit">
+        <p style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+          <span>Website generated by</span>
+          <a href="https://www.my-outreach.com" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:var(--accent-color); color:white; padding:8px 18px; border-radius:40px; text-decoration:none; font-weight:600;">
+            <i class="fas fa-rocket"></i> MyOutreach
+          </a>
+        </p>
+      </div>
+      <p style="text-align:center; margin-top:25px; font-size:0.85rem;">© <span id="year"></span> ITreader Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('nav ul').classList.toggle('active');
+      const icon = this.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    // Dark mode persistence
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('itreader-theme');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
+    } else {
+      toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      if (isDark) {
+        toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
+        localStorage.setItem('itreader-theme', 'dark');
+      } else {
+        toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+        localStorage.setItem('itreader-theme', 'light');
+      }
+    });
+
+    // Year for footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Block common personal email domains
+    const personalDomains = new Set([
+      "gmail.com","googlemail.com",
+      "yahoo.com","yahoo.co.uk",
+      "hotmail.com","hotmail.co.uk",
+      "outlook.com","outlook.co.uk","live.com","msn.com",
+      "icloud.com","me.com","mac.com",
+      "aol.com","proton.me","protonmail.com",
+      "gmx.com","gmx.net"
+    ]);
+
+    function isPersonalEmail(email){
+      const at = email.lastIndexOf("@");
+      if (at === -1) return true;
+      const domain = email.slice(at + 1).toLowerCase().trim();
+      return personalDomains.has(domain);
+    }
+
+    const form = document.getElementById("leadForm");
+    const emailEl = document.getElementById("email");
+    const emailError = document.getElementById("emailError");
+    const status = document.getElementById("formStatus");
+    const btn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      // Reset messages
+      if (emailError) emailError.style.display = "none";
+      status.style.display = "none";
+      status.className = "status-message";
+
+      // Validate email
+      const email = emailEl.value.trim();
+      if (!email || isPersonalEmail(email)) {
+        if (emailError) {
+          emailError.style.display = "block";
+          emailError.textContent = "Please use a business email address (no personal emails).";
+        }
+        emailEl.focus();
+        return;
+      }
+
+      // Check required fields
+      const requiredIds = ["fullName", "jobTitle", "companyName", "phone"];
+      for (const id of requiredIds) {
+        const el = document.getElementById(id);
+        if (el && !el.value.trim()) {
+          status.className = "status-message status-error";
+          status.textContent = "Please complete all required fields.";
+          status.style.display = "block";
+          el.focus();
+          return;
+        }
+      }
+
+      // Check ITreader opt-in
+      const optIn = document.getElementById("itreaderOptIn");
+      if (optIn && !optIn.checked) {
+        status.className = "status-message status-error";
+        status.textContent = "Please agree to receive communications from ITreader.";
+        status.style.display = "block";
+        optIn.focus();
+        return;
+      }
+
+      btn.disabled = true;
+      const original = btn.textContent;
+      btn.textContent = "Submitting…";
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok) {
+          status.className = "status-message status-success";
+          status.textContent = "Thanks — request received. We'll follow up by email with confirmation details.";
+          status.style.display = "block";
+          form.reset();
+        } else {
+          status.className = "status-message status-error";
+          status.textContent = "Something went wrong. Please try again.";
+          status.style.display = "block";
+        }
+      } catch (err) {
+        status.className = "status-message status-error";
+        status.textContent = "Submission failed. Please try again.";
+        status.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = original;
+      }
+    });
+  </script>
+</body>
+</html>
