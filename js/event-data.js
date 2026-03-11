@@ -53,7 +53,7 @@ const allEvents = [
         category: 'live',
         region: 'uk',
         image: 'https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=600&h=400&fit=crop&auto=format',
-        link: 'event/Manchester.html',
+        link: 'events/Manchester.html',
         categoryLabel: 'Live Event'
     },
     {
@@ -78,7 +78,7 @@ const allEvents = [
         category: 'breakfast',
         region: 'california',
         image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop&auto=format',
-        link: 'event/Native × Artemis RSAC Breakfast.html',
+        link: 'events/Native × Artemis RSAC Breakfast.html',
         categoryLabel: 'Breakfast',
         inviteOnly: true
     },
@@ -91,7 +91,7 @@ const allEvents = [
         category: 'cx-trends',
         region: 'massachusetts',
         image: 'https://images.unsplash.com/photo-1487024884796-5bce7e9c61d2?w=600&h=400&fit=crop&auto=format',
-        link: 'event/Boston.html',
+        link: 'events/Boston.html',
         categoryLabel: 'CX Trends'
     },
     {
@@ -103,7 +103,7 @@ const allEvents = [
         category: 'cx-trends',
         region: 'california',
         image: 'https://images.unsplash.com/photo-1580655653885-65763b2597d0?w=600&h=400&fit=crop&auto=format',
-        link: 'event/La.html',
+        link: 'events/La.html',
         categoryLabel: 'CX Trends'
     },
     {
@@ -115,7 +115,7 @@ const allEvents = [
         category: 'cx-trends',
         region: 'georgia',
         image: 'https://images.unsplash.com/photo-1575505586569-646b2ca898fc?w=600&h=400&fit=crop&auto=format',
-        link: 'event/atlanta.html',
+        link: 'events/atlanta.html',
         categoryLabel: 'CX Trends'
     },
     {
@@ -127,7 +127,7 @@ const allEvents = [
         category: 'cx-trends',
         region: 'california',
         image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop&auto=format',
-        link: 'event/paloalto.html',
+        link: 'events/paloalto.html',
         categoryLabel: 'CX Trends'
     },
     {
@@ -139,7 +139,7 @@ const allEvents = [
         category: 'data',
         region: 'new-york',
         image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&h=400&fit=crop&auto=format',
-        link: 'event/newyork.html',
+        link: 'events/newyork.html',
         categoryLabel: 'Data Summit'
     },
     {
@@ -151,7 +151,7 @@ const allEvents = [
         category: 'evening',
         region: 'texas',
         image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
-        link: 'event/Ch&C-Austin.html',
+        link: 'events/Ch&C-Austin.html',
         categoryLabel: 'Evening Event'
     },
     {
@@ -163,7 +163,7 @@ const allEvents = [
         category: 'summit',
         region: 'texas',
         image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
-        link: 'event/Austin.html',
+        link: 'events/Austin.html',
         categoryLabel: 'Summit',
         inviteOnly: true
     }
