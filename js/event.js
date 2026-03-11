@@ -1,76 +1,102 @@
-    // Mobile menu
-    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-      document.querySelector('nav ul').classList.toggle('active');
-      const icon = this.querySelector('i');
-      icon.classList.toggle('fa-bars');
-      icon.classList.toggle('fa-times');
+ // Mobile menu
+    document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+        document.querySelector('nav ul').classList.toggle('active');
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
     });
 
-    // Dark mode persistence
+    // Dark mode
     const toggle = document.getElementById('themeToggle');
     const body = document.body;
     const savedTheme = localStorage.getItem('itreader-theme');
+    
     if (savedTheme === 'dark') {
-      body.classList.add('dark-mode');
-      toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
+        body.classList.add('dark-mode');
+        toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
     } else {
-      toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+        toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
     }
 
     toggle.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      const isDark = body.classList.contains('dark-mode');
-      if (isDark) {
-        toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
-        localStorage.setItem('itreader-theme', 'dark');
-      } else {
-        toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
-        localStorage.setItem('itreader-theme', 'light');
-      }
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        toggle.innerHTML = isDark ? 
+            '<i class="fa-regular fa-sun"></i> <span>Light</span>' : 
+            '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+        localStorage.setItem('itreader-theme', isDark ? 'dark' : 'light');
     });
 
-    // ===== FILTER FUNCTIONALITY =====
-    const categoryChips = document.querySelectorAll('.category-chip');
-    const regionFilter = document.getElementById('regionFilter');
-    const eventCards = document.querySelectorAll('.event-card');
-
-    function filterEvents() {
-      const activeCategory = document.querySelector('.category-chip.active')?.getAttribute('data-category') || 'all';
-      const selectedRegion = regionFilter.value;
-
-      eventCards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-        const cardRegion = card.getAttribute('data-region');
+    // ===== LOGJIKA E EVENTEVE =====
+    function displayEvents() {
+        const eventsGrid = document.getElementById('eventsGrid');
+        if (!eventsGrid) return;
         
-        // Category match (if active category is 'all', show all)
-        const categoryMatch = activeCategory === 'all' || cardCategory === activeCategory;
+        const activeCategory = document.querySelector('.category-chip.active')?.getAttribute('data-category') || 'all';
+        const selectedRegion = document.getElementById('regionFilter')?.value || 'all';
         
-        // Region match (if selected region is 'all', show all)
-        const regionMatch = selectedRegion === 'all' || cardRegion === selectedRegion;
+        // Merr të gjitha eventet
+        const { upcoming, past } = getAllEvents();
         
-        // Show card if both match
-        if (categoryMatch && regionMatch) {
-          card.style.display = 'block';
+        // Përcakto cilat evente të shfaqë
+        let eventsToShow = [];
+        if (activeCategory === 'past') {
+            eventsToShow = past;
+        } else if (activeCategory === 'all') {
+            eventsToShow = upcoming;
         } else {
-          card.style.display = 'none';
+            eventsToShow = upcoming.filter(e => e.category === activeCategory);
         }
-      });
+        
+        // Filtro sipas rajonit
+        if (selectedRegion !== 'all') {
+            eventsToShow = eventsToShow.filter(e => e.region === selectedRegion);
+        }
+        
+        // Shfaq eventet
+        if (eventsToShow.length === 0) {
+            eventsGrid.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-${activeCategory === 'past' ? 'history' : 'calendar-times'}"></i>
+                    <h3>${activeCategory === 'past' ? 'No past events yet' : 'No upcoming events'}</h3>
+                    <p>Check back later or try a different filter.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        eventsGrid.innerHTML = eventsToShow.map(event => 
+            createEventCard(event, activeCategory === 'past')
+        ).join('');
     }
 
-    // Category click handler
-    categoryChips.forEach(chip => {
-      chip.addEventListener('click', function() {
-        // Remove active class from all chips
-        categoryChips.forEach(c => c.classList.remove('active'));
-        // Add active class to clicked chip
-        this.classList.add('active');
-        // Apply filters
-        filterEvents();
-      });
+    // Filter listeners
+    const categoryChips = document.querySelectorAll('.category-chip');
+    const regionFilter = document.getElementById('regionFilter');
+
+    if (categoryChips.length > 0) {
+        categoryChips.forEach(chip => {
+            chip.addEventListener('click', function() {
+                categoryChips.forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                displayEvents();
+            });
+        });
+    }
+
+    if (regionFilter) {
+        regionFilter.addEventListener('change', displayEvents);
+    }
+
+    // Inicializo
+    displayEvents();
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) window.scrollTo({top: target.offsetTop-70, behavior:'smooth'});
+            document.querySelector('nav ul')?.classList.remove('active');
+        });
     });
-
-    // Region change handler
-    regionFilter.addEventListener('change', filterEvents);
-
-    // Initial filter (in case default active is 'all' and region 'all')
-    filterEvents();
