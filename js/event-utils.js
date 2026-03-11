@@ -11,15 +11,15 @@ function isEventPast(eventDate) {
 
 // Kthen të gjitha eventet e ndara sipas kategorive
 function getAllEvents() {
-    const manualPastEvent = allEvent.filter(e => e.isManualPast);
-    const upcomingEvent = [];
-    const autoPastEvent = [];
+    const manualPastEvents = allEvents.filter(e => e.isManualPast);
+    const upcomingEvents = [];
+    const autoPastEvents = [];
 
     allEvents.forEach(event => {
         if (event.isManualPast) return; // I kemi marrë tashmë
         
         if (isEventPast(event.date)) {
-            autoPastEvent.push({
+            autoPastEvents.push({
                 ...event,
                 category: 'past',
                 categoryLabel: 'Past ' + (event.categoryLabel || 'Event')
@@ -30,16 +30,16 @@ function getAllEvents() {
     });
 
     // Kombinoji të gjitha eventet e kaluara
-    const allPastEvent = [...manualPastEvent, ...autoPastEvent];
+    const allPastEvents = [...manualPastEvents, ...autoPastEvents];
 
     return {
-        upcoming: upcomingEvent,
+        upcoming: upcomingEvents,
         past: allPastEvents
     };
 }
 
 // Filtron eventet sipas kategorisë dhe rajonit
-function filterEvent(events, category, region) {
+function filterEvents(events, category, region) {
     return events.filter(event => {
         const categoryMatch = category === 'all' || event.category === category;
         const regionMatch = region === 'all' || event.region === region;
