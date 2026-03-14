@@ -16,32 +16,6 @@ const allEvents = [
         categoryLabel: 'Past Event',
         isManualPast: true
     },
-    {
-        id: 'myriad360-austin-past',
-        title: 'Myriad360 Innovation Summit Series - Austin',
-        date: '2026-03-05',
-        dateDisplay: 'March 5, 2026',
-        location: 'Downtown Austin, TX',
-        category: 'past',
-        region: 'texas',
-        image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
-        link: 'https://itreader.com/myriad360-innovation-summit',
-        categoryLabel: 'Past Summit',
-        isManualPast: true
-    },
-    {
-        id: 'cockroach-austin-past',
-        title: 'Cockroach Labs - Cheers & Clusters Austin',
-        date: '2026-03-10',
-        dateDisplay: 'March 10, 2026 • 5:00 – 8:00 PM',
-        location: 'Seven Grand, 405 East 7th Street Austin, TX',
-        category: 'past',
-        region: 'texas',
-        image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&h=400&fit=crop&auto=format',
-        link: 'https://itreader.com/cheers-clusters-austin',
-        categoryLabel: 'Past Evening Event',
-        isManualPast: true
-    },
 
     // UPCOMING EVENTS
     {
@@ -64,8 +38,8 @@ const allEvents = [
         location: 'Sepia, Chicago, IL',
         category: 'summit',
         region: 'illinois',
-        image: 'https://images.unsplash.com/photo-1494522358652-f30e61a60313?w=600&h=400&fit=crop&auto=format',
-        link: 'event/Chicago.html',
+        image: '',
+        link: 'events/Chicago.html',
         categoryLabel: 'Summit',
         inviteOnly: true
     },
@@ -165,6 +139,19 @@ const allEvents = [
         image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
         link: 'events/Austin.html',
         categoryLabel: 'Summit',
+        inviteOnly: true
+    }
+      {
+        id: 'Cockroach Connect MOSA • San Francisco',
+        title: 'Cockroach Connect: The Enterprise Reckoning ',
+        date: '2026-04-08',
+        dateDisplay: 'April 8, 2026',
+        location: 'california',
+        category: 'dinner',
+        region: 'california',
+        image: '',
+        link: 'events/Cockroach-San Francisco.html',
+        categoryLabel: 'Dinner',
         inviteOnly: true
     }
 ];
