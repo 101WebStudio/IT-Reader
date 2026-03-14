@@ -1,5 +1,4 @@
 // js/event-utils.js
-
 // Kontrollon nëse një event ka kaluar
 function isEventPast(eventDate) {
     const today = new Date();
@@ -8,6 +7,7 @@ function isEventPast(eventDate) {
     eventDateObj.setHours(0, 0, 0, 0);
     return eventDateObj < today;
 }
+
 
 // Kthen të gjitha eventet e ndara sipas kategorive
 function getAllEvents() {
