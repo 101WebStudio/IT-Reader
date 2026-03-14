@@ -128,7 +128,7 @@ const allEvents = [
         region: 'new-york',
         image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&h=400&fit=crop&auto=format',
         link: 'events/newyork.html',
-        categoryLabel: 'Data Summit'
+        categoryLabel: 'Past Event'
     },
     {
         id: 'cheers-austin',
@@ -140,7 +140,7 @@ const allEvents = [
         region: 'texas',
         image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
         link: 'events/Ch%26C-Austin.html',
-        categoryLabel: 'Evening Event'
+        categoryLabel: 'Past Event'
     },
     {
         id: 'myriad360-austin',
@@ -152,7 +152,7 @@ const allEvents = [
         region: 'texas',
         image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
         link: 'events/Austin.html',
-        categoryLabel: 'Summit',
+        categoryLabel: 'Past Event',
         inviteOnly: true
     }
 ];
