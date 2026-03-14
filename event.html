@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    /* Stilet do të jenë në css/event.css */
   </style>
 </head>
 <body>
@@ -23,11 +24,11 @@
       <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
       <nav>
         <ul>
-          <li><a href="index.html" >Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="index.html#who">Who we are</a></li>
           <li><a href="index.html#why">Why join</a></li>
           <li><a href="contact.html" class="btn btn-outline">Contact Us</a></li>
-          <li><a href="events.html" class="btn btn-accent" target="_blank">Events</a></li>
+          <li><a href="events.html" class="btn btn-accent">Events</a></li>
           <li><button class="theme-toggle" id="themeToggle"><i class="fa-regular fa-moon"></i> <span>Dark</span></button></li>
         </ul>
       </nav>
@@ -41,7 +42,7 @@
     </div>
   </section>
 
-  <!-- Filter section (fully functional) -->
+  <!-- Filter section -->
   <section style="padding-top: 0;">
     <div class="container">
       <div class="filter-bar">
@@ -72,210 +73,211 @@
         </div>
       </div>
 
-    <!-- Events grid - with CORRECT dates and times -->
-     <div class="events-grid" id="eventsGrid">
-    <!-- Keepit Live Manchester - Category: Live, Region: UK -->
-    <a href="events/Manchester.html" class="event-card" target="_blank" data-category="live" data-region="uk">
-        <div class="event-image">
+      <!-- Events grid -->
+      <div class="events-grid" id="eventsGrid">
+        <!-- Keepit Live Manchester - Category: Live, Region: UK -->
+        <a href="events/Manchester.html" class="event-card" target="_blank" data-category="live" data-region="uk">
+          <div class="event-image">
             <img src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=600&h=400&fit=crop&auto=format" alt="Manchester">
             <span class="event-category">Live Event</span>
-        </div>
-        <div class="event-content">
+          </div>
+          <div class="event-content">
             <h3 class="event-title">Keepit Live Manchester</h3>
             <div class="event-meta">
-                <div class="meta-item"><i class="fas fa-calendar-alt"></i> April 29, 2026 • 16:00 – 20:00</div>
-                <div class="meta-item"><i class="fas fa-map-pin"></i> 20 Stories, Manchester, UK</div>
+              <div class="meta-item"><i class="fas fa-calendar-alt"></i> April 29, 2026 • 16:00 – 20:00</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> 20 Stories, Manchester, UK</div>
             </div>
             <div class="event-footer">
-                <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
             </div>
-        </div>
-    </a>
+          </div>
+        </a>
 
-    <!-- Myriad360 Innovation Summit Chicago - Category: Summit, Region: Illinois -->
-    <a href="events/Chicago.html" class="event-card" target="_blank" data-category="summit" data-region="illinois">
-        <div class="event-image">
+        <!-- Myriad360 Innovation Summit Chicago - Category: Summit, Region: Illinois -->
+        <a href="events/Chicago.html" class="event-card" target="_blank" data-category="summit" data-region="illinois">
+          <div class="event-image">
             <img src="https://images.unsplash.com/photo-1494522358652-f30e61a60313?w=600&h=400&fit=crop&auto=format" alt="Chicago">
             <span class="event-category">Summit</span>
-        </div>
-        <div class="event-content">
+          </div>
+          <div class="event-content">
             <h3 class="event-title">Myriad360 Innovation Summit Series - Chicago, IL</h3>
             <div class="event-meta">
-                <div class="meta-item"><i class="fas fa-calendar-alt"></i> April 7, 2026</div>
-                <div class="meta-item"><i class="fas fa-map-pin"></i> Sepia, Chicago, IL</div>
-                <div class="meta-item"><i class="fas fa-user-lock"></i> Invitation-only</div>
+              <div class="meta-item"><i class="fas fa-calendar-alt"></i> April 7, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Sepia, Chicago, IL</div>
+              <div class="meta-item"><i class="fas fa-user-lock"></i> Invitation-only</div>
             </div>
             <div class="event-footer">
-                <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
             </div>
-        </div>
-    </a>
+          </div>
+        </a>
 
-    <!-- Cockroach Connect San Francisco - Category: Dinner, Region: California -->
-    <a href="events/Cockroach-San Francisco.html" class="event-card" target="_blank" data-category="dinner" data-region="california">
-        <div class="event-image">
+        <!-- Cockroach Connect San Francisco - Category: Dinner, Region: California -->
+        <a href="events/Cockroach-San%20Francisco.html" class="event-card" target="_blank" data-category="dinner" data-region="california">
+          <div class="event-image">
             <img src="https://mma.prnewswire.com/media/1663429/CockroachLabs_Full_Logo_Horizontal_Full_Color_Light_BG__1_Logo.jpg?w=600&h=400&fit=crop" alt="San Francisco">
             <span class="event-category">Dinner</span>
-        </div>
-        <div class="event-content">
+          </div>
+          <div class="event-content">
             <h3 class="event-title">Cockroach Connect: The Enterprise Reckoning</h3>
             <div class="event-meta">
-                <div class="meta-item"><i class="fas fa-calendar-alt"></i> April 8, 2026 • 17:00 – 19:30</div>
-                <div class="meta-item"><i class="fas fa-map-pin"></i> MOSA, San Francisco, CA</div>
-                <div class="meta-item"><i class="fas fa-user-lock"></i> Invite-only</div>
+              <div class="meta-item"><i class="fas fa-calendar-alt"></i> April 8, 2026 • 17:00 – 19:30</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> MOSA, San Francisco, CA</div>
+              <div class="meta-item"><i class="fas fa-user-lock"></i> Invite-only</div>
             </div>
             <div class="event-footer">
-                <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
             </div>
-        </div>
-    </a>
+          </div>
+        </a>
 
-    <!-- Native Security RSAC Breakfast - Category: Breakfast, Region: California -->
-    <a href="events/Native × Artemis RSAC Breakfast.html" class="event-card" target="_blank" data-category="breakfast" data-region="california">
-        <div class="event-image">
+        <!-- Native Security RSAC Breakfast - Category: Breakfast, Region: California -->
+        <a href="events/Native%20%C3%97%20Artemis%20RSAC%20Breakfast.html" class="event-card" target="_blank" data-category="breakfast" data-region="california">
+          <div class="event-image">
             <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop&auto=format" alt="San Francisco">
             <span class="event-category">Breakfast</span>
-        </div>
-        <div class="event-content">
+          </div>
+          <div class="event-content">
             <h3 class="event-title">Join Native and Artemis for Breakfast at RSAC</h3>
             <div class="event-meta">
-                <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 25, 2026 • 8:30 – 10:30 AM</div>
-                <div class="meta-item"><i class="fas fa-map-pin"></i> Pied Piper Room, Palace Hotel, San Francisco</div>
-                <div class="meta-item"><i class="fas fa-user-lock"></i> Invite-only</div>
+              <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 25, 2026 • 8:30 – 10:30 AM</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Pied Piper Room, Palace Hotel, San Francisco</div>
+              <div class="meta-item"><i class="fas fa-user-lock"></i> Invite-only</div>
             </div>
             <div class="event-footer">
-                <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
             </div>
-        </div>
-    </a>
+          </div>
+        </a>
 
-    <!-- Zendesk CX Trends Boston - Category: CX Trends, Region: Massachusetts -->
-    <a href="events/Boston.html" class="event-card" target="_blank" data-category="cx-trends" data-region="massachusetts">
-        <div class="event-image">
+        <!-- Zendesk CX Trends Boston - Category: CX Trends, Region: Massachusetts -->
+        <a href="events/Boston.html" class="event-card" target="_blank" data-category="cx-trends" data-region="massachusetts">
+          <div class="event-image">
             <img src="https://images.unsplash.com/photo-1487024884796-5bce7e9c61d2?w=600&h=400&fit=crop&auto=format" alt="Boston">
             <span class="event-category">CX Trends</span>
-        </div>
-        <div class="event-content">
+          </div>
+          <div class="event-content">
             <h3 class="event-title">Zendesk CX Trends 2026 – Boston</h3>
             <div class="event-meta">
-                <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 24, 2026 • 11:30am – 4:00pm</div>
-                <div class="meta-item"><i class="fas fa-map-pin"></i> View Boston, Prudential Tower, Boston</div>
+              <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 24, 2026 • 11:30am – 4:00pm</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> View Boston, Prudential Tower, Boston</div>
             </div>
             <div class="event-footer">
-                <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
             </div>
-        </div>
-    </a>
+          </div>
+        </a>
 
-    <!-- Zendesk CX Trends Los Angeles - Category: CX Trends, Region: California -->
-    <a href="events/La.html" class="event-card" target="_blank" data-category="cx-trends" data-region="california">
-        <div class="event-image">
+        <!-- Zendesk CX Trends Los Angeles - Category: CX Trends, Region: California -->
+        <a href="events/La.html" class="event-card" target="_blank" data-category="cx-trends" data-region="california">
+          <div class="event-image">
             <img src="https://images.unsplash.com/photo-1580655653885-65763b2597d0?w=600&h=400&fit=crop&auto=format" alt="Los Angeles">
             <span class="event-category">CX Trends</span>
-        </div>
-        <div class="event-content">
+          </div>
+          <div class="event-content">
             <h3 class="event-title">Zendesk CX Trends 2026 – Los Angeles</h3>
             <div class="event-meta">
-                <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 19, 2026 • 11:30am – 4:00pm</div>
-                <div class="meta-item"><i class="fas fa-map-pin"></i> 1 Hotel West Hollywood, Los Angeles</div>
+              <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 19, 2026 • 11:30am – 4:00pm</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> 1 Hotel West Hollywood, Los Angeles</div>
             </div>
             <div class="event-footer">
-                <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
             </div>
-        </div>
-    </a>
+          </div>
+        </a>
 
-    <!-- Zendesk CX Trends Atlanta - Category: CX Trends, Region: Georgia -->
-    <a href="events/atlanta.html" class="event-card" target="_blank" data-category="cx-trends" data-region="georgia">
-        <div class="event-image">
+        <!-- Zendesk CX Trends Atlanta - Category: CX Trends, Region: Georgia -->
+        <a href="events/atlanta.html" class="event-card" target="_blank" data-category="cx-trends" data-region="georgia">
+          <div class="event-image">
             <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?w=600&h=400&fit=crop&auto=format" alt="Atlanta">
             <span class="event-category">CX Trends</span>
-        </div>
-        <div class="event-content">
+          </div>
+          <div class="event-content">
             <h3 class="event-title">Zendesk CX Trends 2026 – Atlanta</h3>
             <div class="event-meta">
-                <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 18, 2026 • 11:30am – 4:00pm</div>
-                <div class="meta-item"><i class="fas fa-map-pin"></i> Atlanta Botanical Garden, Atlanta</div>
+              <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 18, 2026 • 11:30am – 4:00pm</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Atlanta Botanical Garden, Atlanta</div>
             </div>
             <div class="event-footer">
-                <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
             </div>
-        </div>
-    </a>
+          </div>
+        </a>
 
-    <!-- Zendesk CX Trends Palo Alto - Category: CX Trends, Region: California -->
-    <a href="events/paloalto.html" class="event-card" target="_blank" data-category="cx-trends" data-region="california">
-        <div class="event-image">
+        <!-- Zendesk CX Trends Palo Alto - Category: CX Trends, Region: California -->
+        <a href="events/paloalto.html" class="event-card" target="_blank" data-category="cx-trends" data-region="california">
+          <div class="event-image">
             <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop&auto=format" alt="Palo Alto">
             <span class="event-category">CX Trends</span>
-        </div>
-        <div class="event-content">
+          </div>
+          <div class="event-content">
             <h3 class="event-title">Zendesk CX Trends 2026 – Palo Alto</h3>
             <div class="event-meta">
-                <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 17, 2026 • 11:30am – 4:00pm</div>
-                <div class="meta-item"><i class="fas fa-map-pin"></i> el Prado Hotel, Palo Alto, CA</div>
+              <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 17, 2026 • 11:30am – 4:00pm</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> el Prado Hotel, Palo Alto, CA</div>
             </div>
             <div class="event-footer">
-                <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
             </div>
-        </div>
-    </a>
+          </div>
+        </a>
 
-    <!-- OpenText - Know Thy Data - Category: Data, Region: New York -->
-    <a href="events/newyork.html" class="event-card" target="_blank" data-category="data" data-region="new-york">
-        <div class="event-image">
+        <!-- OpenText - Know Thy Data - Category: Data, Region: New York -->
+        <a href="events/newyork.html" class="event-card" target="_blank" data-category="data" data-region="new-york">
+          <div class="event-image">
             <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&h=400&fit=crop&auto=format" alt="New York">
             <span class="event-category">Data Summit</span>
-        </div>
-        <div class="event-content">
+          </div>
+          <div class="event-content">
             <h3 class="event-title">Know Thy Data: Data Security Posture Management (DSPM) in the Age of AI</h3>
             <div class="event-meta">
-                <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 11, 2026 • 11:30am – 3:00pm</div>
-                <div class="meta-item"><i class="fas fa-map-pin"></i> The Fifth Avenue Hotel, New York City</div>
+              <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 11, 2026 • 11:30am – 3:00pm</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> The Fifth Avenue Hotel, New York City</div>
             </div>
             <div class="event-footer">
-                <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
             </div>
-        </div>
-    </a>
+          </div>
+        </a>
 
-    <!-- Cheers & Clusters Austin - Category: Evening, Region: Texas -->
-    <a href="events/Ch&C-Austin.html" class="event-card" target="_blank" data-category="evening" data-region="texas">
-        <div class="event-image">
+        <!-- Cheers & Clusters Austin - Category: Evening, Region: Texas -->
+        <a href="events/Ch%26C-Austin.html" class="event-card" target="_blank" data-category="evening" data-region="texas">
+          <div class="event-image">
             <img src="https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format" alt="Austin">
             <span class="event-category">Evening Event</span>
-        </div>
-        <div class="event-content">
+          </div>
+          <div class="event-content">
             <h3 class="event-title">Cheers & Clusters Austin: Survivability & Single Malts</h3>
             <div class="event-meta">
-                <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 10, 2026 • 5:00 – 8:00 PM</div>
-                <div class="meta-item"><i class="fas fa-map-pin"></i> Seven Grand, Austin, TX</div>
+              <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 10, 2026 • 5:00 – 8:00 PM</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Seven Grand, Austin, TX</div>
             </div>
             <div class="event-footer">
-                <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
             </div>
-        </div>
-    </a>
+          </div>
+        </a>
 
-    <!-- Myriad360 Innovation Summit Austin - Category: Summit, Region: Texas -->
-    <a href="events/Austin.html" class="event-card" target="_blank" data-category="summit" data-region="texas">
-        <div class="event-image">
+        <!-- Myriad360 Innovation Summit Austin - Category: Summit, Region: Texas -->
+        <a href="events/Austin.html" class="event-card" target="_blank" data-category="summit" data-region="texas">
+          <div class="event-image">
             <img src="https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format" alt="Austin">
             <span class="event-category">Summit</span>
-        </div>
-        <div class="event-content">
+          </div>
+          <div class="event-content">
             <h3 class="event-title">2026 Myriad360 Innovation Summit Series – Austin, TX</h3>
             <div class="event-meta">
-                <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 5, 2026</div>
-                <div class="meta-item"><i class="fas fa-map-pin"></i> Downtown Austin, TX</div>
-                <div class="meta-item"><i class="fas fa-user-lock"></i> Invitation-only</div>
+              <div class="meta-item"><i class="fas fa-calendar-alt"></i> March 5, 2026</div>
+              <div class="meta-item"><i class="fas fa-map-pin"></i> Downtown Austin, TX</div>
+              <div class="meta-item"><i class="fas fa-user-lock"></i> Invitation-only</div>
             </div>
             <div class="event-footer">
-                <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
+              <span class="event-link">View event <i class="fas fa-arrow-right"></i></span>
             </div>
-        </div>
-    </a>
-</div>
+          </div>
+        </a>
+      </div>
+
       <!-- Contact us and MyOutreach link -->
       <div style="text-align: center; margin-top: 50px;">
         <a href="contact.html" class="btn btn-accent" style="padding: 12px 40px;">Contact us</a>
@@ -285,6 +287,7 @@
       </div>
     </div>
   </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -327,15 +330,9 @@
       <p style="text-align:center; margin-top:25px;">© 2025 ITreader. All rights reserved.</p>
     </div>
   </footer>
-   <script src="js/event-data.js"></script>
-   <script src="js/event-utils.js"></script>
-   <script src="js/event.js"></script>
+
+  <script src="js/event-data.js"></script>
+  <script src="js/event-utils.js"></script>
+  <script src="js/event.js"></script>
 </body>
-
 </html>
-
-
-
-
-
-
