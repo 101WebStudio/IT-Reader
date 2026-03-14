@@ -1,6 +1,7 @@
 // js/event-data.js
 // Të gjitha eventet e ITreader - PAST dhe UPCOMING
 
+
 const allEvents = [
     // ========== PAST EVENTS (Manual) ==========
     {
