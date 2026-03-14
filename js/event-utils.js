@@ -11,6 +11,12 @@ function isEventPast(eventDate) {
 
 // Kthen të gjitha eventet e ndara sipas kategorive
 function getAllEvents() {
+    // Kontrollo nëse allEvents ekziston (vjen nga event-data.js)
+    if (typeof allEvents === 'undefined') {
+        console.error('allEvents nuk është i përcaktuar. Sigurohu që event-data.js është ngarkuar para event-utils.js');
+        return { upcoming: [], past: [] };
+    }
+    
     const manualPastEvents = allEvents.filter(e => e.isManualPast);
     const upcomingEvents = [];
     const autoPastEvents = [];
