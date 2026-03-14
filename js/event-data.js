@@ -38,9 +38,22 @@ const allEvents = [
         location: 'Sepia, Chicago, IL',
         category: 'summit',
         region: 'illinois',
-        image: '',
+        image: 'https://images.unsplash.com/photo-1494522358652-f30e61a60313?w=600&h=400&fit=crop&auto=format',
         link: 'events/Chicago.html',
         categoryLabel: 'Summit',
+        inviteOnly: true
+    },
+    {
+        id: 'cockroach-sanfrancisco',
+        title: 'Cockroach Connect: The Enterprise Reckoning',
+        date: '2026-04-08',
+        dateDisplay: 'April 8, 2026 • 17:00 – 19:30',
+        location: 'MOSA, San Francisco, CA',
+        category: 'dinner',
+        region: 'california',
+        image: 'https://mma.prnewswire.com/media/1663429/CockroachLabs_Full_Logo_Horizontal_Full_Color_Light_BG__1_Logo.jpg?w=600&h=400&fit=crop',
+        link: 'events/Cockroach-San Francisco.html',
+        categoryLabel: 'Dinner',
         inviteOnly: true
     },
     {
@@ -139,19 +152,6 @@ const allEvents = [
         image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
         link: 'events/Austin.html',
         categoryLabel: 'Summit',
-        inviteOnly: true
-    }
-      {
-        id: 'Cockroach Connect MOSA • San Francisco',
-        title: 'Cockroach Connect: The Enterprise Reckoning ',
-        date: '2026-04-08',
-        dateDisplay: 'April 8, 2026',
-        location: 'california',
-        category: 'dinner',
-        region: 'california',
-        image: '',
-        link: 'events/Cockroach-San Francisco.html',
-        categoryLabel: 'Dinner',
         inviteOnly: true
     }
 ];
