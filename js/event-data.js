@@ -66,7 +66,7 @@ const allEvents = [
         location: 'NH Collection Helsinki Grand Hansa',
         category: 'live',
         region: 'europe',
-        image: 'https://images.unsplash.com/photo-1559348089-759a6a1f8d5e?w=600&h=400&fit=crop&auto=format',
+        image: 'images/helsinki.png',
         link: 'events/Helsinki.html',
         categoryLabel: 'Live Event'
     },
@@ -78,7 +78,7 @@ const allEvents = [
         location: '20 Stories, Manchester, UK',
         category: 'live',
         region: 'uk',
-        image: 'https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=600&h=400&fit=crop&auto=format',
+        image: 'images/Manchester.png',
         link: 'events/Manchester.html',
         categoryLabel: 'Live Event'
     },
@@ -90,7 +90,7 @@ const allEvents = [
         location: 'Sepia, Chicago, IL',
         category: 'summit',
         region: 'illinois',
-        image: 'https://images.unsplash.com/photo-1494522358652-f30e61a60313?w=600&h=400&fit=crop&auto=format',
+        image: 'images/chigago.png',
         link: 'events/Chicago.html',
         categoryLabel: 'Summit',
         inviteOnly: true
@@ -103,7 +103,7 @@ const allEvents = [
         location: 'MOSA, San Francisco, CA',
         category: 'dinner',
         region: 'california',
-        image: 'https://mma.prnewswire.com/media/1663429/CockroachLabs_Full_Logo_Horizontal_Full_Color_Light_BG__1_Logo.jpg?w=600&h=400&fit=crop',
+        image: 'images/Palace Hotel, San Francisco.png',
         link: 'events/Cockroach-San%20Francisco.html',
         categoryLabel: 'Dinner',
         inviteOnly: true
@@ -129,7 +129,7 @@ const allEvents = [
         location: 'View Boston, Prudential Tower, Boston',
         category: 'cx-trends',
         region: 'massachusetts',
-        image: 'https://images.unsplash.com/photo-1487024884796-5bce7e9c61d2?w=600&h=400&fit=crop&auto=format',
+        image: 'images/boston.png',
         link: 'events/Boston.html',
         categoryLabel: 'CX Trends'
     },
@@ -141,7 +141,7 @@ const allEvents = [
         location: '1 Hotel West Hollywood, Los Angeles',
         category: 'cx-trends',
         region: 'california',
-        image: 'https://images.unsplash.com/photo-1580655653885-65763b2597d0?w=600&h=400&fit=crop&auto=format',
+        image: 'images/Los Angeles.png',
         link: 'events/La.html',
         categoryLabel: 'CX Trends'
     },
@@ -153,7 +153,7 @@ const allEvents = [
         location: 'Atlanta Botanical Garden, Atlanta',
         category: 'cx-trends',
         region: 'georgia',
-        image: 'https://images.unsplash.com/photo-1575505586569-646b2ca898fc?w=600&h=400&fit=crop&auto=format',
+        image: 'images/atlanta.png',
         link: 'events/atlanta.html',
         categoryLabel: 'CX Trends'
     },
