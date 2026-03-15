@@ -1,7 +1,6 @@
 // js/event-data.js
 // Të gjitha eventet e ITreader - PAST dhe UPCOMING
 
-
 const allEvents = [
     // ========== PAST EVENTS (Manual) ==========
     {
@@ -17,6 +16,46 @@ const allEvents = [
         categoryLabel: 'Past Event',
         isManualPast: true
     },
+    {
+        id: 'opentext-nyc',
+        title: 'Know Thy Data: Data Security Posture Management (DSPM) in the Age of AI',
+        date: '2026-03-11',
+        dateDisplay: 'March 11, 2026 • 11:30am – 3:00pm',
+        location: 'The Fifth Avenue Hotel, New York City',
+        category: 'past',
+        region: 'new-york',
+        image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&h=400&fit=crop&auto=format',
+        link: 'events/newyork.html',
+        categoryLabel: 'Past Event',
+        isManualPast: true
+    },
+    {
+        id: 'cheers-austin',
+        title: 'Cheers & Clusters Austin: Survivability & Single Malts',
+        date: '2026-03-10',
+        dateDisplay: 'March 10, 2026 • 5:00 – 8:00 PM',
+        location: 'Seven Grand, Austin, TX',
+        category: 'past',
+        region: 'texas',
+        image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
+        link: 'events/Ch%26C-Austin.html',
+        categoryLabel: 'Past Event',
+        isManualPast: true
+    },
+    {
+        id: 'myriad360-austin',
+        title: '2026 Myriad360 Innovation Summit Series – Austin, TX',
+        date: '2026-03-05',
+        dateDisplay: 'March 5, 2026',
+        location: 'Downtown Austin, TX',
+        category: 'past',
+        region: 'texas',
+        image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
+        link: 'events/Austin.html',
+        categoryLabel: 'Past Event',
+        inviteOnly: true,
+        isManualPast: true
+    },
 
     // ========== UPCOMING EVENTS ==========
     {
@@ -27,7 +66,7 @@ const allEvents = [
         location: 'NH Collection Helsinki Grand Hansa',
         category: 'live',
         region: 'europe',
-        image: '',
+        image: 'https://images.unsplash.com/photo-1559348089-759a6a1f8d5e?w=600&h=400&fit=crop&auto=format',
         link: 'events/Helsinki.html',
         categoryLabel: 'Live Event'
     },
@@ -129,42 +168,5 @@ const allEvents = [
         image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop&auto=format',
         link: 'events/paloalto.html',
         categoryLabel: 'CX Trends'
-    },
-    {
-        id: 'opentext-nyc',
-        title: 'Know Thy Data: Data Security Posture Management (DSPM) in the Age of AI',
-        date: '2026-03-11',
-        dateDisplay: 'March 11, 2026 • 11:30am – 3:00pm',
-        location: 'The Fifth Avenue Hotel, New York City',
-        category: 'data',
-        region: 'new-york',
-        image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&h=400&fit=crop&auto=format',
-        link: 'events/newyork.html',
-        categoryLabel: 'Past Event'
-    },
-    {
-        id: 'cheers-austin',
-        title: 'Cheers & Clusters Austin: Survivability & Single Malts',
-        date: '2026-03-10',
-        dateDisplay: 'March 10, 2026 • 5:00 – 8:00 PM',
-        location: 'Seven Grand, Austin, TX',
-        category: 'evening',
-        region: 'texas',
-        image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
-        link: 'events/Ch%26C-Austin.html',
-        categoryLabel: 'Past Event'
-    },
-    {
-        id: 'myriad360-austin',
-        title: '2026 Myriad360 Innovation Summit Series – Austin, TX',
-        date: '2026-03-05',
-        dateDisplay: 'March 5, 2026',
-        location: 'Downtown Austin, TX',
-        category: 'summit',
-        region: 'texas',
-        image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
-        link: 'events/Austin.html',
-        categoryLabel: 'Past Event',
-        inviteOnly: true
     }
 ];
