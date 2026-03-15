@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>ITreader — Keepit Live Nordic Roadshow Helsinki</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/it reader logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== GLOBAL STYLES (ITreader design system) ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary-color: #0A2463; --primary-dark: #071845; --secondary-color: #3E92CC;
+      --secondary-light: #5CA8E0; --accent-color: #0018ff; --accent-light: #4d62ff;
+      --light-color: #F8F9FA; --light-gray: #F0F2F5; --dark-color: #212529;
+      --gray-color: #6C757D; --transition: all 0.3s ease; --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --border-radius: 12px; --section-spacing: 70px; --bg: #ffffff; --surface: #ffffff;
+      --text-primary: #1A1F36; --text-secondary: #4E5B6E; --border-light: #EFF2F7;
+      --card-bg: #ffffff; --fs-base: 0.95rem; --fs-h1: 2.4rem; --fs-h2: 2rem; --fs-h3: 1.5rem; --fs-h4: 1.2rem;
+    }
+    body.dark-mode {
+      --primary-color: #3a80d2; --primary-dark: #1a4b8c; --secondary-color: #4f9fdb;
+      --secondary-light: #7bb8e8; --accent-color: #4d62ff; --accent-light: #7b8aff;
+      --light-color: #1a1a1a; --light-gray: #232323; --dark-color: #f0f0f0; --gray-color: #aaaaaa;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.9); --bg: #121212; --surface: #1e1e1e;
+      --text-primary: #ffffff; --text-secondary: #cccccc; --border-light: #333333; --card-bg: #1e1e1e;
+      background-color: #121212 !important;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif; line-height: 1.5; color: var(--dark-color);
+      background-color: var(--bg); transition: background-color 0.2s, color 0.2s; overflow-x: hidden;
+      font-size: var(--fs-base);
+    }
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; line-height: 1.2; margin-bottom: 0.8rem; }
+    h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); } h4 { font-size: var(--fs-h4); }
+    .container { width: 100%; max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+    section { padding: var(--section-spacing) 0; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      background-color: var(--accent-color); color: white; padding: 10px 24px;
+      border-radius: 40px; font-weight: 600; text-decoration: none; transition: var(--transition);
+      border: none; cursor: pointer; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0, 24, 255, 0.2);
+    }
+    .btn:hover { background-color: var(--accent-light); transform: translateY(-2px); }
+    .btn-accent { background-color: var(--accent-color); }
+    .btn-accent:hover { background-color: var(--accent-light); }
+    .btn-outline { background-color: transparent; border: 2px solid var(--accent-color); color: var(--accent-color); box-shadow: none; }
+    .btn-outline:hover { background-color: var(--accent-color); color: white; }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    header {
+      background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); position: fixed; width: 100%; top: 0; z-index: 1000;
+      transition: var(--transition);
+    }
+    body.dark-mode header { background-color: rgba(18, 18, 18, 0.95) !important; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+    .logo { display: flex; align-items: center; text-decoration: none; transition: transform 0.2s; }
+    .logo:hover { transform: scale(1.02); }
+    .logo-img { height: 44px; width: auto; margin-right: 10px; border-radius: 8px; }
+    .logo-text { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary-color); line-height: 1.1; }
+    .logo-text span { color: var(--accent-color); display: block; font-weight: 600; font-size: 0.8rem; margin-top: 2px; }
+    nav ul { display: flex; list-style: none; align-items: center; gap: 28px; }
+    nav ul li a:not(.btn) { text-decoration: none; color: var(--dark-color); font-weight: 600; font-size: 0.95rem; padding: 6px 0; position: relative; transition: color 0.2s; }
+    nav ul li a:not(.btn)::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(to right, var(--accent-color), var(--secondary-color)); transition: width 0.25s ease; }
+    nav ul li a:not(.btn):hover { color: var(--accent-color); }
+    nav ul li a:not(.btn):hover::after { width: 100%; }
+    nav ul li .btn { padding: 8px 18px; font-size: 0.9rem; margin-left: 4px; }
+    nav ul li .btn-outline { border-width: 2px; }
+    body.dark-mode nav ul li a:not(.btn) { color: #f0f0f0; }
+    .theme-toggle {
+      background: none; border: 1.5px solid var(--accent-color); border-radius: 40px; padding: 6px 16px;
+      color: var(--accent-color); cursor: pointer; display: flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; font-weight: 600; transition: all 0.2s; margin-left: 6px;
+    }
+    .theme-toggle:hover { background-color: var(--accent-color); color: white; border-color: var(--accent-color); }
+    .mobile-menu-btn { display: none; font-size: 1.6rem; background: none; border: none; color: var(--primary-color); cursor: pointer; }
+
+    /* ===== EVENT HERO ===== */
+    .event-hero {
+      background: linear-gradient(135deg, #0A2463, #2A1A6B);
+      color: white;
+      text-align: center;
+      padding: 140px 0 60px;
+      margin-top: 70px;
+    }
+    body.dark-mode .event-hero { background: linear-gradient(135deg, #0f0f0f, #1f1f1f); }
+    .event-hero h1 { font-size: 2.8rem; max-width: 900px; margin: 0 auto 15px; }
+    .event-hero .event-date-location {
+      font-size: 1.1rem; opacity: 0.9; margin-bottom: 25px;
+      display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
+    }
+    .event-hero .event-date-location i { color: var(--accent-light); margin-right: 5px; }
+
+    /* ===== BANNER & COUNTDOWN ===== */
+    .banner-section {
+      padding: 0 0 30px;
+    }
+    .event-banner {
+      width: 100%;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      margin-bottom: 30px;
+    }
+    .event-banner img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+    .countdown-card {
+      width: 100%;
+      padding: 20px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--border-radius);
+      background: var(--light-gray);
+    }
+    .countdown-label {
+      font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--gray-color); margin-bottom: 15px; font-weight: 600;
+    }
+    .countdown-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
+    }
+    .countdown-box {
+      background: var(--card-bg); border: 1px solid var(--border-light); border-radius: var(--border-radius);
+      padding: 15px 5px; text-align: center;
+    }
+    .countdown-num {
+      font-size: 2rem; font-weight: 800; color: var(--accent-color); line-height: 1.1;
+    }
+    .countdown-unit {
+      font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;
+    }
+    .countdown-done {
+      display: none; margin-top: 15px; padding: 10px;
+      background: var(--accent-light); color: white; border-radius: var(--border-radius);
+      text-align: center; font-weight: 600;
+    }
+    @media (max-width: 520px) {
+      .countdown-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ===== EVENT DETAILS GRID ===== */
+    .event-details-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 920px) {
+      .event-details-grid { grid-template-columns: 1fr; }
+    }
+    .info-card {
+      background: var(--card-bg); border-radius: var(--border-radius); padding: 35px;
+      box-shadow: var(--shadow); border: 1px solid var(--border-light);
+    }
+    .info-card .hero-img {
+      width: 100%;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      margin-bottom: 25px;
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--card-bg);
+      padding: 20px;
+    }
+    .info-card .hero-img img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      max-height: 100px;
+      width: auto;
+      object-fit: contain;
+    }
+    .info-card p { color: var(--text-secondary); margin-bottom: 15px; line-height: 1.6; }
+    .info-card .muted { color: var(--gray-color); }
+    .agenda-block { margin-top: 20px; }
+    .agenda-title { font-weight: 700; color: var(--dark-color); margin-bottom: 10px; font-size: 1.1rem; }
+    .agenda-item { margin-bottom: 12px; }
+    .agenda-item strong { color: var(--dark-color); }
+    .disclaimer {
+      margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border-light);
+      color: var(--text-secondary); font-size: 0.9rem;
+    }
+
+    /* ===== REGISTRATION FORM ===== */
+    .registration-card {
+      background: var(--card-bg); border-radius: var(--border-radius); padding: 30px;
+      box-shadow: var(--shadow); border: 1px solid var(--border-light);
+      position: sticky; top: 90px;
+    }
+    @media (max-width: 920px) {
+      .registration-card { position: relative; top: auto; }
+    }
+    .registration-card h2 { color: var(--primary-color); margin-bottom: 5px; font-size: 1.8rem; }
+    .registration-card .sub {
+      color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark-color); font-size: 0.95rem; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 12px 16px; border: 2px solid var(--border-light); border-radius: var(--border-radius);
+      font-family: inherit; font-size: 1rem; background: var(--light-color); color: var(--dark-color);
+      transition: var(--transition);
+    }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); }
+    .form-group textarea { min-height: 80px; resize: vertical; }
+    .form-group .hint { font-size: 0.8rem; color: var(--gray-color); margin-top: 5px; }
+    .checkbox-group {
+      display: flex; align-items: flex-start; gap: 12px; margin: 15px 0;
+      padding: 12px; background: var(--light-gray); border: 1px solid var(--border-light); border-radius: var(--border-radius);
+    }
+    .checkbox-group input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--accent-color); }
+    .checkbox-group label { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+    .checkbox-group a { color: var(--accent-color); text-decoration: none; }
+    .checkbox-group a:hover { text-decoration: underline; }
+    .submit-btn {
+      width: 100%; padding: 14px; background: var(--accent-color); color: white; border: none;
+      border-radius: 40px; font-weight: 600; font-size: 1.1rem; cursor: pointer;
+      transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .submit-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .status-message {
+      margin-top: 15px; padding: 12px; border-radius: var(--border-radius);
+      border: 1px solid transparent; display: none; font-size: 0.95rem;
+    }
+    .status-success { display: block; background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
+    .status-error { display: block; background: #fef2f2; color: #991b1b; border-color: #fecaca; }
+    body.dark-mode .status-success { background: #1e3a2a; color: #9bffb5; border-color: #2e6b3e; }
+    body.dark-mode .status-error { background: #3e2023; color: #ffb3b3; border-color: #a13e3e; }
+    .form-footer { text-align: center; font-size: 0.8rem; color: var(--gray-color); margin-top: 15px; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary-dark); color: white; padding: 45px 0 20px;
+    }
+    body.dark-mode .footer { background: #0a0a0a; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 25px; margin-bottom: 30px; }
+    .footer a { color: #bbb; text-decoration: none; font-size: 0.9rem; }
+    .footer a:hover { color: var(--accent-light); }
+    .footer-social { display: flex; gap: 15px; margin-top: 15px; }
+    .footer-social a {
+      display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+      background: rgba(255,255,255,0.1); border-radius: 50%; color: white; font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--accent-color); transform: translateY(-3px); }
+    .myoutreach-credit {
+      background: rgba(255,255,255,0.05); padding: 18px; border-radius: 60px; text-align: center; margin-top: 25px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      nav ul {
+        position: fixed; top: 70px; left: -100%; width: 100%; flex-direction: column;
+        background: var(--card-bg); padding: 30px 20px; transition: left 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15); gap: 20px; border-radius: 0 0 20px 20px;
+        align-items: center;
+      }
+      nav ul.active { left: 0; }
+      nav ul li a:not(.btn)::after { display: none; }
+      .theme-toggle { margin-left: 0; }
+      .event-hero { padding: 120px 0 40px; }
+      .event-hero h1 { font-size: 2rem; }
+      .event-banner img { height: 220px; }
+    }
+    @media (max-width: 480px) {
+      .logo-text { font-size: 1.2rem; }
+      .logo-img { height: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="/index.html" class="logo">
+        <img src="/images/it reader logo.png" alt="ITreader logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text">ITreader<span>events</span></div>
+      </a>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/index.html#who">Who we are</a></li>
+          <li><a href="/contact.html">Contact Us</a></li>
+          <li><a href="/events.html" class="btn btn-accent">Events</a></li>
+          <li><button class="theme-toggle" id="themeToggle"><i class="fa-regular fa-moon"></i> <span>Dark</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="event-hero">
+    <div class="container">
+      <h1>Keepit Live Nordic Roadshow, Helsinki</h1>
+      <div class="event-date-location">
+        <span><i class="fas fa-calendar-alt"></i> April 15, 2026</span>
+        <span><i class="fas fa-map-marker-alt"></i> NH Collection Helsinki Grand Hansa, Helsinki</span>
+        <span><i class="fas fa-clock"></i> 15:00 – 18:30</span>
+        <span><i class="fas fa-user-lock"></i> Invite-only</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="banner-section">
+    <div class="container">
+      <!-- Banner Image -->
+      <div class="event-banner">
+        <img
+          src="https://images.unsplash.com/photo-1559348089-759a6a1f8d5e?w=1200&h=400&fit=crop&auto=format"
+          alt="Helsinki waterfront at sunset"
+          loading="eager"
+        />
+      </div>
+
+      <!-- Countdown -->
+      <div class="countdown-card" aria-label="Event countdown">
+        <div class="countdown-label">Event starts in</div>
+        <div class="countdown-grid" role="timer" aria-live="polite">
+          <div class="countdown-box">
+            <div class="countdown-num" id="cdDays">--</div>
+            <div class="countdown-unit">Days</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="cdHours">--</div>
+            <div class="countdown-unit">Hours</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="cdMins">--</div>
+            <div class="countdown-unit">Minutes</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="cdSecs">--</div>
+            <div class="countdown-unit">Seconds</div>
+          </div>
+        </div>
+        <div class="countdown-done" id="cdDone">We're live — see you there.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="event-details-grid">
+        <!-- LEFT: Event details -->
+        <div class="info-card">
+          <div class="hero-img">
+            <img
+              src="https://keepit.com/wp-content/uploads/2023/08/keepit-logo.svg"
+              alt="Keepit Logo"
+              loading="lazy"
+            />
+          </div>
+
+          <p class="muted">April 15, 2026 • 15:00 – 18:30 • NH Collection Helsinki Grand Hansa, Helsinki</p>
+          
+          <p>On April 15, Keepit Live Nordic Roadshow comes to Helsinki with an intimate executive event featuring Jarno Limnéll, Finnish member of parliament and one of the country's leading experts on cybersecurity and security policy, alongside Keepit's CISO Kim Larsen.</p>
+          
+          <p>Together, they will explore how geopolitical tensions, cyberthreats, and regulation increasingly shape the security decisions organizations must make — and what leaders should be aware of as responsibility for data, compliance, and resilience continues to grow.</p>
+          
+          <p>Keepit Live is not about products. It's a forum for knowledge sharing, perspective, and dialogue — where executive peers come together to gain insight into how others approach today's most pressing security challenges.</p>
+
+          <div class="agenda-block">
+            <p class="agenda-title">Program:</p>
+            <p class="agenda-item"><strong>15:00:</strong> Welcome and introduction</p>
+            <p class="agenda-item"><strong>15:15–17:00:</strong> Speaker session and roundtable discussion: Geopolitics, cybersecurity, and digital resilience</p>
+            <p class="agenda-item"><strong>17:00–18:30:</strong> Networking and light refreshments</p>
+          </div>
+
+          <div class="agenda-block">
+            <p class="agenda-title">About the speakers:</p>
+            <p class="agenda-item"><strong>Jarno Limnéll</strong> is a Finnish member of parliament, professor of practice in cybersecurity, and one of Finland's most recognized voices on cybersecurity and societal resilience. His experience spans academia, policy, and international security cooperation. Jarno is known for shaping the national debate on cyberthreats, information warfare, and hybrid influence and for bringing a strong policy- and board-level perspective to digital security.</p>
+            <p class="agenda-item"><strong>Kim Larsen</strong> is CISO at Keepit with more than two decades of experience in cybersecurity, risk, and compliance. Previously CISO at the Danish Tax Agency (SKAT), Systematic, and Huawei, he has worked in some of Europe's most complex and highly regulated environments. Kim advises executive leadership on how geopolitics, regulation, and cyber risk translate into concrete decisions around data protection and resilience.</p>
+          </div>
+
+          <p class="disclaimer">
+            This event is exclusively intended for IT professionals and data protection decision-makers. We reserve the right to decline registrations that do not fall within these categories.
+          </p>
+        </div>
+
+        <!-- RIGHT: Registration Form -->
+        <div class="registration-card">
+          <h2>Reserve a Seat</h2>
+          <p class="sub">Submit your details below. We'll follow up by email with confirmation details.</p>
+
+          <form id="keepitHelsinkiForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <!-- Web3Forms Access Key -->
+            <input type="hidden" name="access_key" value="83f93bc0-8bb5-4110-a4b3-0e72b30b8bd5">
+            <input type="hidden" name="subject" value="New RSVP: Keepit Live Nordic Roadshow Helsinki">
+            <input type="hidden" name="from_name" value="ITreader Events">
+            <input type="hidden" name="event_name" value="Keepit Live Nordic Roadshow Helsinki">
+            <input type="hidden" name="event_date" value="April 15, 2026">
+            <input type="hidden" name="event_time" value="15:00–18:30">
+            <input type="hidden" name="event_location" value="NH Collection Helsinki Grand Hansa, Helsinki">
+            
+            <!-- Google Sheet Link (for reference) -->
+            <!-- Data will be sent to: https://docs.google.com/spreadsheets/d/1RHN9bjt3bgN22WMTgh53pSXHcceXwoAI4GqCru_cK7w/edit -->
+            
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+            <!-- UTM FIELDS -->
+            <input type="hidden" name="utm_campaign" id="utm_campaign">
+            <input type="hidden" name="utm_rep" id="utm_rep">
+
+            <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input id="fullName" name="full_name" type="text" autocomplete="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="companyEmail">Business Email *</label>
+              <input id="companyEmail" name="business_email" type="email" autocomplete="email" required>
+              <div class="hint">Please use a work email address (no Gmail/Yahoo/Hotmail, etc.).</div>
+            </div>
+
+            <div class="form-group">
+              <label for="companyName">Company Name *</label>
+              <input id="companyName" name="company_name" type="text" autocomplete="organization" required>
+            </div>
+
+            <!-- Who invited you? (optional) -->
+            <div class="form-group">
+              <label for="invitedBy">Who invited you?</label>
+              <input id="invitedBy" name="who_invited_you" type="text" placeholder="Optional">
+            </div>
+
+            <div class="form-group">
+              <label for="jobTitle">Job Title *</label>
+              <input id="jobTitle" name="job_title" type="text" autocomplete="organization-title" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+            </div>
+
+            <div class="form-group">
+              <label for="dietary">Dietary Preferences / Allergies</label>
+              <textarea id="dietary" name="dietary" placeholder="e.g., vegetarian, vegan, allergies..."></textarea>
+            </div>
+
+            <!-- Keepit opt-in -->
+            <div class="checkbox-group">
+              <input type="checkbox" id="optinKeepit" name="keepit_consent" value="Yes" required>
+              <label for="optinKeepit">
+                I consent to receive online communications and marketing from or on behalf of Keepit by email.
+                I can withdraw my consent at any time. Keepit processes your personal data as described in their
+                <a href="https://www.keepit.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+              </label>
+            </div>
+
+            <!-- ITreader opt-in -->
+            <div class="checkbox-group">
+              <input type="checkbox" id="optinITreader" name="itreader_marketing_consent" value="Yes" required>
+              <label for="optinITreader">
+                By checking this box, I agree to receive relevant content, industry insights, and promotional communications from ITreader Ltd,
+                its subsidiaries and affiliates. I understand that ITreader will use my personal information as described in the
+                <a href="https://itreader.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>,
+                including use of role and company name in event marketing materials and sharing with trusted partners to deliver personalized
+                content and targeted advertising.
+              </label>
+            </div>
+
+            <div id="formStatus" class="status-message"></div>
+
+            <button id="submitBtn" class="submit-btn" type="submit">
+              <i class="fas fa-check-circle"></i> Reserve a Seat
+            </button>
+            <div class="form-footer">By submitting, you're requesting a seat. Capacity is limited.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>ITreader</h4>
+          <p>44 St Peter's St Canterbury CT1 2BG<br>hello@itreader.com</p>
+          <div class="footer-social">
+            <a href="https://www.youtube.com/@ITreader" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/itreader1/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/_itreader?igsh=MTNjY3pudHZtd21mYw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/itreader/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul style="list-style:none;">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/index.html#who">Who we are</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="/events.html">Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul style="list-style:none;">
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="myoutreach-credit">
+        <p style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+          <span>Website generated by</span>
+          <a href="https://www.my-outreach.com" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:var(--accent-color); color:white; padding:8px 18px; border-radius:40px; text-decoration:none; font-weight:600;">
+            <i class="fas fa-rocket"></i> MyOutreach
+          </a>
+        </p>
+      </div>
+      <p style="text-align:center; margin-top:25px; font-size:0.85rem;">© <span id="year"></span> ITreader Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+      document.querySelector('nav ul').classList.toggle('active');
+      const icon = this.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    // Dark mode persistence
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('itreader-theme');
+    
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
+    } else {
+      toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+    }
+
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        toggle.innerHTML = isDark ? 
+          '<i class="fa-regular fa-sun"></i> <span>Light</span>' : 
+          '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+        localStorage.setItem('itreader-theme', isDark ? 'dark' : 'light');
+      });
+    }
+
+    // Year for footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // UTM script
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const keys = ["utm_campaign", "utm_rep"];
+
+      keys.forEach(key => {
+        const value = params.get(key) || sessionStorage.getItem(key);
+        if (value) {
+          const field = document.getElementById(key);
+          if (field) field.value = value;
+          sessionStorage.setItem(key, value);
+        }
+      });
+    })();
+
+    // Countdown script
+    (function(){
+      const EVENT_START = "2026-04-15T15:00:00+03:00"; // Helsinki time (UTC+3)
+
+      const d = document.getElementById("cdDays");
+      const h = document.getElementById("cdHours");
+      const m = document.getElementById("cdMins");
+      const s = document.getElementById("cdSecs");
+      const done = document.getElementById("cdDone");
+
+      function pad(n){ return String(n).padStart(2, "0"); }
+
+      if (d && h && m && s) {
+        const target = new Date(EVENT_START).getTime();
+
+        function tick(){
+          const now = Date.now();
+          let diff = Math.max(0, target - now);
+
+          const days = Math.floor(diff / 86400000);
+          diff -= days * 86400000;
+          const hours = Math.floor(diff / 3600000);
+          diff -= hours * 3600000;
+          const mins = Math.floor(diff / 60000);
+          diff -= mins * 60000;
+          const secs = Math.floor(diff / 1000);
+
+          d.textContent = days;
+          h.textContent = pad(hours);
+          m.textContent = pad(mins);
+          s.textContent = pad(secs);
+
+          if (target - now <= 0) {
+            if (done) done.style.display = "block";
+            clearInterval(timer);
+          }
+        }
+
+        tick();
+        const timer = setInterval(tick, 1000);
+      }
+    })();
+
+    // Form validation and submission
+    (function(){
+      const form = document.getElementById('keepitHelsinkiForm');
+      const statusEl = document.getElementById('formStatus');
+      const submitBtn = document.getElementById('submitBtn');
+      const emailEl = document.getElementById('companyEmail');
+
+      const BLOCKED_DOMAINS = new Set([
+        "gmail.com","googlemail.com",
+        "yahoo.com","yahoo.co.uk","yahoo.fr","yahoo.de",
+        "hotmail.com","hotmail.co.uk","outlook.com","live.com","msn.com",
+        "icloud.com","me.com","mac.com",
+        "aol.com",
+        "proton.me","protonmail.com",
+        "gmx.com","gmx.de",
+        "mail.com",
+        "zoho.com"
+      ]);
+
+      function isBusinessEmail(email) {
+        const v = String(email || "").trim().toLowerCase();
+        const parts = v.split("@");
+        if(parts.length !== 2) return false;
+        const domain = parts[1];
+        return domain && !BLOCKED_DOMAINS.has(domain);
+      }
+
+      function setStatus(type, msg) {
+        statusEl.className = "status-message " + (type === 'success' ? 'status-success' : 'status-error');
+        statusEl.textContent = msg;
+        statusEl.style.display = "block";
+      }
+
+      if (!form || !statusEl || !submitBtn) return;
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        statusEl.style.display = "none";
+        statusEl.className = "status-message";
+
+        // Validate email
+        const email = emailEl ? emailEl.value.trim() : "";
+        if (!email || !isBusinessEmail(email)) {
+          setStatus('error', "Please use a business email address (no Gmail/Yahoo/Hotmail, etc.).");
+          if (emailEl) emailEl.focus();
+          return;
+        }
+
+        // Validate required fields
+        const requiredFields = ['fullName', 'companyName', 'jobTitle', 'phone'];
+        for (const fieldId of requiredFields) {
+          const field = document.getElementById(fieldId);
+          if (field && !field.value.trim()) {
+            setStatus('error', `Please fill in all required fields.`);
+            field.focus();
+            return;
+          }
+        }
+
+        // Validate checkboxes
+        const optinKeepit = document.getElementById('optinKeepit');
+        const optinITreader = document.getElementById('optinITreader');
+        if (!optinKeepit?.checked || !optinITreader?.checked) {
+          setStatus('error', "Please tick both consent boxes to submit the form.");
+          return;
+        }
+
+        submitBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = "Submitting…";
+
+        try {
+          const formData = new FormData(form);
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { "Accept": "application/json" }
+          });
+
+          const data = await res.json();
+          
+          if (data.success) {
+            setStatus('success', "Thanks — your registration request has been received. We'll email you shortly.");
+            form.reset();
+          } else {
+            setStatus('error', "Something went wrong. Please try again or contact us.");
+          }
+        } catch (err) {
+          setStatus('error', "Network error. Please check your connection and try again.");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
