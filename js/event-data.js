@@ -26,7 +26,7 @@ const allEvents = [
         dateDisplay: 'April 15, 2026 • 15:00 – 18:30',
         location: 'NH Collection Helsinki Grand Hansa',
         category: 'live',
-        region: 'Finland',
+        region: 'europe',
         image: '',
         link: 'events/Helsinki.html',
         categoryLabel: 'Live Event'
