@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>ITreader — Our Partners</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="images/it reader logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== GLOBAL STYLES (ITreader design system) ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary-color: #0A2463; --primary-dark: #071845; --secondary-color: #3E92CC;
+      --secondary-light: #5CA8E0; --accent-color: #0018ff; --accent-light: #4d62ff;
+      --light-color: #F8F9FA; --light-gray: #F0F2F5; --dark-color: #212529;
+      --gray-color: #6C757D; --transition: all 0.3s ease; --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --border-radius: 12px; --section-spacing: 70px; --bg: #ffffff; --surface: #ffffff;
+      --text-primary: #1A1F36; --text-secondary: #4E5B6E; --border-light: #EFF2F7;
+      --card-bg: #ffffff; --fs-base: 0.95rem; --fs-h1: 2.4rem; --fs-h2: 2rem; --fs-h3: 1.5rem; --fs-h4: 1.2rem;
+    }
+    body.dark-mode {
+      --primary-color: #3a80d2; --primary-dark: #1a4b8c; --secondary-color: #4f9fdb;
+      --secondary-light: #7bb8e8; --accent-color: #4d62ff; --accent-light: #7b8aff;
+      --light-color: #1a1a1a; --light-gray: #232323; --dark-color: #f0f0f0; --gray-color: #aaaaaa;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.9); --bg: #121212; --surface: #1e1e1e;
+      --text-primary: #ffffff; --text-secondary: #cccccc; --border-light: #333333; --card-bg: #1e1e1e;
+      background-color: #121212 !important;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif; line-height: 1.5; color: var(--dark-color);
+      background-color: var(--bg); transition: background-color 0.2s, color 0.2s; overflow-x: hidden;
+      font-size: var(--fs-base);
+    }
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; line-height: 1.2; margin-bottom: 0.8rem; }
+    h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); } h4 { font-size: var(--fs-h4); }
+    .container { width: 100%; max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+    section { padding: var(--section-spacing) 0; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      background-color: var(--accent-color); color: white; padding: 10px 24px;
+      border-radius: 40px; font-weight: 600; text-decoration: none; transition: var(--transition);
+      border: none; cursor: pointer; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0, 24, 255, 0.2);
+    }
+    .btn:hover { background-color: var(--accent-light); transform: translateY(-2px); }
+    .btn-accent { background-color: var(--accent-color); }
+    .btn-accent:hover { background-color: var(--accent-light); }
+    .btn-outline { background-color: transparent; border: 2px solid var(--accent-color); color: var(--accent-color); box-shadow: none; }
+    .btn-outline:hover { background-color: var(--accent-color); color: white; }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    header {
+      background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); position: fixed; width: 100%; top: 0; z-index: 1000;
+      transition: var(--transition);
+    }
+    body.dark-mode header { background-color: rgba(18, 18, 18, 0.95) !important; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+    .logo { display: flex; align-items: center; text-decoration: none; transition: transform 0.2s; }
+    .logo:hover { transform: scale(1.02); }
+    .logo-img { height: 44px; width: auto; margin-right: 10px; border-radius: 8px; }
+    .logo-text { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary-color); line-height: 1.1; }
+    .logo-text span { color: var(--accent-color); display: block; font-weight: 600; font-size: 0.8rem; margin-top: 2px; }
+    nav ul { display: flex; list-style: none; align-items: center; gap: 28px; }
+    nav ul li a:not(.btn) { text-decoration: none; color: var(--dark-color); font-weight: 600; font-size: 0.95rem; padding: 6px 0; position: relative; transition: color 0.2s; }
+    nav ul li a:not(.btn)::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(to right, var(--accent-color), var(--secondary-color)); transition: width 0.25s ease; }
+    nav ul li a:not(.btn):hover { color: var(--accent-color); }
+    nav ul li a:not(.btn):hover::after { width: 100%; }
+    nav ul li .btn { padding: 8px 18px; font-size: 0.9rem; margin-left: 4px; }
+    nav ul li .btn-outline { border-width: 2px; }
+    body.dark-mode nav ul li a:not(.btn) { color: #f0f0f0; }
+    .theme-toggle {
+      background: none; border: 1.5px solid var(--accent-color); border-radius: 40px; padding: 6px 16px;
+      color: var(--accent-color); cursor: pointer; display: flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; font-weight: 600; transition: all 0.2s; margin-left: 6px;
+    }
+    .theme-toggle:hover { background-color: var(--accent-color); color: white; border-color: var(--accent-color); }
+    .mobile-menu-btn { display: none; font-size: 1.6rem; background: none; border: none; color: var(--primary-color); cursor: pointer; }
+
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      text-align: center;
+      padding: 120px 0 60px;
+      margin-top: 70px;
+    }
+    .page-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+    .page-header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* ===== PARTNERS SECTION ===== */
+    .partners-section {
+      background: var(--bg);
+      padding: 60px 0;
+    }
+    .partners-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-light);
+    }
+    .partners-title {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    /* ===== MOVING CAROUSEL (si në home page) ===== */
+    .partner-carousel-section {
+      background: var(--light-gray);
+      padding: 60px 0;
+      margin-bottom: 40px;
+    }
+    .carousel {
+      overflow: hidden;
+      width: 100%;
+      padding: 20px 0;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 40px;
+      width: max-content;
+      animation: slide 30s linear infinite;
+    }
+    .partner-logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 160px;
+      height: 160px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-light);
+      padding: 25px;
+      transition: all 0.3s ease;
+    }
+    .partner-logo-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 24, 255, 0.2);
+      border-color: var(--accent-color);
+    }
+    .partner-logo-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: brightness(1) contrast(1);
+      transition: filter 0.3s ease;
+    }
+    body.dark-mode .partner-logo-item img {
+      filter: brightness(0) invert(1) !important;
+      opacity: 1;
+    }
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Second row - reverse direction */
+    .carousel-track-reverse {
+      display: flex;
+      gap: 40px;
+      width: max-content;
+      animation: slideReverse 30s linear infinite;
+    }
+    @keyframes slideReverse {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* ===== PARTNERS TABLE ===== */
+    .partners-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 40px;
+    }
+    .partners-table th {
+      text-align: left;
+      padding: 15px 10px;
+      background: var(--light-gray);
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--border-light);
+    }
+    .partners-table td {
+      padding: 20px 10px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+    .partners-table tr:hover td {
+      background: var(--light-gray);
+    }
+    .partner-name {
+      font-weight: 700;
+      color: var(--dark-color);
+      font-size: 1.1rem;
+    }
+    .partner-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .partner-links a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-size: 0.85rem;
+      word-break: break-all;
+    }
+    .partner-links a:hover {
+      text-decoration: underline;
+    }
+    .partner-address {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .partners-table {
+        display: block;
+        overflow-x: auto;
+      }
+      .partners-table th, 
+      .partners-table td {
+        min-width: 150px;
+      }
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary-dark); color: white; padding: 45px 0 20px;
+    }
+    body.dark-mode .footer { background: #0a0a0a; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 25px; margin-bottom: 30px; }
+    .footer a { color: #bbb; text-decoration: none; font-size: 0.9rem; }
+    .footer a:hover { color: var(--accent-light); }
+    .footer-social { display: flex; gap: 15px; margin-top: 15px; }
+    .footer-social a {
+      display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+      background: rgba(255,255,255,0.1); border-radius: 50%; color: white; font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--accent-color); transform: translateY(-3px); }
+    .myoutreach-credit {
+      background: rgba(255,255,255,0.05); padding: 18px; border-radius: 60px; text-align: center; margin-top: 25px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      nav ul {
+        position: fixed; top: 70px; left: -100%; width: 100%; flex-direction: column;
+        background: var(--card-bg); padding: 30px 20px; transition: left 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15); gap: 20px; border-radius: 0 0 20px 20px;
+        align-items: center;
+      }
+      nav ul.active { left: 0; }
+      nav ul li a:not(.btn)::after { display: none; }
+      .theme-toggle { margin-left: 0; }
+      .page-header h1 { font-size: 2.2rem; }
+      .partner-logo-item {
+        width: 120px;
+        height: 120px;
+      }
+      .partner-logo-item img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+    @media (max-width: 480px) {
+      .logo-text { font-size: 1.2rem; }
+      .logo-img { height: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="images/it reader logo.png" alt="ITreader logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text">ITreader<span>partners</span></div>
+      </a>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#who">Who we are</a></li>
+          <li><a href="index.html#why">Why join</a></li>
+          <li><a href="contact.html" class="btn btn-outline">Contact Us</a></li>
+          <li><a href="events.html" class="btn btn-accent">Events</a></li>
+          <li><button class="theme-toggle" id="themeToggle"><i class="fa-regular fa-moon"></i> <span>Dark</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Our Partners</h1>
+      <p>Trusted by industry leaders worldwide</p>
+    </div>
+  </section>
+
+  <!-- Moving Carousel Section (si në home page) -->
+  <section class="partner-carousel-section">
+    <div class="container">
+      <h2 class="partners-title">Partner Logos</h2>
+      
+      <!-- First moving row -->
+      <div class="carousel">
+        <div class="carousel-track">
+          <!-- IBM -->
+          <div class="partner-logo-item">
+            <img src="images/imageibm.png" alt="IBM">
+          </div>
+          <!-- Intel -->
+          <div class="partner-logo-item">
+            <img src="images/imageintel.png" alt="Intel">
+          </div>
+          <!-- Mastercard -->
+          <div class="partner-logo-item">
+            <img src="images/imagemastercar.png" alt="Mastercard">
+          </div>
+          <!-- Siemens -->
+          <div class="partner-logo-item">
+            <img src="images/imagesiemens.png" alt="Siemens">
+          </div>
+          <!-- TIBCO -->
+          <div class="partner-logo-item">
+            <img src="images/imagetibc.png" alt="TIBCO">
+          </div>
+          
+          <!-- Duplicate for seamless loop -->
+          <div class="partner-logo-item">
+            <img src="images/imageibm.png" alt="IBM">
+          </div>
+          <div class="partner-logo-item">
+            <img src="images/imageintel.png" alt="Intel">
+          </div>
+          <div class="partner-logo-item">
+            <img src="images/imagemastercar.png" alt="Mastercard">
+          </div>
+          <div class="partner-logo-item">
+            <img src="images/imagesiemens.png" alt="Siemens">
+          </div>
+          <div class="partner-logo-item">
+            <img src="images/imagetibc.png" alt="TIBCO">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Second moving row (opposite direction) -->
+      <div class="carousel" style="margin-top: 20px;">
+        <div class="carousel-track-reverse">
+          <!-- IBM -->
+          <div class="partner-logo-item">
+            <img src="images/imageibm.png" alt="IBM">
+          </div>
+          <!-- Intel -->
+          <div class="partner-logo-item">
+            <img src="images/imageintel.png" alt="Intel">
+          </div>
+          <!-- Mastercard -->
+          <div class="partner-logo-item">
+            <img src="images/imagemastercar.png" alt="Mastercard">
+          </div>
+          <!-- Siemens -->
+          <div class="partner-logo-item">
+            <img src="images/imagesiemens.png" alt="Siemens">
+          </div>
+          <!-- TIBCO -->
+          <div class="partner-logo-item">
+            <img src="images/imagetibc.png" alt="TIBCO">
+          </div>
+          
+          <!-- Duplicate for seamless loop -->
+          <div class="partner-logo-item">
+            <img src="images/imageibm.png" alt="IBM">
+          </div>
+          <div class="partner-logo-item">
+            <img src="images/imageintel.png" alt="Intel">
+          </div>
+          <div class="partner-logo-item">
+            <img src="images/imagemastercar.png" alt="Mastercard">
+          </div>
+          <div class="partner-logo-item">
+            <img src="images/imagesiemens.png" alt="Siemens">
+          </div>
+          <div class="partner-logo-item">
+            <img src="images/imagetibc.png" alt="TIBCO">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Table Section -->
+  <section class="partners-section">
+    <div class="container">
+      <div class="partners-container">
+        
+        <h2 class="partners-title">Partner Directory</h2>
+        
+        <table class="partners-table">
+          <thead>
+            <tr>
+              <th>Partner</th>
+              <th>Street Address</th>
+              <th>City, State, Country, Zip</th>
+              <th>Corporate Domain</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="partner-name">Datto</span></td>
+              <td class="partner-address">Datto, Inc. 101 Merritt 7, 7th Floor Norwalk, CT 06851 United States<br>33 Tech Valley Drive, 2nd Floor East Greenbush, NY 12061 United States</td>
+              <td class="partner-address">Connecticut, New York, USA</td>
+              <td class="partner-links">
+                <a href="https://www.datto.com/" target="_blank">datto.com</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="partner-name">Netboxlabs</span></td>
+              <td class="partner-address">Street Address 1 Street Address 2<br>99 WALL STREET #300</td>
+              <td class="partner-address">10005 NEW YORK, USA</td>
+              <td class="partner-links">
+                <a href="https://netboxlabs.com/" target="_blank">netboxlabs.com</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="partner-name">SANS</span></td>
+              <td class="partner-address">SANS Institute 11200 Rockville Pike, Suite 200</td>
+              <td class="partner-address">North Bethesda, MD 20852, USA</td>
+              <td class="partner-links">
+                <a href="https://www.sans.org/emea/" target="_blank">sans.org/emea</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="partner-name">Kaseya</span></td>
+              <td class="partner-address">701 Brickell Avenue Suite 400</td>
+              <td class="partner-address">FLORIDA, Miami, 33131, USA</td>
+              <td class="partner-links">
+                <a href="https://www.kaseya.com/" target="_blank">kaseya.com</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="partner-name">Bitdefender</span></td>
+              <td class="partner-address">6301 NW 5th Way #4300</td>
+              <td class="partner-address">Fort Lauderdale, FL, USA</td>
+              <td class="partner-links">
+                <a href="https://www.bitdefender.com/" target="_blank">bitdefender.com</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="partner-name">Eagle Eye</span></td>
+              <td class="partner-address">Eagle Eye Networks, Inc. 3001 Bee Cave Rd</td>
+              <td class="partner-address">Austin, TX 78746, USA</td>
+              <td class="partner-links">
+                <a href="https://www.een.com/" target="_blank">een.com</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="partner-name">Metomic</span></td>
+              <td class="partner-address">1 Coldbath Square</td>
+              <td class="partner-address">London EC1R 5HL, United Kingdom</td>
+              <td class="partner-links">
+                <a href="https://metomic.io/" target="_blank">metomic.io</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="partner-name">Sopheon</span></td>
+              <td class="partner-address">Dorna House One Guildford Road, West End</td>
+              <td class="partner-address">Surrey GU24 9PW, United Kingdom</td>
+              <td class="partner-links">
+                <a href="https://www.sopheon.com/" target="_blank">sopheon.com</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>ITreader</h4>
+          <p>44 St Peter's St Canterbury CT1 2BG<br>hello@itreader.com</p>
+          <div class="footer-social">
+            <a href="https://www.youtube.com/@ITreader" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/itreader1/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/_itreader?igsh=MTNjY3pudHZtd21mYw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/itreader/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul style="list-style:none;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#who">Who we are</a></li>
+            <li><a href="index.html#why">Why join</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="partners.html">Partners</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul style="list-style:none;">
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="cookies.html">Cookies</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="myoutreach-credit">
+        <p style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+          <span>Website generated by</span>
+          <a href="https://www.my-outreach.com" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:var(--accent-color); color:white; padding:8px 18px; border-radius:40px; text-decoration:none; font-weight:600;">
+            <i class="fas fa-rocket"></i> MyOutreach
+          </a>
+        </p>
+      </div>
+      <p style="text-align:center; margin-top:25px;">© 2025 ITreader. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+      document.querySelector('nav ul').classList.toggle('active');
+      const icon = this.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    // Dark mode persistence
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('itreader-theme');
+    
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
+    } else {
+      toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      toggle.innerHTML = isDark ? 
+        '<i class="fa-regular fa-sun"></i> <span>Light</span>' : 
+        '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+      localStorage.setItem('itreader-theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
