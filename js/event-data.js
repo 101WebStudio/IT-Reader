@@ -30,7 +30,6 @@ const allEvents = [
         image: '',
         link: 'events/Helsinki.html',
         categoryLabel: 'Live Event'
-        inviteOnly: true
     },
     {
         id: 'keepit-manchester',
