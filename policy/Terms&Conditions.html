@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>ITreader — Terms & Conditions</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="images/it reader logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== GLOBAL STYLES (ITreader design system) ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary-color: #0A2463; --primary-dark: #071845; --secondary-color: #3E92CC;
+      --secondary-light: #5CA8E0; --accent-color: #0018ff; --accent-light: #4d62ff;
+      --light-color: #F8F9FA; --light-gray: #F0F2F5; --dark-color: #212529;
+      --gray-color: #6C757D; --transition: all 0.3s ease; --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --border-radius: 12px; --section-spacing: 70px; --bg: #ffffff; --surface: #ffffff;
+      --text-primary: #1A1F36; --text-secondary: #4E5B6E; --border-light: #EFF2F7;
+      --card-bg: #ffffff; --fs-base: 0.95rem; --fs-h1: 2.4rem; --fs-h2: 2rem; --fs-h3: 1.5rem; --fs-h4: 1.2rem;
+    }
+    body.dark-mode {
+      --primary-color: #3a80d2; --primary-dark: #1a4b8c; --secondary-color: #4f9fdb;
+      --secondary-light: #7bb8e8; --accent-color: #4d62ff; --accent-light: #7b8aff;
+      --light-color: #1a1a1a; --light-gray: #232323; --dark-color: #f0f0f0; --gray-color: #aaaaaa;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.9); --bg: #121212; --surface: #1e1e1e;
+      --text-primary: #ffffff; --text-secondary: #cccccc; --border-light: #333333; --card-bg: #1e1e1e;
+      background-color: #121212 !important;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif; line-height: 1.5; color: var(--dark-color);
+      background-color: var(--bg); transition: background-color 0.2s, color 0.2s; overflow-x: hidden;
+      font-size: var(--fs-base);
+    }
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; line-height: 1.2; margin-bottom: 0.8rem; }
+    h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); } h4 { font-size: var(--fs-h4); }
+    .container { width: 100%; max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+    section { padding: var(--section-spacing) 0; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      background-color: var(--accent-color); color: white; padding: 10px 24px;
+      border-radius: 40px; font-weight: 600; text-decoration: none; transition: var(--transition);
+      border: none; cursor: pointer; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0, 24, 255, 0.2);
+    }
+    .btn:hover { background-color: var(--accent-light); transform: translateY(-2px); }
+    .btn-accent { background-color: var(--accent-color); }
+    .btn-accent:hover { background-color: var(--accent-light); }
+    .btn-outline { background-color: transparent; border: 2px solid var(--accent-color); color: var(--accent-color); box-shadow: none; }
+    .btn-outline:hover { background-color: var(--accent-color); color: white; }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    header {
+      background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); position: fixed; width: 100%; top: 0; z-index: 1000;
+      transition: var(--transition);
+    }
+    body.dark-mode header { background-color: rgba(18, 18, 18, 0.95) !important; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+    .logo { display: flex; align-items: center; text-decoration: none; transition: transform 0.2s; }
+    .logo:hover { transform: scale(1.02); }
+    .logo-img { height: 44px; width: auto; margin-right: 10px; border-radius: 8px; }
+    .logo-text { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary-color); line-height: 1.1; }
+    .logo-text span { color: var(--accent-color); display: block; font-weight: 600; font-size: 0.8rem; margin-top: 2px; }
+    nav ul { display: flex; list-style: none; align-items: center; gap: 28px; }
+    nav ul li a:not(.btn) { text-decoration: none; color: var(--dark-color); font-weight: 600; font-size: 0.95rem; padding: 6px 0; position: relative; transition: color 0.2s; }
+    nav ul li a:not(.btn)::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(to right, var(--accent-color), var(--secondary-color)); transition: width 0.25s ease; }
+    nav ul li a:not(.btn):hover { color: var(--accent-color); }
+    nav ul li a:not(.btn):hover::after { width: 100%; }
+    nav ul li .btn { padding: 8px 18px; font-size: 0.9rem; margin-left: 4px; }
+    nav ul li .btn-outline { border-width: 2px; }
+    body.dark-mode nav ul li a:not(.btn) { color: #f0f0f0; }
+    .theme-toggle {
+      background: none; border: 1.5px solid var(--accent-color); border-radius: 40px; padding: 6px 16px;
+      color: var(--accent-color); cursor: pointer; display: flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; font-weight: 600; transition: all 0.2s; margin-left: 6px;
+    }
+    .theme-toggle:hover { background-color: var(--accent-color); color: white; border-color: var(--accent-color); }
+    .mobile-menu-btn { display: none; font-size: 1.6rem; background: none; border: none; color: var(--primary-color); cursor: pointer; }
+
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      text-align: center;
+      padding: 120px 0 60px;
+      margin-top: 70px;
+    }
+    .page-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+    .page-header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* ===== TERMS & CONDITIONS CONTENT ===== */
+    .terms-section {
+      background: var(--bg);
+      padding: 60px 0;
+    }
+    .terms-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 50px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-light);
+    }
+    .terms-container .intro-text {
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .terms-container h2 {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      margin: 40px 0 20px;
+    }
+    .terms-container h2:first-of-type {
+      margin-top: 0;
+    }
+    .terms-container h3 {
+      color: var(--dark-color);
+      font-size: 1.3rem;
+      margin: 30px 0 15px;
+    }
+    .terms-container p {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .terms-container ul, .terms-container ol {
+      color: var(--text-secondary);
+      margin: 20px 0 20px 30px;
+      line-height: 1.7;
+    }
+    .terms-container li {
+      margin-bottom: 10px;
+    }
+    .terms-container strong {
+      color: var(--dark-color);
+    }
+    .terms-container a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    .terms-container a:hover {
+      text-decoration: underline;
+    }
+    .terms-container hr {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      margin: 40px 0;
+    }
+    .terms-container .highlight {
+      background: var(--light-gray);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--accent-color);
+      margin: 30px 0;
+    }
+    .terms-container .contact-info {
+      background: var(--light-gray);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      margin: 30px 0;
+    }
+    .terms-container .contact-info p {
+      margin-bottom: 10px;
+    }
+    .terms-container .contact-info p:last-child {
+      margin-bottom: 0;
+    }
+    .terms-container .partner-note {
+      background: var(--light-gray);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      margin: 30px 0;
+      border-left: 4px solid var(--accent-color);
+    }
+    @media (max-width: 768px) {
+      .terms-container {
+        padding: 30px 20px;
+      }
+      .terms-container h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary-dark); color: white; padding: 45px 0 20px;
+    }
+    body.dark-mode .footer { background: #0a0a0a; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 25px; margin-bottom: 30px; }
+    .footer a { color: #bbb; text-decoration: none; font-size: 0.9rem; }
+    .footer a:hover { color: var(--accent-light); }
+    .footer-social { display: flex; gap: 15px; margin-top: 15px; }
+    .footer-social a {
+      display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+      background: rgba(255,255,255,0.1); border-radius: 50%; color: white; font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--accent-color); transform: translateY(-3px); }
+    .myoutreach-credit {
+      background: rgba(255,255,255,0.05); padding: 18px; border-radius: 60px; text-align: center; margin-top: 25px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      nav ul {
+        position: fixed; top: 70px; left: -100%; width: 100%; flex-direction: column;
+        background: var(--card-bg); padding: 30px 20px; transition: left 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15); gap: 20px; border-radius: 0 0 20px 20px;
+        align-items: center;
+      }
+      nav ul.active { left: 0; }
+      nav ul li a:not(.btn)::after { display: none; }
+      .theme-toggle { margin-left: 0; }
+      .page-header h1 { font-size: 2.2rem; }
+    }
+    @media (max-width: 480px) {
+      .logo-text { font-size: 1.2rem; }
+      .logo-img { height: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="images/it reader logo.png" alt="ITreader logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-text">ITreader<span>terms</span></div>
+      </a>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#who">Who we are</a></li>
+          <li><a href="index.html#why">Why join</a></li>
+          <li><a href="contact.html" class="btn btn-outline">Contact Us</a></li>
+          <li><a href="events.html" class="btn btn-accent">Events</a></li>
+          <li><button class="theme-toggle" id="themeToggle"><i class="fa-regular fa-moon"></i> <span>Dark</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Web Terms & Conditions</h1>
+      <p>Welcome to our Web Terms & Conditions page</p>
+    </div>
+  </section>
+
+  <section class="terms-section">
+    <div class="container">
+      <div class="terms-container">
+        
+        <p class="intro-text">This document outlines the terms of use for our website or platform. By accessing or using our services, you agree to abide by these terms. Please review the following information carefully.</p>
+
+        <h2>Introduction</h2>
+        <p><strong>Acceptance of Terms:</strong> By accessing or using the ITreader website (hereafter referred to as "the Site" or "our services"), you expressly agree to be bound by these Terms and Conditions, Privacy Policy, and any additional terms applicable to specific services or features offered on the Site. Your access or use of the services constitutes your acceptance of these terms and acknowledgment of our policies.</p>
+
+        <h2>Use of the site</h2>
+        <p><strong>Eligibility:</strong> You must be at least 16 years of age to use our services. If you are under 16, you may only use the services with the express consent or supervision of a parent or legal guardian.</p>
+        <p><strong>Account Registration:</strong> Some services provided on the Site may require account registration. You are responsible for maintaining the confidentiality of your account information, including your username and password, and for all activities that occur under your account.</p>
+        <p><strong>Prohibited Conduct:</strong> Users are prohibited from engaging in any activity that violates applicable laws or regulations, infringes upon intellectual property rights, disrupts the functionality of the Site, or harms other users or our services. This includes, but is not limited to, unauthorized access, spamming, transmitting malware, or attempting to interfere with the security of the Site.</p>
+
+        <h2>Intellectual property</h2>
+        <p><strong>Ownership:</strong> All content, materials, features, and functionalities available on the Site, including but not limited to text, graphics, logos, images, audio clips, and software, are the exclusive property of ITreader or its licensors and are protected by copyright, trademark, and other intellectual property laws. Users are prohibited from reproducing, modifying, distributing, or using any content from the Site without prior written consent from ITreader.</p>
+
+        <h2>User content</h2>
+        <p><strong>Submission:</strong> Users may have the option to submit content, such as comments, reviews, suggestions, or contributions, through the Site. By submitting content, users grant ITreader a worldwide, royalty-free, non-exclusive, perpetual, and transferable license to use, reproduce, modify, adapt, publish, translate, distribute, and display such content in connection with the services provided by ITreader.</p>
+        <p><strong>Responsibility:</strong> Users are solely responsible for the content they submit. ITreader does not endorse or guarantee the accuracy, reliability, or legality of user-generated content. We reserve the right to remove or edit user content that violates these Terms and Conditions or is deemed inappropriate.</p>
+
+        <h2>Privacy and data protection</h2>
+        <p><strong>GDPR Compliance:</strong> ITreader is committed to complying with the General Data Protection Regulation (GDPR) and other applicable data protection laws. Our practices regarding the collection, use, and protection of personal data are detailed in our <a href="privacy.html">Privacy Policy</a>, which explains how we collect, process, store, and protect user information.</p>
+        <p><strong>User Consent:</strong> By accessing or using our services, you consent to the collection, processing, and storage of personal data in accordance with our Privacy Policy.</p>
+
+        <h2>Disclaimers and limitation of liability</h2>
+        <p><strong>No Warranties:</strong> The Site is provided "as is" and "as available" without warranties of any kind, either express or implied. ITreader makes no representations or warranties about the accuracy, reliability, completeness, or timeliness of the content or services provided on the Site.</p>
+        <p><strong>Limitation of Liability:</strong> ITreader, its affiliates, officers, directors, employees, or agents shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages, including but not limited to damages for lost profits, data, or goodwill, arising out of or related to the use or inability to use the Site.</p>
+
+        <h2>Third-party links and services</h2>
+        <p><strong>Third-Party Links:</strong> The Site may contain links to third-party websites or services that are not owned or controlled by ITreader. We do not endorse or assume any responsibility for the content, privacy policies, or practices of any third-party websites or services. Users access such third-party sites at their own risk.</p>
+
+        <h2>Termination</h2>
+        <p><strong>Termination of Services:</strong> ITreader reserves the right, at its sole discretion and without prior notice, to terminate, suspend, or restrict access to all or part of the Site for any reason, including violation of these Terms and Conditions or applicable laws.</p>
+
+        <h2>Governing law and dispute resolution</h2>
+        <p><strong>Governing Law:</strong> These Terms and Conditions shall be governed by and construed in accordance with the laws of the United Kingdom without regard to its conflict of law provisions.</p>
+        <p><strong>Dispute Resolution:</strong> Any dispute, controversy, or claim arising out of or relating to these Terms and Conditions or the breach thereof shall be settled through good faith negotiation. If a resolution cannot be reached, the parties agree to submit to the exclusive jurisdiction of the courts in the United Kingdom.</p>
+
+        <h2>Changes to terms and conditions</h2>
+        <p><strong>Modification:</strong> ITreader reserves the right to modify, amend, or replace these Terms and Conditions at any time at its sole discretion. Changes will be effective immediately upon posting on the Site. Continued use of the services after changes constitute acceptance of the revised Terms and Conditions.</p>
+
+        <h2>Contact information</h2>
+        <div class="contact-info">
+          <p><strong>Contact Us:</strong> For any questions, concerns, or inquiries regarding these Terms and Conditions or our services, please contact us at:</p>
+          <p style="font-size: 1.2rem; font-weight: 600; color: var(--accent-color);">+44(0)203-797-6486</p>
+        </div>
+
+        <h2>Our partners</h2>
+        <div class="partner-note">
+          <p><strong>Our Partners:</strong> By joining ITreader community you agree to your information being processed by ITreader and its Partners to contact you via phone, email, or other means regarding information relevant to your professional interests. You can unsubscribe at any time.</p>
+        </div>
+
+        <hr>
+
+        <p style="font-style: italic; color: var(--gray-color);">Last updated: March 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>ITreader</h4>
+          <p>44 St Peter's St Canterbury CT1 2BG<br>hello@itreader.com</p>
+          <div class="footer-social">
+            <a href="https://www.youtube.com/@ITreader" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/itreader1/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/_itreader?igsh=MTNjY3pudHZtd21mYw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/itreader/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul style="list-style:none;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#who">Who we are</a></li>
+            <li><a href="index.html#why">Why join</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="cookies.html">Cookie Policy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul style="list-style:none;">
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="cookies.html">Cookies</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="myoutreach-credit">
+        <p style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;">
+          <span>Website generated by</span>
+          <a href="https://www.my-outreach.com" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:var(--accent-color); color:white; padding:8px 18px; border-radius:40px; text-decoration:none; font-weight:600;">
+            <i class="fas fa-rocket"></i> MyOutreach
+          </a>
+        </p>
+      </div>
+      <p style="text-align:center; margin-top:25px;">© 2025 ITreader. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+      document.querySelector('nav ul').classList.toggle('active');
+      const icon = this.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    // Dark mode persistence
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('itreader-theme');
+    
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.innerHTML = '<i class="fa-regular fa-sun"></i> <span>Light</span>';
+    } else {
+      toggle.innerHTML = '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      toggle.innerHTML = isDark ? 
+        '<i class="fa-regular fa-sun"></i> <span>Light</span>' : 
+        '<i class="fa-regular fa-moon"></i> <span>Dark</span>';
+      localStorage.setItem('itreader-theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
