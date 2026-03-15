@@ -168,7 +168,7 @@ const allEvents = [
         location: 'The Thief, Oslo',
         category: 'live',
         region: 'europe',
-        image: 'images/Oslo.png',
+        image: 'images/oslo.png',
         link: 'events/Oslo.html',
         categoryLabel: 'Live Event'
     },
