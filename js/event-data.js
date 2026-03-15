@@ -58,7 +58,66 @@ const allEvents = [
     },
 
    // ========== UPCOMING EVENTS ==========
-    // 
+  // js/event-data.js
+// Të gjitha eventet e ITreader - PAST dhe UPCOMING
+
+const allEvents = [
+    // ========== PAST EVENTS (Manual) ==========
+    {
+        id: 'keepit-bern-past',
+        title: 'Keepit Live - Bern',
+        date: '2026-02-17',
+        dateDisplay: 'February 17, 2026',
+        location: 'Wein & Sein, Munstergasse 50, 3011 Bern',
+        category: 'past',
+        region: 'europe',
+        image: 'https://images.unsplash.com/photo-1527668752968-14dc70a27c95?w=600&h=400&fit=crop&auto=format',
+        link: 'https://itreader.com/keepit-live-bern',
+        categoryLabel: 'Past Event',
+        isManualPast: true
+    },
+    {
+        id: 'myriad360-austin',
+        title: '2026 Myriad360 Innovation Summit Series – Austin, TX',
+        date: '2026-03-05',
+        dateDisplay: 'March 5, 2026',
+        location: 'Downtown Austin, TX',
+        category: 'past',
+        region: 'texas',
+        image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
+        link: 'events/Austin.html',
+        categoryLabel: 'Past Event',
+        inviteOnly: true,
+        isManualPast: true
+    },
+    {
+        id: 'cheers-austin',
+        title: 'Cheers & Clusters Austin: Survivability & Single Malts',
+        date: '2026-03-10',
+        dateDisplay: 'March 10, 2026 • 5:00 – 8:00 PM',
+        location: 'Seven Grand, Austin, TX',
+        category: 'past',
+        region: 'texas',
+        image: 'https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=600&h=400&fit=crop&auto=format',
+        link: 'events/Ch%26C-Austin.html',
+        categoryLabel: 'Past Event',
+        isManualPast: true
+    },
+    {
+        id: 'opentext-nyc',
+        title: 'Know Thy Data: Data Security Posture Management (DSPM) in the Age of AI',
+        date: '2026-03-11',
+        dateDisplay: 'March 11, 2026 • 11:30am – 3:00pm',
+        location: 'The Fifth Avenue Hotel, New York City',
+        category: 'past',
+        region: 'new-york',
+        image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&h=400&fit=crop&auto=format',
+        link: 'events/newyork.html',
+        categoryLabel: 'Past Event',
+        isManualPast: true
+    },
+
+    // ========== UPCOMING EVENTS ==========
     {
         id: 'keepit-manchester',
         title: 'Keepit Live Manchester',
