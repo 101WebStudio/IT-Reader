@@ -58,7 +58,7 @@ const allEvents = [
     },
 
     // ========== UPCOMING EVENTS ==========
-    // Renditur nga data më e hershme tek më e vona
+    
     {
         id: 'zendesk-paloalto',
         title: 'Zendesk CX Trends 2026 – Palo Alto',
@@ -120,6 +120,8 @@ const allEvents = [
         categoryLabel: 'Breakfast',
         inviteOnly: true
     },
+
+    // ========== TË GJITHA EVENTET E PRILLIT (në fund) ==========
     {
         id: 'myriad360-chicago',
         title: 'Myriad360 Innovation Summit - Chicago',
@@ -166,7 +168,7 @@ const allEvents = [
         location: 'The Thief, Oslo',
         category: 'live',
         region: 'europe',
-        image: 'images/oslo.png',
+        image: 'images/Oslo.png',
         link: 'events/Oslo.html',
         categoryLabel: 'Live Event'
     },
