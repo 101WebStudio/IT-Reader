@@ -58,6 +58,18 @@ const allEvents = [
     },
 
     // ========== UPCOMING EVENTS ==========
+     {
+        id: 'keepit-Oslo',
+        title: 'Keepit Live Nordic Roadshow, Oslo',
+        date: '2026-04-23',
+        dateDisplay: 'April 23, 2026, 15:00-18:30',
+        location: 'The Thief, Oslo',
+        category: 'live',
+        region: 'europe',
+        image: 'images/',
+        link: 'events/Oslo.html',
+        categoryLabel: 'Live Event'
+    },
     {
         id: 'keepit-helsinki',
         title: 'Keepit Live Nordic Roadshow Helsinki',
