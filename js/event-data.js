@@ -1,4 +1,5 @@
 // js/event-data.js
+// Të gjitha eventet e ITreader - PAST dhe UPCOMING
 
 const allEvents = [
     // ========== PAST EVENTS (Manual) ==========
@@ -57,7 +58,7 @@ const allEvents = [
     },
 
     // ========== UPCOMING EVENTS ==========
-    // 
+    // Të gjitha eventet e Marsit dhe Prillit
     {
         id: 'zendesk-paloalto',
         title: 'Zendesk CX Trends 2026 – Palo Alto',
@@ -119,8 +120,6 @@ const allEvents = [
         categoryLabel: 'Breakfast',
         inviteOnly: true
     },
-
-    // ========== Aprill ==========
     {
         id: 'myriad360-chicago',
         title: 'Myriad360 Innovation Summit - Chicago',
@@ -167,7 +166,7 @@ const allEvents = [
         location: 'The Thief, Oslo',
         category: 'live',
         region: 'europe',
-        image: 'images/Oslo.png',
+        image: 'images/oslo.png',
         link: 'events/Oslo.html',
         categoryLabel: 'Live Event'
     },
