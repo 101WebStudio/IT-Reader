@@ -20,6 +20,19 @@ const allEvents = [
 
     // ========== UPCOMING EVENTS ==========
     {
+        id: 'keepit-helsinki',
+        title: 'Keepit Live Nordic Roadshow Helsinki',
+        date: '2026-04-15',
+        dateDisplay: 'April 15, 2026 • 15:00 – 18:30',
+        location: 'NH Collection Helsinki Grand Hansa',
+        category: 'live',
+        region: 'Finland',
+        image: '',
+        link: 'events/Helsinki.html',
+        categoryLabel: 'Live Event'
+        inviteOnly: true
+    },
+    {
         id: 'keepit-manchester',
         title: 'Keepit Live Manchester',
         date: '2026-04-29',
