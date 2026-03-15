@@ -58,7 +58,7 @@ const allEvents = [
     },
 
     // ========== UPCOMING EVENTS ==========
-    
+    // 
     {
         id: 'zendesk-paloalto',
         title: 'Zendesk CX Trends 2026 – Palo Alto',
@@ -121,7 +121,7 @@ const allEvents = [
         inviteOnly: true
     },
 
-    // ========== TË GJITHA EVENTET E PRILLIT (në fund) ==========
+    // ==========  April  ==========
     {
         id: 'myriad360-chicago',
         title: 'Myriad360 Innovation Summit - Chicago',
