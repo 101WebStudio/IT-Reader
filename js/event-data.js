@@ -103,7 +103,7 @@ const allEvents = [
         location: 'MOSA, San Francisco, CA',
         category: 'dinner',
         region: 'california',
-        image: 'images/Palace Hotel, San Francisco.png',
+        image: 'images/mos.png',
         link: 'events/Cockroach-San%20Francisco.html',
         categoryLabel: 'Dinner',
         inviteOnly: true
@@ -116,7 +116,7 @@ const allEvents = [
         location: 'Pied Piper Room, Palace Hotel, San Francisco',
         category: 'breakfast',
         region: 'california',
-        image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop&auto=format',
+        image: 'images/Palace Hotel, San Francisco.png',
         link: 'events/Native%20%C3%97%20Artemis%20RSAC%20Breakfast.html',
         categoryLabel: 'Breakfast',
         inviteOnly: true
@@ -165,7 +165,7 @@ const allEvents = [
         location: 'el Prado Hotel, Palo Alto, CA',
         category: 'cx-trends',
         region: 'california',
-        image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop&auto=format',
+        image: 'images/paloalto.png',
         link: 'events/paloalto.html',
         categoryLabel: 'CX Trends'
     }
