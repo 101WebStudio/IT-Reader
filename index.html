@@ -364,7 +364,226 @@
       </p>
     </div>
   </section>
-
+   <!-- == Frequently Asked Questions == -->
+    <!-- Frequently Asked Questions -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about ITreader rewards</p>
+      </div>
+      
+      <div class="faq-container">
+        
+        <!-- FAQ Item 1 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How can I earn rewards?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <ul>
+              <li><strong>Create an account or log in.</strong></li>
+              <li><strong>Filter content</strong> by your job title, industry, location, etc.</li>
+              <li><strong>Access content</strong> that matches your job title and other details (you'll automatically be entered into the draw).</li>
+              <li>If you win the draw, you'll receive your gift card within two business days.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Why am I getting rewarded?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Tech brands want to share their content with professionals like you and reward you for engaging with it. Alternatively, they seek your feedback through interviews and surveys, offering rewards for your time and insights.</p>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is ITreader.com free?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>ITreader.com is a <strong>completely free platform</strong> that allows you to win rewards.</p>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 4 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I contact support?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We are always here to answer your questions and concerns. <a href="contact.html">Drop us a line here</a>.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    /* FAQ Section Styles - përdor variablat ekzistuese */
+    .faq-section {
+      background: var(--light-gray);
+      padding: 70px 0;
+    }
+    
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-light);
+    }
+    
+    .faq-item {
+      margin-bottom: 15px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    
+    .faq-item:hover {
+      border-color: var(--accent-color);
+    }
+    
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 20px 25px;
+      background: var(--card-bg);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--dark-color);
+      transition: var(--transition);
+    }
+    
+    .faq-question i {
+      color: var(--accent-color);
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    .faq-item.active .faq-question {
+      background: var(--light-gray);
+      color: var(--primary-color);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      padding: 0 25px;
+      overflow: hidden;
+      background: var(--light-gray);
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 20px 25px;
+    }
+    
+    .faq-answer p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    
+    .faq-answer p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .faq-answer ul {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-left: 20px;
+    }
+    
+    .faq-answer li {
+      margin-bottom: 8px;
+    }
+    
+    .faq-answer li strong {
+      color: var(--dark-color);
+    }
+    
+    .faq-answer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .faq-answer a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Dark mode adjustments */
+    body.dark-mode .faq-item.active .faq-question {
+      background: var(--card-bg);
+      color: var(--primary-color);
+    }
+    
+    body.dark-mode .faq-answer {
+      background: var(--card-bg);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .faq-container {
+        padding: 20px;
+      }
+      
+      .faq-question {
+        padding: 15px 20px;
+        font-size: 1rem;
+      }
+      
+      .faq-item.active .faq-answer {
+        padding: 15px 20px;
+      }
+    }
+  </style>
+  
+  <script>
+    // FAQ Accordion functionality
+    (function() {
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+          // Close other items (opsionale - komento nëse do të hapen vetëm një nga një)
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains('active')) {
+              otherItem.classList.remove('active');
+            }
+          });
+          
+          // Toggle current item
+          item.classList.toggle('active');
+        });
+      });
+    })();
+  </script>
   <!-- ===== EVENTS SECTION (all buttons link to #contact) ===== -->
   <section class="events-showcase" id="events">
     <div class="container">
